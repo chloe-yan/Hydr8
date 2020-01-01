@@ -1,16 +1,20 @@
 PODS:
+  - BAFluidView (0.2.6)
   - BubbleTransition (3.2.0)
 
 DEPENDENCIES:
+  - BAFluidView (~> 0.2.6)
   - BubbleTransition (~> 3.2.0)
 
 SPEC REPOS:
   trunk:
+    - BAFluidView
     - BubbleTransition
 
 SPEC CHECKSUMS:
+  BAFluidView: 4549a74865236c1ebb03fc06cddc979f7e28ac82
   BubbleTransition: 2f112cc19772d9ab199bc850de92f5eb34744bce
 
-PODFILE CHECKSUM: 1bac11f44ff79f6839e5dcfd7c0c2f30fdc40b2a
+PODFILE CHECKSUM: 493c9b07d3715398e0d86c627098f4733dbb931f
 
 COCOAPODS: 1.8.4

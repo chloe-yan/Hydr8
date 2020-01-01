@@ -34,7 +34,10 @@ class AddUpdatesViewController: UIViewController {
     override func viewDidLoad() {
       super.viewDidLoad()
         addUpdatesButton.layer.cornerRadius = 16
-        closeButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 4)
+        UIView.animate(withDuration: 1.0, animations: {
+            self.closeButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 4)
+            print("transforming")
+        })
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

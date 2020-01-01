@@ -8,6 +8,8 @@
 
 import UIKit
 import BubbleTransition
+import BAFluidView
+import CoreMotion
 
 class HomeViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
@@ -37,6 +39,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     var updatedDateString = ""
     var calendar = Calendar.current
     var hour = 0
+    var fluidView: BAFluidView!
+    var fluidView2: BAFluidView!
+    var fluidView3: BAFluidView!
+    let motionManager = CMMotionManager()
 
     // MARK: DEFAULT UI
     
@@ -46,28 +52,65 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dateString = dateFormatter.string(from: date)
         updatedDateString = String(dateString.prefix(dateString.count - 6))
         hour = calendar.component(.hour, from: date)
+        
+        if motionManager.isDeviceMotionAvailable {
+            motionManager.deviceMotionUpdateInterval = 0.3
+            motionManager.startDeviceMotionUpdates(to: OperationQueue.main, withHandler: { data, error in
+                let nc = NotificationCenter.default
+                var userInfo: [String : CMDeviceMotion?]? = nil
+                if let data = data {
+                    userInfo = ["data" : data]
+                }
+                nc.post(name: NSNotification.Name(rawValue: kBAFluidViewCMMotionUpdate), object: self, userInfo: userInfo!)
+            })
+        }
+
+        fluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.3))
+        fluidView2 = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.33))
+        fluidView3 = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.36))
+        fluidView.fillColor = UIColor(red:0.75, green:0.87, blue:0.96, alpha:0.3)
+        fluidView2.fillColor = UIColor(red:0.75, green:0.87, blue:0.96, alpha:0.1)
+        fluidView3.fillColor = UIColor(red:0.75, green:0.87, blue:0.96, alpha:0.2)
+        fluidView.strokeColor = UIColor.clear
+        fluidView2.strokeColor = UIColor.clear
+        fluidView3.strokeColor = UIColor.clear
+        fluidView.keepStationary()
+        fluidView2.keepStationary()
+        fluidView3.keepStationary()
+        fluidView.startAnimation()
+        fluidView2.startAnimation()
+        fluidView3.startAnimation()
+        fluidView.startTiltAnimation()
+        fluidView2.startTiltAnimation()
+        fluidView3.startTiltAnimation()
+        view.addSubview(fluidView)
+        view.addSubview(fluidView2)
+        view.addSubview(fluidView3)
+        self.view.sendSubviewToBack(fluidView)
+        self.view.sendSubviewToBack(fluidView2)
+        self.view.sendSubviewToBack(fluidView3)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         dateLabel.text = updatedDateString
         if (hour >= 1 && hour < 12) {
-            greetingLabel.text = "Good morning."
+            greetingLabel.text = "Good morning"
         }
         else if (hour >= 12 && hour < 17) {
             greetingLabel.text = "Good afternoon."
         }
         else {
-            greetingLabel.text = "Good evening."
+            greetingLabel.text = "Good evening"
         }
         greetingLabel.isHidden = false
         dateLabel.isHidden = false
         greetingLabel.frame = CGRect(x: -200, y: 90, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
         dateLabel.frame = CGRect(x: -275, y: 120, width: self.dateLabel.intrinsicContentSize.width, height: 30)
         UIView.animate(withDuration: 1.2) {
-            self.greetingLabel.frame = CGRect(x: self.view.center.x+100, y: 90, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
-            self.greetingLabel.center.x = self.view.center.x
-            self.dateLabel.frame = CGRect(x: 100, y: 120, width: self.dateLabel.intrinsicContentSize.width, height: 30)
-            self.dateLabel.center.x = self.view.center.x
+            self.greetingLabel.frame = CGRect(x: self.addUpdatesButton.center.x, y: 90, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
+            self.greetingLabel.centerXAnchor.constraint(equalTo: self.addUpdatesButton.centerXAnchor).isActive = true
+            self.dateLabel.frame = CGRect(x: self.addUpdatesButton.center.x, y: 120, width: self.dateLabel.intrinsicContentSize.width, height: 30)
+            self.dateLabel.centerXAnchor.constraint(equalTo: self.addUpdatesButton.centerXAnchor).isActive = true
         }
     }
     

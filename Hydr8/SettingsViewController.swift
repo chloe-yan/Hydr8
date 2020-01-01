@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController {
             goal = Int(dailyGoalTextField.text!)!
             errorLabel.isHidden = false
             errorLabel.text = "Goal set!"
-            currentGoalLabel.text = "Current Goal:   \(goal) oz"
+            currentGoalLabel.text = String(goal)
         }
         else {
             errorLabel.isHidden = false
@@ -37,7 +37,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentGoalLabel.text = "Current Goal:   \(goal) oz"
+        currentGoalLabel.text = String(goal)
         errorLabel.isHidden = true
         setGoalButton.layer.cornerRadius = 16
     }

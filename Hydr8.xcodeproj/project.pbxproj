@@ -1,0 +1,594 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18910B932EE24349F20C0359 /* Pods_Hydr8.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAAA6FD3BB11AF94F09A576 /* Pods_Hydr8.framework */; };
+		D17519F323BADB8200E85762 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17519F223BADB8200E85762 /* AppDelegate.swift */; };
+		D17519F523BADB8200E85762 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17519F423BADB8200E85762 /* SceneDelegate.swift */; };
+		D17519FA23BADB8200E85762 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17519F823BADB8200E85762 /* Main.storyboard */; };
+		D17519FD23BADB8200E85762 /* Hydr8.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D17519FB23BADB8200E85762 /* Hydr8.xcdatamodeld */; };
+		D1751A0223BADB8600E85762 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1751A0023BADB8600E85762 /* LaunchScreen.storyboard */; };
+		D1751A0A23BAEC7F00E85762 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1751A0923BAEC7F00E85762 /* HomeViewController.swift */; };
+		D1751A7C23BAEE5100E85762 /* Montserrat-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A5723BAEE5100E85762 /* Montserrat-MediumItalic.otf */; };
+		D1751A7D23BAEE5100E85762 /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A5823BAEE5100E85762 /* Montserrat-Bold.otf */; };
+		D1751A7E23BAEE5100E85762 /* Montserrat-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A5923BAEE5100E85762 /* Montserrat-BlackItalic.otf */; };
+		D1751A7F23BAEE5100E85762 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D1751A5A23BAEE5100E85762 /* SIL Open Font License.txt */; };
+		D1751A8023BAEE5100E85762 /* MontserratAlternates-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A5B23BAEE5100E85762 /* MontserratAlternates-Black.otf */; };
+		D1751A8123BAEE5100E85762 /* MontserratAlternates-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A5C23BAEE5100E85762 /* MontserratAlternates-LightItalic.otf */; };
+		D1751A8223BAEE5100E85762 /* MontserratAlternates-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A5D23BAEE5100E85762 /* MontserratAlternates-Medium.otf */; };
+		D1751A8323BAEE5100E85762 /* Montserrat-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A5E23BAEE5100E85762 /* Montserrat-BoldItalic.otf */; };
+		D1751A8423BAEE5100E85762 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A5F23BAEE5100E85762 /* Montserrat-Light.otf */; };
+		D1751A8523BAEE5100E85762 /* Montserrat-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6023BAEE5100E85762 /* Montserrat-ThinItalic.otf */; };
+		D1751A8623BAEE5100E85762 /* Montserrat-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6123BAEE5100E85762 /* Montserrat-Thin.otf */; };
+		D1751A8723BAEE5100E85762 /* MontserratAlternates-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6223BAEE5100E85762 /* MontserratAlternates-MediumItalic.otf */; };
+		D1751A8823BAEE5100E85762 /* Montserrat-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6323BAEE5100E85762 /* Montserrat-ExtraLight.otf */; };
+		D1751A8923BAEE5100E85762 /* MontserratAlternates-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6423BAEE5100E85762 /* MontserratAlternates-BlackItalic.otf */; };
+		D1751A8A23BAEE5100E85762 /* MontserratAlternates-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6523BAEE5100E85762 /* MontserratAlternates-Bold.otf */; };
+		D1751A8B23BAEE5100E85762 /* MontserratAlternates-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6623BAEE5100E85762 /* MontserratAlternates-ExtraLightItalic.otf */; };
+		D1751A8C23BAEE5100E85762 /* MontserratAlternates-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6723BAEE5100E85762 /* MontserratAlternates-Thin.otf */; };
+		D1751A8D23BAEE5100E85762 /* Montserrat-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6823BAEE5100E85762 /* Montserrat-LightItalic.otf */; };
+		D1751A8E23BAEE5100E85762 /* Montserrat-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6923BAEE5100E85762 /* Montserrat-Medium.otf */; };
+		D1751A8F23BAEE5100E85762 /* MontserratAlternates-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6A23BAEE5100E85762 /* MontserratAlternates-SemiBoldItalic.otf */; };
+		D1751A9023BAEE5100E85762 /* Montserrat-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6B23BAEE5100E85762 /* Montserrat-SemiBoldItalic.otf */; };
+		D1751A9123BAEE5100E85762 /* Montserrat-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6C23BAEE5100E85762 /* Montserrat-ExtraBoldItalic.otf */; };
+		D1751A9223BAEE5100E85762 /* Montserrat-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6D23BAEE5100E85762 /* Montserrat-Italic.otf */; };
+		D1751A9323BAEE5100E85762 /* MontserratAlternates-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6E23BAEE5100E85762 /* MontserratAlternates-SemiBold.otf */; };
+		D1751A9423BAEE5100E85762 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A6F23BAEE5100E85762 /* Montserrat-Regular.otf */; };
+		D1751A9523BAEE5100E85762 /* MontserratAlternates-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7023BAEE5100E85762 /* MontserratAlternates-ExtraBold.otf */; };
+		D1751A9623BAEE5100E85762 /* MontserratAlternates-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7123BAEE5100E85762 /* MontserratAlternates-BoldItalic.otf */; };
+		D1751A9723BAEE5100E85762 /* Montserrat-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7223BAEE5100E85762 /* Montserrat-ExtraBold.otf */; };
+		D1751A9823BAEE5100E85762 /* Montserrat-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7323BAEE5100E85762 /* Montserrat-ExtraLightItalic.otf */; };
+		D1751A9923BAEE5100E85762 /* MontserratAlternates-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7423BAEE5100E85762 /* MontserratAlternates-Light.otf */; };
+		D1751A9A23BAEE5100E85762 /* MontserratAlternates-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7523BAEE5100E85762 /* MontserratAlternates-ExtraLight.otf */; };
+		D1751A9B23BAEE5100E85762 /* MontserratAlternates-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7623BAEE5100E85762 /* MontserratAlternates-Regular.otf */; };
+		D1751A9C23BAEE5100E85762 /* MontserratAlternates-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7723BAEE5100E85762 /* MontserratAlternates-ThinItalic.otf */; };
+		D1751A9D23BAEE5100E85762 /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7823BAEE5100E85762 /* Montserrat-Black.otf */; };
+		D1751A9E23BAEE5100E85762 /* MontserratAlternates-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7923BAEE5100E85762 /* MontserratAlternates-ExtraBoldItalic.otf */; };
+		D1751A9F23BAEE5100E85762 /* MontserratAlternates-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7A23BAEE5100E85762 /* MontserratAlternates-Italic.otf */; };
+		D1751AA023BAEE5100E85762 /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7B23BAEE5100E85762 /* Montserrat-SemiBold.otf */; };
+		D1751AA223BB294400E85762 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1751AA123BB294400E85762 /* SettingsViewController.swift */; };
+		D1751AA423BB295300E85762 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1751AA323BB295300E85762 /* AnalyticsViewController.swift */; };
+		D1DE3F3623BBFA6E005341C2 /* AddUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2FAAA6FD3BB11AF94F09A576 /* Pods_Hydr8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hydr8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6685786E772233E8561C1EA /* Pods-Hydr8.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hydr8.release.xcconfig"; path = "Target Support Files/Pods-Hydr8/Pods-Hydr8.release.xcconfig"; sourceTree = "<group>"; };
+		D17519EF23BADB8200E85762 /* Hydr8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydr8.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D17519F223BADB8200E85762 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D17519F423BADB8200E85762 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D17519F923BADB8200E85762 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D17519FC23BADB8200E85762 /* Hydr8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hydr8.xcdatamodel; sourceTree = "<group>"; };
+		D1751A0123BADB8600E85762 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D1751A0323BADB8600E85762 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1751A0923BAEC7F00E85762 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D1751A5723BAEE5100E85762 /* Montserrat-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-MediumItalic.otf"; sourceTree = "<group>"; };
+		D1751A5823BAEE5100E85762 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
+		D1751A5923BAEE5100E85762 /* Montserrat-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.otf"; sourceTree = "<group>"; };
+		D1751A5A23BAEE5100E85762 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		D1751A5B23BAEE5100E85762 /* MontserratAlternates-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Black.otf"; sourceTree = "<group>"; };
+		D1751A5C23BAEE5100E85762 /* MontserratAlternates-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-LightItalic.otf"; sourceTree = "<group>"; };
+		D1751A5D23BAEE5100E85762 /* MontserratAlternates-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Medium.otf"; sourceTree = "<group>"; };
+		D1751A5E23BAEE5100E85762 /* Montserrat-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.otf"; sourceTree = "<group>"; };
+		D1751A5F23BAEE5100E85762 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
+		D1751A6023BAEE5100E85762 /* Montserrat-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.otf"; sourceTree = "<group>"; };
+		D1751A6123BAEE5100E85762 /* Montserrat-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.otf"; sourceTree = "<group>"; };
+		D1751A6223BAEE5100E85762 /* MontserratAlternates-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-MediumItalic.otf"; sourceTree = "<group>"; };
+		D1751A6323BAEE5100E85762 /* Montserrat-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.otf"; sourceTree = "<group>"; };
+		D1751A6423BAEE5100E85762 /* MontserratAlternates-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-BlackItalic.otf"; sourceTree = "<group>"; };
+		D1751A6523BAEE5100E85762 /* MontserratAlternates-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Bold.otf"; sourceTree = "<group>"; };
+		D1751A6623BAEE5100E85762 /* MontserratAlternates-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-ExtraLightItalic.otf"; sourceTree = "<group>"; };
+		D1751A6723BAEE5100E85762 /* MontserratAlternates-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Thin.otf"; sourceTree = "<group>"; };
+		D1751A6823BAEE5100E85762 /* Montserrat-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.otf"; sourceTree = "<group>"; };
+		D1751A6923BAEE5100E85762 /* Montserrat-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.otf"; sourceTree = "<group>"; };
+		D1751A6A23BAEE5100E85762 /* MontserratAlternates-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		D1751A6B23BAEE5100E85762 /* Montserrat-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		D1751A6C23BAEE5100E85762 /* Montserrat-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
+		D1751A6D23BAEE5100E85762 /* Montserrat-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.otf"; sourceTree = "<group>"; };
+		D1751A6E23BAEE5100E85762 /* MontserratAlternates-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-SemiBold.otf"; sourceTree = "<group>"; };
+		D1751A6F23BAEE5100E85762 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		D1751A7023BAEE5100E85762 /* MontserratAlternates-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-ExtraBold.otf"; sourceTree = "<group>"; };
+		D1751A7123BAEE5100E85762 /* MontserratAlternates-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-BoldItalic.otf"; sourceTree = "<group>"; };
+		D1751A7223BAEE5100E85762 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
+		D1751A7323BAEE5100E85762 /* Montserrat-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.otf"; sourceTree = "<group>"; };
+		D1751A7423BAEE5100E85762 /* MontserratAlternates-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Light.otf"; sourceTree = "<group>"; };
+		D1751A7523BAEE5100E85762 /* MontserratAlternates-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-ExtraLight.otf"; sourceTree = "<group>"; };
+		D1751A7623BAEE5100E85762 /* MontserratAlternates-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Regular.otf"; sourceTree = "<group>"; };
+		D1751A7723BAEE5100E85762 /* MontserratAlternates-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-ThinItalic.otf"; sourceTree = "<group>"; };
+		D1751A7823BAEE5100E85762 /* Montserrat-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.otf"; sourceTree = "<group>"; };
+		D1751A7923BAEE5100E85762 /* MontserratAlternates-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
+		D1751A7A23BAEE5100E85762 /* MontserratAlternates-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Italic.otf"; sourceTree = "<group>"; };
+		D1751A7B23BAEE5100E85762 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
+		D1751AA123BB294400E85762 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D1751AA323BB295300E85762 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
+		D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdatesViewController.swift; sourceTree = "<group>"; };
+		DE7639662755AA6B6B9D03F6 /* Pods-Hydr8.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hydr8.debug.xcconfig"; path = "Target Support Files/Pods-Hydr8/Pods-Hydr8.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D17519EC23BADB8200E85762 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18910B932EE24349F20C0359 /* Pods_Hydr8.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C09FCC7DB7BA49B764D8E69A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2FAAA6FD3BB11AF94F09A576 /* Pods_Hydr8.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9C68A6F50116101BD62A165 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DE7639662755AA6B6B9D03F6 /* Pods-Hydr8.debug.xcconfig */,
+				A6685786E772233E8561C1EA /* Pods-Hydr8.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D17519E623BADB8200E85762 = {
+			isa = PBXGroup;
+			children = (
+				D17519F123BADB8200E85762 /* Hydr8 */,
+				D17519F023BADB8200E85762 /* Products */,
+				D1751A5623BAEE5100E85762 /* montserrat */,
+				C9C68A6F50116101BD62A165 /* Pods */,
+				C09FCC7DB7BA49B764D8E69A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D17519F023BADB8200E85762 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D17519EF23BADB8200E85762 /* Hydr8.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D17519F123BADB8200E85762 /* Hydr8 */ = {
+			isa = PBXGroup;
+			children = (
+				D17519F223BADB8200E85762 /* AppDelegate.swift */,
+				D17519F423BADB8200E85762 /* SceneDelegate.swift */,
+				D1751A0923BAEC7F00E85762 /* HomeViewController.swift */,
+				D1751AA123BB294400E85762 /* SettingsViewController.swift */,
+				D1751AA323BB295300E85762 /* AnalyticsViewController.swift */,
+				D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */,
+				D17519F823BADB8200E85762 /* Main.storyboard */,
+				D1751A0023BADB8600E85762 /* LaunchScreen.storyboard */,
+				D1751A0323BADB8600E85762 /* Info.plist */,
+				D17519FB23BADB8200E85762 /* Hydr8.xcdatamodeld */,
+			);
+			path = Hydr8;
+			sourceTree = "<group>";
+		};
+		D1751A5623BAEE5100E85762 /* montserrat */ = {
+			isa = PBXGroup;
+			children = (
+				D1751A5723BAEE5100E85762 /* Montserrat-MediumItalic.otf */,
+				D1751A5823BAEE5100E85762 /* Montserrat-Bold.otf */,
+				D1751A5923BAEE5100E85762 /* Montserrat-BlackItalic.otf */,
+				D1751A5A23BAEE5100E85762 /* SIL Open Font License.txt */,
+				D1751A5B23BAEE5100E85762 /* MontserratAlternates-Black.otf */,
+				D1751A5C23BAEE5100E85762 /* MontserratAlternates-LightItalic.otf */,
+				D1751A5D23BAEE5100E85762 /* MontserratAlternates-Medium.otf */,
+				D1751A5E23BAEE5100E85762 /* Montserrat-BoldItalic.otf */,
+				D1751A5F23BAEE5100E85762 /* Montserrat-Light.otf */,
+				D1751A6023BAEE5100E85762 /* Montserrat-ThinItalic.otf */,
+				D1751A6123BAEE5100E85762 /* Montserrat-Thin.otf */,
+				D1751A6223BAEE5100E85762 /* MontserratAlternates-MediumItalic.otf */,
+				D1751A6323BAEE5100E85762 /* Montserrat-ExtraLight.otf */,
+				D1751A6423BAEE5100E85762 /* MontserratAlternates-BlackItalic.otf */,
+				D1751A6523BAEE5100E85762 /* MontserratAlternates-Bold.otf */,
+				D1751A6623BAEE5100E85762 /* MontserratAlternates-ExtraLightItalic.otf */,
+				D1751A6723BAEE5100E85762 /* MontserratAlternates-Thin.otf */,
+				D1751A6823BAEE5100E85762 /* Montserrat-LightItalic.otf */,
+				D1751A6923BAEE5100E85762 /* Montserrat-Medium.otf */,
+				D1751A6A23BAEE5100E85762 /* MontserratAlternates-SemiBoldItalic.otf */,
+				D1751A6B23BAEE5100E85762 /* Montserrat-SemiBoldItalic.otf */,
+				D1751A6C23BAEE5100E85762 /* Montserrat-ExtraBoldItalic.otf */,
+				D1751A6D23BAEE5100E85762 /* Montserrat-Italic.otf */,
+				D1751A6E23BAEE5100E85762 /* MontserratAlternates-SemiBold.otf */,
+				D1751A6F23BAEE5100E85762 /* Montserrat-Regular.otf */,
+				D1751A7023BAEE5100E85762 /* MontserratAlternates-ExtraBold.otf */,
+				D1751A7123BAEE5100E85762 /* MontserratAlternates-BoldItalic.otf */,
+				D1751A7223BAEE5100E85762 /* Montserrat-ExtraBold.otf */,
+				D1751A7323BAEE5100E85762 /* Montserrat-ExtraLightItalic.otf */,
+				D1751A7423BAEE5100E85762 /* MontserratAlternates-Light.otf */,
+				D1751A7523BAEE5100E85762 /* MontserratAlternates-ExtraLight.otf */,
+				D1751A7623BAEE5100E85762 /* MontserratAlternates-Regular.otf */,
+				D1751A7723BAEE5100E85762 /* MontserratAlternates-ThinItalic.otf */,
+				D1751A7823BAEE5100E85762 /* Montserrat-Black.otf */,
+				D1751A7923BAEE5100E85762 /* MontserratAlternates-ExtraBoldItalic.otf */,
+				D1751A7A23BAEE5100E85762 /* MontserratAlternates-Italic.otf */,
+				D1751A7B23BAEE5100E85762 /* Montserrat-SemiBold.otf */,
+			);
+			path = montserrat;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D17519EE23BADB8200E85762 /* Hydr8 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1751A0623BADB8600E85762 /* Build configuration list for PBXNativeTarget "Hydr8" */;
+			buildPhases = (
+				612AAC53DED0881B2EB52C0E /* [CP] Check Pods Manifest.lock */,
+				D17519EB23BADB8200E85762 /* Sources */,
+				D17519EC23BADB8200E85762 /* Frameworks */,
+				D17519ED23BADB8200E85762 /* Resources */,
+				99462FDDED39C8C792505758 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hydr8;
+			productName = Hydr8;
+			productReference = D17519EF23BADB8200E85762 /* Hydr8.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D17519E723BADB8200E85762 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Chloe Yan";
+				TargetAttributes = {
+					D17519EE23BADB8200E85762 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = D17519EA23BADB8200E85762 /* Build configuration list for PBXProject "Hydr8" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D17519E623BADB8200E85762;
+			productRefGroup = D17519F023BADB8200E85762 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D17519EE23BADB8200E85762 /* Hydr8 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D17519ED23BADB8200E85762 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1751A9523BAEE5100E85762 /* MontserratAlternates-ExtraBold.otf in Resources */,
+				D1751A9723BAEE5100E85762 /* Montserrat-ExtraBold.otf in Resources */,
+				D1751A9D23BAEE5100E85762 /* Montserrat-Black.otf in Resources */,
+				D1751A7F23BAEE5100E85762 /* SIL Open Font License.txt in Resources */,
+				D1751A9B23BAEE5100E85762 /* MontserratAlternates-Regular.otf in Resources */,
+				D1751A8023BAEE5100E85762 /* MontserratAlternates-Black.otf in Resources */,
+				D1751A9823BAEE5100E85762 /* Montserrat-ExtraLightItalic.otf in Resources */,
+				D1751A7D23BAEE5100E85762 /* Montserrat-Bold.otf in Resources */,
+				D1751A8923BAEE5100E85762 /* MontserratAlternates-BlackItalic.otf in Resources */,
+				D1751AA023BAEE5100E85762 /* Montserrat-SemiBold.otf in Resources */,
+				D1751A0223BADB8600E85762 /* LaunchScreen.storyboard in Resources */,
+				D1751A8323BAEE5100E85762 /* Montserrat-BoldItalic.otf in Resources */,
+				D1751A9C23BAEE5100E85762 /* MontserratAlternates-ThinItalic.otf in Resources */,
+				D1751A8523BAEE5100E85762 /* Montserrat-ThinItalic.otf in Resources */,
+				D1751A8223BAEE5100E85762 /* MontserratAlternates-Medium.otf in Resources */,
+				D1751A8723BAEE5100E85762 /* MontserratAlternates-MediumItalic.otf in Resources */,
+				D1751A8823BAEE5100E85762 /* Montserrat-ExtraLight.otf in Resources */,
+				D1751A7E23BAEE5100E85762 /* Montserrat-BlackItalic.otf in Resources */,
+				D1751A8E23BAEE5100E85762 /* Montserrat-Medium.otf in Resources */,
+				D1751A8B23BAEE5100E85762 /* MontserratAlternates-ExtraLightItalic.otf in Resources */,
+				D1751A9E23BAEE5100E85762 /* MontserratAlternates-ExtraBoldItalic.otf in Resources */,
+				D1751A8123BAEE5100E85762 /* MontserratAlternates-LightItalic.otf in Resources */,
+				D1751A9223BAEE5100E85762 /* Montserrat-Italic.otf in Resources */,
+				D1751A8D23BAEE5100E85762 /* Montserrat-LightItalic.otf in Resources */,
+				D1751A8623BAEE5100E85762 /* Montserrat-Thin.otf in Resources */,
+				D1751A8C23BAEE5100E85762 /* MontserratAlternates-Thin.otf in Resources */,
+				D1751A9923BAEE5100E85762 /* MontserratAlternates-Light.otf in Resources */,
+				D1751A9123BAEE5100E85762 /* Montserrat-ExtraBoldItalic.otf in Resources */,
+				D1751A9423BAEE5100E85762 /* Montserrat-Regular.otf in Resources */,
+				D1751A7C23BAEE5100E85762 /* Montserrat-MediumItalic.otf in Resources */,
+				D17519FA23BADB8200E85762 /* Main.storyboard in Resources */,
+				D1751A9A23BAEE5100E85762 /* MontserratAlternates-ExtraLight.otf in Resources */,
+				D1751A9623BAEE5100E85762 /* MontserratAlternates-BoldItalic.otf in Resources */,
+				D1751A8A23BAEE5100E85762 /* MontserratAlternates-Bold.otf in Resources */,
+				D1751A9F23BAEE5100E85762 /* MontserratAlternates-Italic.otf in Resources */,
+				D1751A9023BAEE5100E85762 /* Montserrat-SemiBoldItalic.otf in Resources */,
+				D1751A9323BAEE5100E85762 /* MontserratAlternates-SemiBold.otf in Resources */,
+				D1751A8F23BAEE5100E85762 /* MontserratAlternates-SemiBoldItalic.otf in Resources */,
+				D1751A8423BAEE5100E85762 /* Montserrat-Light.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		612AAC53DED0881B2EB52C0E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hydr8-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99462FDDED39C8C792505758 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hydr8/Pods-Hydr8-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hydr8/Pods-Hydr8-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hydr8/Pods-Hydr8-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D17519EB23BADB8200E85762 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1751A0A23BAEC7F00E85762 /* HomeViewController.swift in Sources */,
+				D1751AA423BB295300E85762 /* AnalyticsViewController.swift in Sources */,
+				D17519FD23BADB8200E85762 /* Hydr8.xcdatamodeld in Sources */,
+				D17519F323BADB8200E85762 /* AppDelegate.swift in Sources */,
+				D17519F523BADB8200E85762 /* SceneDelegate.swift in Sources */,
+				D1751AA223BB294400E85762 /* SettingsViewController.swift in Sources */,
+				D1DE3F3623BBFA6E005341C2 /* AddUpdatesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D17519F823BADB8200E85762 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D17519F923BADB8200E85762 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D1751A0023BADB8600E85762 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D1751A0123BADB8600E85762 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D1751A0423BADB8600E85762 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D1751A0523BADB8600E85762 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D1751A0723BADB8600E85762 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE7639662755AA6B6B9D03F6 /* Pods-Hydr8.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U362PK6229;
+				INFOPLIST_FILE = Hydr8/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = chloeyan.Hydr8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D1751A0823BADB8600E85762 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6685786E772233E8561C1EA /* Pods-Hydr8.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U362PK6229;
+				INFOPLIST_FILE = Hydr8/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = chloeyan.Hydr8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D17519EA23BADB8200E85762 /* Build configuration list for PBXProject "Hydr8" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1751A0423BADB8600E85762 /* Debug */,
+				D1751A0523BADB8600E85762 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1751A0623BADB8600E85762 /* Build configuration list for PBXNativeTarget "Hydr8" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1751A0723BADB8600E85762 /* Debug */,
+				D1751A0823BADB8600E85762 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D17519FB23BADB8200E85762 /* Hydr8.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D17519FC23BADB8200E85762 /* Hydr8.xcdatamodel */,
+			);
+			currentVersion = D17519FC23BADB8200E85762 /* Hydr8.xcdatamodel */;
+			path = Hydr8.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D17519E723BADB8200E85762 /* Project object */;
+}

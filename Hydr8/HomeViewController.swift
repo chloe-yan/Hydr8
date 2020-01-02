@@ -89,6 +89,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         self.view.sendSubviewToBack(fluidView)
         self.view.sendSubviewToBack(fluidView2)
         self.view.sendSubviewToBack(fluidView3)
+        
+        bubbleEmitter()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -104,12 +106,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         }
         greetingLabel.isHidden = false
         dateLabel.isHidden = false
-        greetingLabel.frame = CGRect(x: -200, y: 90, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
-        dateLabel.frame = CGRect(x: -275, y: 120, width: self.dateLabel.intrinsicContentSize.width, height: 30)
+        greetingLabel.frame = CGRect(x: -200, y: 100, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
+        dateLabel.frame = CGRect(x: -275, y: 130, width: self.dateLabel.intrinsicContentSize.width, height: 30)
         UIView.animate(withDuration: 1.2) {
-            self.greetingLabel.frame = CGRect(x: self.addUpdatesButton.center.x, y: 90, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
+            self.greetingLabel.frame = CGRect(x: self.addUpdatesButton.center.x, y: 100, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
             self.greetingLabel.centerXAnchor.constraint(equalTo: self.addUpdatesButton.centerXAnchor).isActive = true
-            self.dateLabel.frame = CGRect(x: self.addUpdatesButton.center.x, y: 120, width: self.dateLabel.intrinsicContentSize.width, height: 30)
+            self.dateLabel.frame = CGRect(x: self.addUpdatesButton.center.x, y: 130, width: self.dateLabel.intrinsicContentSize.width, height: 30)
             self.dateLabel.centerXAnchor.constraint(equalTo: self.addUpdatesButton.centerXAnchor).isActive = true
         }
     }
@@ -152,4 +154,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
       return interactiveTransition
     }
 
+    // MARK: BUBBLE EMITTER
+    
+    func bubbleEmitter() {
+        let emitter = BubbleEmitter.get(with: UIImage(named: "Bubble")!)
+        emitter.emitterPosition = CGPoint(x: view.frame.width/2, y: view.frame.maxY)
+        emitter.emitterSize = CGSize(width: view.frame.width, height: 2)
+        view.layer.addSublayer(emitter)
+    }
 }

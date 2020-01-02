@@ -65,12 +65,9 @@
                                     <segue destination="MAF-sR-KcV" kind="show" id="2WP-rx-MEn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Good morning." textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGu-eK-ifg">
-                                <rect key="frame" x="106" y="137" width="210.5" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="8qA-T3-0xv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good morning." textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGu-eK-ifg">
+                                <rect key="frame" x="105" y="148" width="204" height="32"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -97,9 +94,9 @@
                                     <segue destination="okr-CF-ucO" kind="presentation" id="udk-WR-z6q"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Monday, December 30" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xov-uN-1hd">
-                                <rect key="frame" x="106" y="191" width="249" height="21"/>
-                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday, December 30" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xov-uN-1hd">
+                                <rect key="frame" x="97" y="185" width="220.5" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -107,11 +104,13 @@
                         <color key="backgroundColor" red="0.28514454434463021" green="0.37236265520720035" blue="0.63957407994923865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="cGu-eK-ifg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="1cQ-Fy-D8v"/>
+                            <constraint firstItem="Xov-uN-1hd" firstAttribute="top" secondItem="cGu-eK-ifg" secondAttribute="bottom" constant="5" id="7nQ-Yz-A2p"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kuH-Zc-lvS" secondAttribute="bottom" constant="50" id="9R3-Kx-1qm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cMl-qp-h2Y" secondAttribute="trailing" constant="25" id="AZL-c0-gDL"/>
-                            <constraint firstItem="cGu-eK-ifg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="FTq-ci-HWY"/>
                             <constraint firstItem="kuH-Zc-lvS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hlz-4c-DJA"/>
-                            <constraint firstItem="Xov-uN-1hd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="bMB-yc-PuH"/>
+                            <constraint firstItem="cGu-eK-ifg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Iee-6l-Ab0"/>
+                            <constraint firstItem="Xov-uN-1hd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bPs-oW-sjf"/>
                             <constraint firstItem="cGu-eK-ifg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="bqw-kY-Lxv"/>
                             <constraint firstItem="oPw-30-mPO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="coS-cd-Gqa"/>
                             <constraint firstItem="cMl-qp-h2Y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="g7l-Od-Qho"/>

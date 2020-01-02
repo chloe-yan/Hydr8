@@ -56,6 +56,9 @@
 		D1DE3F3623BBFA6E005341C2 /* AddUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */; };
 		D1FBDDC223BD288000003306 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FBDDC123BD288000003306 /* Assets.xcassets */; };
 		D1FBDDC423BD6C8C00003306 /* BubbleEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */; };
+		D1FBDDC823BE50C900003306 /* waterTracker.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1FBDDC723BE50C900003306 /* waterTracker.xib */; };
+		D1FBDDCA23BE563800003306 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1FBDDC923BE563800003306 /* Settings.xib */; };
+		D1FBDDCC23BE58B000003306 /* Analytics.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1FBDDCB23BE58B000003306 /* Analytics.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +114,9 @@
 		D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdatesViewController.swift; sourceTree = "<group>"; };
 		D1FBDDC123BD288000003306 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleEmitter.swift; sourceTree = "<group>"; };
+		D1FBDDC723BE50C900003306 /* waterTracker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = waterTracker.xib; sourceTree = "<group>"; };
+		D1FBDDC923BE563800003306 /* Settings.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
+		D1FBDDCB23BE58B000003306 /* Analytics.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Analytics.xib; sourceTree = "<group>"; };
 		DE7639662755AA6B6B9D03F6 /* Pods-Hydr8.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hydr8.debug.xcconfig"; path = "Target Support Files/Pods-Hydr8/Pods-Hydr8.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +178,9 @@
 				D1751AA123BB294400E85762 /* SettingsViewController.swift */,
 				D1751AA323BB295300E85762 /* AnalyticsViewController.swift */,
 				D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */,
+				D1FBDDC923BE563800003306 /* Settings.xib */,
+				D1FBDDC723BE50C900003306 /* waterTracker.xib */,
+				D1FBDDCB23BE58B000003306 /* Analytics.xib */,
 				D1FBDDC123BD288000003306 /* Assets.xcassets */,
 				D17519F823BADB8200E85762 /* Main.storyboard */,
 				D1751A0023BADB8600E85762 /* LaunchScreen.storyboard */,
@@ -294,6 +303,7 @@
 				D1751A9823BAEE5100E85762 /* Montserrat-ExtraLightItalic.otf in Resources */,
 				D1751A7D23BAEE5100E85762 /* Montserrat-Bold.otf in Resources */,
 				D1751A8923BAEE5100E85762 /* MontserratAlternates-BlackItalic.otf in Resources */,
+				D1FBDDCC23BE58B000003306 /* Analytics.xib in Resources */,
 				D1751AA023BAEE5100E85762 /* Montserrat-SemiBold.otf in Resources */,
 				D1751A0223BADB8600E85762 /* LaunchScreen.storyboard in Resources */,
 				D1751A8323BAEE5100E85762 /* Montserrat-BoldItalic.otf in Resources */,
@@ -302,6 +312,8 @@
 				D1FBDDC223BD288000003306 /* Assets.xcassets in Resources */,
 				D1751A8223BAEE5100E85762 /* MontserratAlternates-Medium.otf in Resources */,
 				D1751A8723BAEE5100E85762 /* MontserratAlternates-MediumItalic.otf in Resources */,
+				D1FBDDC823BE50C900003306 /* waterTracker.xib in Resources */,
+				D1FBDDCA23BE563800003306 /* Settings.xib in Resources */,
 				D1751A8823BAEE5100E85762 /* Montserrat-ExtraLight.otf in Resources */,
 				D1751A7E23BAEE5100E85762 /* Montserrat-BlackItalic.otf in Resources */,
 				D1751A8E23BAEE5100E85762 /* Montserrat-Medium.otf in Resources */,

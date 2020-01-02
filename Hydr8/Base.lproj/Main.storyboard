@@ -71,14 +71,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuH-Zc-lvS">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuH-Zc-lvS">
                                 <rect key="frame" x="177" y="752" width="60" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="2pI-jY-vnf"/>
                                     <constraint firstAttribute="width" constant="60" id="4x5-7I-hY7"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="7jC-9z-o1i"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="zmh-9I-X8M"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="30"/>
                                 <state key="normal" title="+">
@@ -106,10 +104,10 @@
                         <constraints>
                             <constraint firstItem="cGu-eK-ifg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="1cQ-Fy-D8v"/>
                             <constraint firstItem="Xov-uN-1hd" firstAttribute="top" secondItem="cGu-eK-ifg" secondAttribute="bottom" constant="5" id="7nQ-Yz-A2p"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kuH-Zc-lvS" secondAttribute="bottom" constant="50" id="9R3-Kx-1qm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cMl-qp-h2Y" secondAttribute="trailing" constant="25" id="AZL-c0-gDL"/>
-                            <constraint firstItem="kuH-Zc-lvS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hlz-4c-DJA"/>
                             <constraint firstItem="cGu-eK-ifg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Iee-6l-Ab0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kuH-Zc-lvS" secondAttribute="bottom" constant="50" id="LCA-tU-4P4"/>
+                            <constraint firstItem="kuH-Zc-lvS" firstAttribute="centerX" secondItem="Xov-uN-1hd" secondAttribute="centerX" id="VDM-45-XhW"/>
                             <constraint firstItem="Xov-uN-1hd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bPs-oW-sjf"/>
                             <constraint firstItem="cGu-eK-ifg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="bqw-kY-Lxv"/>
                             <constraint firstItem="oPw-30-mPO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="coS-cd-Gqa"/>
@@ -117,33 +115,17 @@
                             <constraint firstItem="oPw-30-mPO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="ha8-Mw-43U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="X9w-mY-BOa" appends="YES" id="DXq-5W-pmo"/>
-                            <outletCollection property="gestureRecognizers" destination="SKL-nW-RZz" appends="YES" id="3aK-JP-b7E"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="NIQ-lv-cXO"/>
                     <connections>
                         <outlet property="addUpdatesButton" destination="kuH-Zc-lvS" id="AIf-bV-aUY"/>
                         <outlet property="dateLabel" destination="Xov-uN-1hd" id="akh-8O-iKm"/>
-                        <outlet property="greetingLabel" destination="cGu-eK-ifg" id="8jS-mf-Qsk"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="ecI-AX-uIn"/>
                         <segue destination="x8v-KY-2Zj" kind="show" id="H70-V6-v8N"/>
                         <segue destination="MAF-sR-KcV" kind="show" identifier="analytics" id="sMh-0w-qjn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="X9w-mY-BOa">
-                    <connections>
-                        <action selector="analyticsSwipe:" destination="BYZ-38-t0r" id="fgk-eP-yqO"/>
-                        <segue destination="MAF-sR-KcV" kind="show" id="y3j-xq-c3m"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="SKL-nW-RZz">
-                    <connections>
-                        <action selector="settingsSwipe:" destination="BYZ-38-t0r" id="B7v-aH-PQ4"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
         </scene>
@@ -337,20 +319,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track your water intake" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gy1-aL-FX2">
-                                <rect key="frame" x="50" y="50" width="274" height="27"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="22"/>
-                                <color key="textColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How much water did you drink?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDw-Ii-xO6">
-                                <rect key="frame" x="50" y="127" width="257.5" height="20"/>
+                                <rect key="frame" x="50" y="151" width="257.5" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                 <color key="textColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPl-DJ-1xe">
-                                <rect key="frame" x="50" y="231" width="126" height="33"/>
+                                <rect key="frame" x="50" y="255" width="126" height="33"/>
                                 <color key="backgroundColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                 <state key="normal" title="       Update       ">
@@ -384,7 +360,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Aqg-KG-eOx">
-                                <rect key="frame" x="50" y="167" width="109" height="34"/>
+                                <rect key="frame" x="50" y="191" width="109" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" ex. 8  " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZeY-4Q-Owl">
                                         <rect key="frame" x="0.0" y="0.0" width="79.5" height="34"/>
@@ -400,18 +376,25 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track your water intake" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gy1-aL-FX2">
+                                <rect key="frame" x="50" y="50" width="314" height="71"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="29"/>
+                                <color key="textColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="mDw-Ii-xO6" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="7tl-UN-r1t"/>
                             <constraint firstItem="DbJ-5k-JZz" firstAttribute="centerX" secondItem="utA-0b-iXH" secondAttribute="centerX" id="FS2-rj-ZHD"/>
+                            <constraint firstItem="cAk-7t-OeW" firstAttribute="trailing" secondItem="gy1-aL-FX2" secondAttribute="trailing" constant="50" id="HIW-fL-97C"/>
                             <constraint firstItem="cAk-7t-OeW" firstAttribute="bottom" secondItem="DbJ-5k-JZz" secondAttribute="bottom" constant="50" id="L9a-sm-P4i"/>
                             <constraint firstItem="Aqg-KG-eOx" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="QMc-fd-u3T"/>
-                            <constraint firstItem="gy1-aL-FX2" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="QU7-o4-1kK"/>
-                            <constraint firstItem="gy1-aL-FX2" firstAttribute="top" secondItem="cAk-7t-OeW" secondAttribute="top" constant="50" id="SyI-hJ-41I"/>
+                            <constraint firstItem="gy1-aL-FX2" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="W3L-Mp-Uwk"/>
                             <constraint firstItem="uPl-DJ-1xe" firstAttribute="top" secondItem="Aqg-KG-eOx" secondAttribute="bottom" constant="30" id="X4I-GF-oAU"/>
                             <constraint firstItem="uPl-DJ-1xe" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="cj6-Pd-u1W"/>
-                            <constraint firstItem="mDw-Ii-xO6" firstAttribute="top" secondItem="gy1-aL-FX2" secondAttribute="bottom" constant="50" id="gNk-qP-zht"/>
+                            <constraint firstItem="gy1-aL-FX2" firstAttribute="top" secondItem="cAk-7t-OeW" secondAttribute="top" constant="50" id="clO-K6-E8n"/>
+                            <constraint firstItem="mDw-Ii-xO6" firstAttribute="top" secondItem="gy1-aL-FX2" secondAttribute="bottom" constant="30" id="gNk-qP-zht"/>
                             <constraint firstItem="Aqg-KG-eOx" firstAttribute="top" secondItem="mDw-Ii-xO6" secondAttribute="bottom" constant="20" id="uqJ-fr-mg7"/>
                             <constraint firstItem="uPl-DJ-1xe" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="wE2-Rk-Cyi"/>
                         </constraints>
@@ -426,7 +409,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qoy-hf-fdf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1242" y="890"/>
+            <point key="canvasLocation" x="1240.5797101449277" y="889.95535714285711"/>
         </scene>
     </scenes>
     <resources>
@@ -436,6 +419,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sMh-0w-qjn"/>
-        <segue reference="H70-V6-v8N"/>
+        <segue reference="e6G-Pt-F0m"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,7 +15,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     // MARK: OUTLETS & ACTIONS
     
-    @IBOutlet weak var greetingLabel: UILabel!
+  //  @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var addUpdatesButton: UIButton!
     
@@ -31,6 +31,9 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         performSegue(withIdentifier: "settings", sender: self)
     }
     
+ //   @IBOutlet weak var scrollView: UIScrollView!
+    
+    
     // MARK: VARIABLES
     
     var date = Date()
@@ -43,6 +46,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     var fluidView2: BAFluidView!
     var fluidView3: BAFluidView!
     let motionManager = CMMotionManager()
+    var anotherButton: UIButton = UIButton()
+    var greetingLabel: UILabel = UILabel()
 
     // MARK: DEFAULT UI
     
@@ -91,6 +96,48 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         self.view.sendSubviewToBack(fluidView3)
         
         bubbleEmitter()
+
+        let scrollView : UIScrollView = UIScrollView(frame: CGRect(x: 0, y: 60,
+                                                                   width: view.frame.maxX, height: view.frame.maxY-15))
+        scrollView.isPagingEnabled = true
+        scrollView.backgroundColor = UIColor.clear
+        view.addSubview(scrollView)
+        let padding : CGFloat = 15
+        let viewWidth = scrollView.frame.size.width - 2 * padding
+        let viewHeight = scrollView.frame.size.height - 2 * padding
+        
+        var x : CGFloat = 0
+
+        let settingsView: UIView = UIView(frame: CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight))
+        settingsView.backgroundColor = UIColor.white.withAlphaComponent(0)
+        scrollView.addSubview(settingsView)
+        x = settingsView.frame.origin.x + viewWidth + padding
+        
+        let homeView: UIView = UIView(frame: CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight))
+        homeView.backgroundColor = UIColor.white.withAlphaComponent(0)
+        scrollView.addSubview(homeView)
+        
+        anotherButton = UIButton()
+        anotherButton.frame = CGRect(x: view.frame.maxX/2-45, y: view.frame.maxY/2+150, width: 60, height: 60)
+        anotherButton.backgroundColor = UIColor.white
+        anotherButton.setTitleColor(UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), for: .normal)
+        anotherButton.setTitle("+", for: .normal)
+        anotherButton.titleLabel?.font = UIFont(name: "montserrat-regular", size: 35)!
+        anotherButton.layer.cornerRadius = 30
+        homeView.addSubview(anotherButton)
+        greetingLabel = UILabel(frame: CGRect(x: view.frame.maxX/2-45, y: 100, width: greetingLabel.intrinsicContentSize.width, height: 30))
+        greetingLabel.text = "Hi"
+        homeView.addSubview(greetingLabel)
+        
+        x = homeView.frame.origin.x + viewWidth + padding
+        
+        let analyticsView: UIView = UIView(frame: CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight))
+        analyticsView.backgroundColor = UIColor.white.withAlphaComponent(0)
+        scrollView.addSubview(analyticsView)
+        x = analyticsView.frame.origin.x + viewWidth + padding
+
+        scrollView.contentSize = CGSize(width:x+padding, height:scrollView.frame.size.height)
+        scrollView.setContentOffset(CGPoint(x: 375, y: padding), animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -133,8 +180,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       transition.transitionMode = .present
-      transition.startingPoint = addUpdatesButton.center
-      transition.bubbleColor = addUpdatesButton.backgroundColor!
+      transition.startingPoint = anotherButton.center
+      transition.bubbleColor = anotherButton.backgroundColor!
         greetingLabel.isHidden = true
         dateLabel.isHidden = true
         print("animation controller for presented")
@@ -143,8 +190,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       transition.transitionMode = .dismiss
-      transition.startingPoint = addUpdatesButton.center
-      transition.bubbleColor = addUpdatesButton.backgroundColor!
+      transition.startingPoint = anotherButton.center
+      transition.bubbleColor = anotherButton.backgroundColor!
         print("animation controller for dismissed")
       return transition
     }

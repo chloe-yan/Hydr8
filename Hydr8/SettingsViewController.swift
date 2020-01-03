@@ -16,7 +16,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var dailyGoalTextField: UITextField!
     @IBOutlet weak var setGoalButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    
     @IBAction func setGoalButtonTapped(_ sender: Any) {
+        // Exception handling for nil user input
         if (dailyGoalTextField.text != Optional("")) {
             goal = Int(dailyGoalTextField.text!)!
             errorLabel.isHidden = false

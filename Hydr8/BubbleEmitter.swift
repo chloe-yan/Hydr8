@@ -5,6 +5,7 @@
 //  Created by Chloe Yan on 1/1/20.
 //  Copyright © 2020 Chloe Yan. All rights reserved.
 //
+//  Animates the emission of objects from a customizable direction and range.
 
 import Foundation
 import UIKit

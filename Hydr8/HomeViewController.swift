@@ -5,6 +5,7 @@
 //  Created by Chloe Yan on 12/30/19.
 //  Copyright © 2019 Chloe Yan. All rights reserved.
 //
+//  Manages the home page's functionality and graphics.
 
 import UIKit
 import BubbleTransition
@@ -15,22 +16,9 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     // MARK: OUTLETS & ACTIONS
     
-  //  @IBOutlet weak var greetingLabel: UILabel!
-  //  @IBOutlet weak var dateLabel: UILabel!
-    
     @IBOutlet weak var addUpdatesButton: UIButton!
-    
-    @IBAction func analyticsSwipe(_ sender: Any) {
-        greetingLabel.isHidden = true
-        dateLabel.isHidden = true
-        performSegue(withIdentifier: "analytics", sender: self)
-    }
-    
-    @IBAction func settingsSwipe(_ sender: Any) {
-        greetingLabel.isHidden = true
-        dateLabel.isHidden = true
-        performSegue(withIdentifier: "settings", sender: self)
-    }
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var analyticsButton: UIButton!
     
     @objc func addUpdatesButtonTapped(sender: UIButton) {
         performSegue(withIdentifier: "addUpdates", sender: self)
@@ -53,16 +41,20 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     var trackIntakeButton: UIButton = UIButton()
     var greetingLabel: UILabel = UILabel()
     var dateLabel: UILabel = UILabel()
+    var x : CGFloat = 0
 
     // MARK: DEFAULT UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Date greeting
         dateFormatter.dateStyle = .full
         dateString = dateFormatter.string(from: date)
         updatedDateString = String(dateString.prefix(dateString.count - 6))
         hour = calendar.component(.hour, from: date)
         
+        // Accelerometer management
         if motionManager.isDeviceMotionAvailable {
             motionManager.deviceMotionUpdateInterval = 0.3
             motionManager.startDeviceMotionUpdates(to: OperationQueue.main, withHandler: { data, error in
@@ -75,6 +67,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             })
         }
 
+        // Background FluidView customizations
         fluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.3))
         fluidView2 = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.33))
         fluidView3 = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.36))
@@ -107,8 +100,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         self.view.sendSubviewToBack(fluidView2)
         self.view.sendSubviewToBack(fluidView3)
         
+        // Bubble animation
         bubbleEmitter()
 
+        // Scroll view
         let scrollView : UIScrollView = UIScrollView(frame: CGRect(x: 0, y: 60, width: view.frame.maxX, height: view.frame.maxY-15))
         scrollView.isPagingEnabled = true
         scrollView.backgroundColor = UIColor.clear
@@ -116,18 +111,22 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         let padding : CGFloat = 0
         let viewWidth = scrollView.frame.size.width - 2 * padding
         let viewHeight = scrollView.frame.size.height - 2 * padding
-        
-        var x : CGFloat = 0
 
+        // Settings view page
         let settingsView: UIView = UIView(frame: CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight))
         settingsView.backgroundColor = UIColor.white.withAlphaComponent(0)
         scrollView.addSubview(settingsView)
         x = settingsView.frame.origin.x + viewWidth + padding
+        print(x)
         
+        // Home view page
         let homeView: UIView = UIView(frame: CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight))
         homeView.backgroundColor = UIColor.white.withAlphaComponent(0)
+        x = homeView.frame.origin.x + viewWidth + padding
         scrollView.addSubview(homeView)
+        print(x)
         
+        // Track intake button
         trackIntakeButton = UIButton()
         trackIntakeButton.frame = CGRect(x: (view.frame.maxX/2)-30, y: view.frame.maxY/2+150, width: 60, height: 60)
         trackIntakeButton.backgroundColor = UIColor.white
@@ -139,14 +138,17 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         trackIntakeButton.isEnabled = true
         homeView.addSubview(trackIntakeButton)
      
+        // Greeting label
         greetingLabel.font = UIFont(name: "montserrat-bold", size: 26)
         greetingLabel.textColor = UIColor.white
         homeView.addSubview(greetingLabel)
         
+        // Date label
         dateLabel.font = UIFont(name: "montserrat-semibold", size: 19)
         dateLabel.textColor = UIColor.white
         homeView.addSubview(dateLabel)
         
+        // Droplet FluidView
         dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.3))
         dropletFluidView.strokeColor = UIColor.clear
         dropletFluidView.fillColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.2)
@@ -160,6 +162,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletFluidView.layer.mask = maskingLayer
         homeView.addSubview(dropletFluidView)
         
+        // Second FluidView droplet
         dropletFluidView2 = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.3))
         dropletFluidView2.strokeColor = UIColor.clear
         dropletFluidView2.fillColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.2)
@@ -173,6 +176,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletFluidView2.layer.mask = maskingLayer
         homeView.addSubview(dropletFluidView2)
         
+        // Droplet outline overlay
         /*
         let dropletOutlineImage = UIImage(named: "Droplet Outline")
         let dropletOutlineLayer = CALayer()
@@ -180,18 +184,21 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
         */
         
-        x = homeView.frame.origin.x + viewWidth + padding
-        
+        // Analytics view page
         let analyticsView: UIView = UIView(frame: CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight))
         analyticsView.backgroundColor = UIColor.white.withAlphaComponent(0)
         scrollView.addSubview(analyticsView)
         x = analyticsView.frame.origin.x + viewWidth + padding
+        print(x)
 
+        // Scroll view metrics
         scrollView.contentSize = CGSize(width:x+padding, height:scrollView.frame.size.height)
         scrollView.setContentOffset(CGPoint(x: 375, y: padding), animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        // Determine greeting message
         dateLabel.text = updatedDateString
         if (hour >= 1 && hour < 12) {
             greetingLabel.text = "Good morning"
@@ -202,10 +209,16 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         else {
             greetingLabel.text = "Good evening"
         }
+        
+        // Hide greeting messages
         greetingLabel.isHidden = false
         dateLabel.isHidden = false
+        
+        // Greeting message metrics
         greetingLabel.frame = CGRect(x: -200, y: 30, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
         dateLabel.frame = CGRect(x: -275, y: 60, width: self.dateLabel.intrinsicContentSize.width, height: 30)
+        
+        // Greeting message animations
         UIView.animate(withDuration: 1.2) {
             self.greetingLabel.frame = CGRect(x: self.addUpdatesButton.center.x-(self.greetingLabel.intrinsicContentSize.width/2), y: 30, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
             self.greetingLabel.centerXAnchor.constraint(equalTo: self.addUpdatesButton.centerXAnchor).isActive = true
@@ -214,9 +227,11 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         }
     }
     
+    // Initialize BubbleTransition
     let transition = BubbleTransition()
     let interactiveTransition = BubbleInteractiveTransition()
     
+    // BubbleTransition to AddUpdatesViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? AddUpdatesViewController {
         controller.transitioningDelegate = self

@@ -88,6 +88,9 @@
                                         <integer key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="okr-CF-ucO" kind="presentation" id="qlF-Bp-rWh"/>
+                                </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday, December 30" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xov-uN-1hd">
                                 <rect key="frame" x="97" y="185" width="220.5" height="23.5"/>
@@ -117,6 +120,8 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="NIQ-lv-cXO"/>
                     <connections>
                         <outlet property="addUpdatesButton" destination="kuH-Zc-lvS" id="AIf-bV-aUY"/>
+                        <outlet property="analyticsButton" destination="cMl-qp-h2Y" id="FbB-AR-lCo"/>
+                        <outlet property="settingsButton" destination="oPw-30-mPO" id="aTt-Rf-83t"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="ecI-AX-uIn"/>
                         <segue destination="x8v-KY-2Zj" kind="show" identifier="settings" id="H70-V6-v8N"/>
                         <segue destination="MAF-sR-KcV" kind="show" identifier="analytics" id="sMh-0w-qjn"/>
@@ -418,6 +423,7 @@
         <image name="Settings - Gray" width="209" height="202"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="enI-IK-Iuf"/>
         <segue reference="2WP-rx-MEn"/>
         <segue reference="e6G-Pt-F0m"/>
     </inferredMetricsTieBreakers>

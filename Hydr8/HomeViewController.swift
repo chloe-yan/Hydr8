@@ -16,7 +16,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     // MARK: OUTLETS & ACTIONS
     
   //  @IBOutlet weak var greetingLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+  //  @IBOutlet weak var dateLabel: UILabel!
+    
     @IBOutlet weak var addUpdatesButton: UIButton!
     
     @IBAction func analyticsSwipe(_ sender: Any) {
@@ -31,8 +32,9 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         performSegue(withIdentifier: "settings", sender: self)
     }
     
- //   @IBOutlet weak var scrollView: UIScrollView!
-    
+    @objc func addUpdatesButtonTapped(sender: UIButton) {
+        performSegue(withIdentifier: "addUpdates", sender: self)
+    }
     
     // MARK: VARIABLES
     
@@ -45,9 +47,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     var fluidView: BAFluidView!
     var fluidView2: BAFluidView!
     var fluidView3: BAFluidView!
+    var dropletFluidView: BAFluidView!
+    var dropletFluidView2: BAFluidView!
     let motionManager = CMMotionManager()
-    var anotherButton: UIButton = UIButton()
+    var trackIntakeButton: UIButton = UIButton()
     var greetingLabel: UILabel = UILabel()
+    var dateLabel: UILabel = UILabel()
 
     // MARK: DEFAULT UI
     
@@ -66,43 +71,49 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
                 if let data = data {
                     userInfo = ["data" : data]
                 }
-                nc.post(name: NSNotification.Name(rawValue: kBAFluidViewCMMotionUpdate), object: self, userInfo: userInfo!)
+                nc.post(name: NSNotification.Name(rawValue: kBAFluidViewCMMotionUpdate), object: self, userInfo: userInfo! as [AnyHashable : Any])
             })
         }
 
         fluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.3))
         fluidView2 = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.33))
         fluidView3 = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.36))
+        
         fluidView.fillColor = UIColor(red:0.75, green:0.87, blue:0.96, alpha:0.3)
         fluidView2.fillColor = UIColor(red:0.75, green:0.87, blue:0.96, alpha:0.1)
         fluidView3.fillColor = UIColor(red:0.75, green:0.87, blue:0.96, alpha:0.2)
+        
         fluidView.strokeColor = UIColor.clear
         fluidView2.strokeColor = UIColor.clear
         fluidView3.strokeColor = UIColor.clear
+        
         fluidView.keepStationary()
         fluidView2.keepStationary()
         fluidView3.keepStationary()
+        
         fluidView.startAnimation()
         fluidView2.startAnimation()
         fluidView3.startAnimation()
+        
         fluidView.startTiltAnimation()
         fluidView2.startTiltAnimation()
         fluidView3.startTiltAnimation()
+        
         view.addSubview(fluidView)
         view.addSubview(fluidView2)
         view.addSubview(fluidView3)
+        
         self.view.sendSubviewToBack(fluidView)
         self.view.sendSubviewToBack(fluidView2)
         self.view.sendSubviewToBack(fluidView3)
         
         bubbleEmitter()
 
-        let scrollView : UIScrollView = UIScrollView(frame: CGRect(x: 0, y: 60,
-                                                                   width: view.frame.maxX, height: view.frame.maxY-15))
+        let scrollView : UIScrollView = UIScrollView(frame: CGRect(x: 0, y: 60, width: view.frame.maxX, height: view.frame.maxY-15))
         scrollView.isPagingEnabled = true
         scrollView.backgroundColor = UIColor.clear
         view.addSubview(scrollView)
-        let padding : CGFloat = 15
+        let padding : CGFloat = 0
         let viewWidth = scrollView.frame.size.width - 2 * padding
         let viewHeight = scrollView.frame.size.height - 2 * padding
         
@@ -117,17 +128,57 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         homeView.backgroundColor = UIColor.white.withAlphaComponent(0)
         scrollView.addSubview(homeView)
         
-        anotherButton = UIButton()
-        anotherButton.frame = CGRect(x: view.frame.maxX/2-45, y: view.frame.maxY/2+150, width: 60, height: 60)
-        anotherButton.backgroundColor = UIColor.white
-        anotherButton.setTitleColor(UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), for: .normal)
-        anotherButton.setTitle("+", for: .normal)
-        anotherButton.titleLabel?.font = UIFont(name: "montserrat-regular", size: 35)!
-        anotherButton.layer.cornerRadius = 30
-        homeView.addSubview(anotherButton)
-        greetingLabel = UILabel(frame: CGRect(x: view.frame.maxX/2-45, y: 100, width: greetingLabel.intrinsicContentSize.width, height: 30))
-        greetingLabel.text = "Hi"
+        trackIntakeButton = UIButton()
+        trackIntakeButton.frame = CGRect(x: (view.frame.maxX/2)-30, y: view.frame.maxY/2+150, width: 60, height: 60)
+        trackIntakeButton.backgroundColor = UIColor.white
+        trackIntakeButton.setTitleColor(UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), for: .normal)
+        trackIntakeButton.setTitle("+", for: .normal)
+        trackIntakeButton.titleLabel?.font = UIFont(name: "montserrat-regular", size: 35)!
+        trackIntakeButton.layer.cornerRadius = 30
+        trackIntakeButton.addTarget(self, action: #selector(addUpdatesButtonTapped), for: .touchUpInside)
+        trackIntakeButton.isEnabled = true
+        homeView.addSubview(trackIntakeButton)
+     
+        greetingLabel.font = UIFont(name: "montserrat-bold", size: 26)
+        greetingLabel.textColor = UIColor.white
         homeView.addSubview(greetingLabel)
+        
+        dateLabel.font = UIFont(name: "montserrat-semibold", size: 19)
+        dateLabel.textColor = UIColor.white
+        homeView.addSubview(dateLabel)
+        
+        dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.3))
+        dropletFluidView.strokeColor = UIColor.clear
+        dropletFluidView.fillColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.2)
+        dropletFluidView.fill(to: NSNumber(value: 0.8*(1.0-0.05)))
+        dropletFluidView.keepStationary()
+        dropletFluidView.startAnimation()
+        var maskingImage = UIImage(named: "Droplet")
+        var maskingLayer = CALayer()
+        maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-128, y: 150, width: maskingImage?.size.width ?? 0.0, height: maskingImage?.size.height ?? 0.0)
+        maskingLayer.contents = maskingImage?.cgImage
+        dropletFluidView.layer.mask = maskingLayer
+        homeView.addSubview(dropletFluidView)
+        
+        dropletFluidView2 = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.3))
+        dropletFluidView2.strokeColor = UIColor.clear
+        dropletFluidView2.fillColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.2)
+        dropletFluidView2.fill(to: NSNumber(value: 0.8*1.0))
+        dropletFluidView2.keepStationary()
+        dropletFluidView2.startAnimation()
+        maskingImage = UIImage(named: "Droplet")
+        maskingLayer = CALayer()
+        maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-128, y: 150, width: maskingImage?.size.width ?? 0.0, height: maskingImage?.size.height ?? 0.0)
+        maskingLayer.contents = maskingImage?.cgImage
+        dropletFluidView2.layer.mask = maskingLayer
+        homeView.addSubview(dropletFluidView2)
+        
+        /*
+        let dropletOutlineImage = UIImage(named: "Droplet Outline")
+        let dropletOutlineLayer = CALayer()
+        dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-135, y: 150, width: dropletOutlineImage!.size.width, height: dropletOutlineImage!.size.height)
+        dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
+        */
         
         x = homeView.frame.origin.x + viewWidth + padding
         
@@ -153,12 +204,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         }
         greetingLabel.isHidden = false
         dateLabel.isHidden = false
-        greetingLabel.frame = CGRect(x: -200, y: 100, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
-        dateLabel.frame = CGRect(x: -275, y: 130, width: self.dateLabel.intrinsicContentSize.width, height: 30)
+        greetingLabel.frame = CGRect(x: -200, y: 30, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
+        dateLabel.frame = CGRect(x: -275, y: 60, width: self.dateLabel.intrinsicContentSize.width, height: 30)
         UIView.animate(withDuration: 1.2) {
-            self.greetingLabel.frame = CGRect(x: self.addUpdatesButton.center.x, y: 100, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
+            self.greetingLabel.frame = CGRect(x: self.addUpdatesButton.center.x-(self.greetingLabel.intrinsicContentSize.width/2), y: 30, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
             self.greetingLabel.centerXAnchor.constraint(equalTo: self.addUpdatesButton.centerXAnchor).isActive = true
-            self.dateLabel.frame = CGRect(x: self.addUpdatesButton.center.x, y: 130, width: self.dateLabel.intrinsicContentSize.width, height: 30)
+            self.dateLabel.frame = CGRect(x: self.addUpdatesButton.center.x-(self.dateLabel.intrinsicContentSize.width/2), y: 60, width: self.dateLabel.intrinsicContentSize.width, height: 30)
             self.dateLabel.centerXAnchor.constraint(equalTo: self.addUpdatesButton.centerXAnchor).isActive = true
         }
     }
@@ -172,7 +223,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         controller.modalPresentationStyle = .custom
         controller.interactiveTransition = interactiveTransition
         interactiveTransition.attach(to: controller)
-            print("override func prepare")
       }
     }
     
@@ -180,24 +230,21 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       transition.transitionMode = .present
-      transition.startingPoint = anotherButton.center
-      transition.bubbleColor = anotherButton.backgroundColor!
+      transition.startingPoint = trackIntakeButton.center
+      transition.bubbleColor = trackIntakeButton.backgroundColor!
         greetingLabel.isHidden = true
         dateLabel.isHidden = true
-        print("animation controller for presented")
       return transition
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       transition.transitionMode = .dismiss
-      transition.startingPoint = anotherButton.center
-      transition.bubbleColor = anotherButton.backgroundColor!
-        print("animation controller for dismissed")
+      transition.startingPoint = trackIntakeButton.center
+      transition.bubbleColor = trackIntakeButton.backgroundColor!
       return transition
     }
     
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        print("interaction controller for dismissal")
       return interactiveTransition
     }
 

@@ -51,7 +51,7 @@
                                 <viewLayoutGuide key="safeArea" id="Vbr-lk-fir"/>
                                 <state key="normal" image="Settings - Gray"/>
                                 <connections>
-                                    <segue destination="x8v-KY-2Zj" kind="show" identifier="settings" id="e6G-Pt-F0m"/>
+                                    <segue destination="x8v-KY-2Zj" kind="show" identifier="" id="e6G-Pt-F0m"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMl-qp-h2Y">
@@ -65,7 +65,7 @@
                                     <segue destination="MAF-sR-KcV" kind="show" id="2WP-rx-MEn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good morning." textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGu-eK-ifg">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good morning." textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGu-eK-ifg">
                                 <rect key="frame" x="105" y="148" width="204" height="32"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -88,11 +88,8 @@
                                         <integer key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="okr-CF-ucO" kind="presentation" id="udk-WR-z6q"/>
-                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday, December 30" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xov-uN-1hd">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday, December 30" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xov-uN-1hd">
                                 <rect key="frame" x="97" y="185" width="220.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -104,6 +101,7 @@
                         <constraints>
                             <constraint firstItem="cGu-eK-ifg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="1cQ-Fy-D8v"/>
                             <constraint firstItem="Xov-uN-1hd" firstAttribute="top" secondItem="cGu-eK-ifg" secondAttribute="bottom" constant="5" id="7nQ-Yz-A2p"/>
+                            <constraint firstItem="kuH-Zc-lvS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Oe-lB-5Ot"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cMl-qp-h2Y" secondAttribute="trailing" constant="25" id="AZL-c0-gDL"/>
                             <constraint firstItem="cGu-eK-ifg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Iee-6l-Ab0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kuH-Zc-lvS" secondAttribute="bottom" constant="50" id="LCA-tU-4P4"/>
@@ -119,10 +117,10 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="NIQ-lv-cXO"/>
                     <connections>
                         <outlet property="addUpdatesButton" destination="kuH-Zc-lvS" id="AIf-bV-aUY"/>
-                        <outlet property="dateLabel" destination="Xov-uN-1hd" id="akh-8O-iKm"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="ecI-AX-uIn"/>
-                        <segue destination="x8v-KY-2Zj" kind="show" id="H70-V6-v8N"/>
+                        <segue destination="x8v-KY-2Zj" kind="show" identifier="settings" id="H70-V6-v8N"/>
                         <segue destination="MAF-sR-KcV" kind="show" identifier="analytics" id="sMh-0w-qjn"/>
+                        <segue destination="okr-CF-ucO" kind="presentation" identifier="addUpdates" id="enI-IK-Iuf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -320,7 +318,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How much water did you drink?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDw-Ii-xO6">
-                                <rect key="frame" x="50" y="151" width="257.5" height="20"/>
+                                <rect key="frame" x="50" y="151" width="314" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                 <color key="textColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -386,6 +384,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="mDw-Ii-xO6" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="7tl-UN-r1t"/>
+                            <constraint firstItem="cAk-7t-OeW" firstAttribute="trailing" secondItem="mDw-Ii-xO6" secondAttribute="trailing" constant="50" id="AVc-Q5-gah"/>
                             <constraint firstItem="DbJ-5k-JZz" firstAttribute="centerX" secondItem="utA-0b-iXH" secondAttribute="centerX" id="FS2-rj-ZHD"/>
                             <constraint firstItem="cAk-7t-OeW" firstAttribute="trailing" secondItem="gy1-aL-FX2" secondAttribute="trailing" constant="50" id="HIW-fL-97C"/>
                             <constraint firstItem="cAk-7t-OeW" firstAttribute="bottom" secondItem="DbJ-5k-JZz" secondAttribute="bottom" constant="50" id="L9a-sm-P4i"/>
@@ -395,6 +394,7 @@
                             <constraint firstItem="uPl-DJ-1xe" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="cj6-Pd-u1W"/>
                             <constraint firstItem="gy1-aL-FX2" firstAttribute="top" secondItem="cAk-7t-OeW" secondAttribute="top" constant="50" id="clO-K6-E8n"/>
                             <constraint firstItem="mDw-Ii-xO6" firstAttribute="top" secondItem="gy1-aL-FX2" secondAttribute="bottom" constant="30" id="gNk-qP-zht"/>
+                            <constraint firstItem="cAk-7t-OeW" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uPl-DJ-1xe" secondAttribute="trailing" symbolic="YES" id="uOA-6O-Jqe"/>
                             <constraint firstItem="Aqg-KG-eOx" firstAttribute="top" secondItem="mDw-Ii-xO6" secondAttribute="bottom" constant="20" id="uqJ-fr-mg7"/>
                             <constraint firstItem="uPl-DJ-1xe" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="wE2-Rk-Cyi"/>
                         </constraints>
@@ -418,7 +418,7 @@
         <image name="Settings - Gray" width="209" height="202"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sMh-0w-qjn"/>
+        <segue reference="2WP-rx-MEn"/>
         <segue reference="e6G-Pt-F0m"/>
     </inferredMetricsTieBreakers>
 </document>

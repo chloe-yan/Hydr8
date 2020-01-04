@@ -11,6 +11,7 @@ import UIKit
 import BubbleTransition
 import BAFluidView
 import CoreMotion
+
 class HomeViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     // MARK: OUTLETS & ACTIONS
@@ -27,9 +28,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Exception handling for nil user input
         if (numericGoalTextField.text != Optional("")) {
             goal = Int(numericGoalTextField.text!)!
-           // errorLabel.isHidden = false
-           // errorLabel.text = "Goal set!"
             numericGoalLabel.text = "\(goal) oz"
+            numericGoalTextField.text = ""
         }
         else {
             let alert = UIAlertController(title: "Please enter a goal", message: "Sorry! We couldn't understand your input.", preferredStyle: UIAlertController.Style.alert)
@@ -55,7 +55,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     var fluidView: BAFluidView!
     var fluidView2: BAFluidView!
-    var fluidView3: BAFluidView!
     
     var dropletFluidView: BAFluidView!
     var dropletFluidView2: BAFluidView!
@@ -77,6 +76,16 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let ounceLabel = UILabel()
     let setGoalButton = UIButton()
     var goal: Int = 64
+    
+    var maskingImage = UIImage(named: "Droplet")
+    var maskingLayer = CALayer()
+    let dropletOutlineImage = UIImage(named: "Droplet Outline")
+    let dropletOutlineLayer = CALayer()
+    let percentageLabel = UILabel()
+    let waterIntakeLabel = UILabel()
+    
+    let analyticsLabel = UILabel()
+    
 
     // MARK: DEFAULT UI
     
@@ -103,37 +112,29 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         }
 
         // Background FluidView customizations
-        fluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.3))
-        fluidView2 = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.33))
-        fluidView3 = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.36))
+        fluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.23))
+        fluidView2 = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.26))
         
         fluidView.fillColor = UIColor(red:0.75, green:0.87, blue:0.96, alpha:0.3)
         fluidView2.fillColor = UIColor(red:0.75, green:0.87, blue:0.96, alpha:0.1)
-        fluidView3.fillColor = UIColor(red:0.75, green:0.87, blue:0.96, alpha:0.2)
         
         fluidView.strokeColor = UIColor.clear
         fluidView2.strokeColor = UIColor.clear
-        fluidView3.strokeColor = UIColor.clear
         
         fluidView.keepStationary()
         fluidView2.keepStationary()
-        fluidView3.keepStationary()
         
         fluidView.startAnimation()
         fluidView2.startAnimation()
-        fluidView3.startAnimation()
         
         fluidView.startTiltAnimation()
         fluidView2.startTiltAnimation()
-        fluidView3.startTiltAnimation()
         
         view.addSubview(fluidView)
         view.addSubview(fluidView2)
-        view.addSubview(fluidView3)
         
         self.view.sendSubviewToBack(fluidView)
         self.view.sendSubviewToBack(fluidView2)
-        self.view.sendSubviewToBack(fluidView3)
         
         // Bubble animation
         bubbleEmitter()
@@ -150,14 +151,14 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Settings view page
         let settingsView: UIView = UIView(frame: CGRect(x: x - 200, y: padding + 40, width: viewWidth + 175, height: viewHeight - 120))
         settingsView.backgroundColor = UIColor.white.withAlphaComponent(1)
-        settingsView.layer.cornerRadius = 30
+        settingsView.layer.cornerRadius = 40
         scrollView.addSubview(settingsView)
         x = settingsView.frame.origin.x + viewWidth + padding + 200
         print(x)
         
         // Settings label
         settingsLabel.text = "Settings"
-        settingsLabel.font = UIFont(name: "montserrat-bold", size: 30)
+        settingsLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 30)
         settingsLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
         settingsLabel.frame = CGRect(x: 250, y: 50, width: settingsLabel.intrinsicContentSize.width, height: settingsLabel.intrinsicContentSize.height
         )
@@ -165,32 +166,32 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         // Current goal label
         currentGoalLabel.text = "Current Goal: "
-        currentGoalLabel.font = UIFont(name: "montserrat-semibold", size: 20)
+        currentGoalLabel.font = UIFont(name: "AvenirNext-Medium", size: 18)
         currentGoalLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
-        currentGoalLabel.frame = CGRect(x: 250, y: 110, width: currentGoalLabel.intrinsicContentSize.width, height: currentGoalLabel.intrinsicContentSize.height)
+        currentGoalLabel.frame = CGRect(x: 250, y: 120, width: currentGoalLabel.intrinsicContentSize.width, height: currentGoalLabel.intrinsicContentSize.height)
         settingsView.addSubview(currentGoalLabel)
         
         // Numeric goal label
         numericGoalLabel.text = "\(goal) oz"
-        numericGoalLabel.font = UIFont(name: "montserrat-regular", size: 20)
+        numericGoalLabel.font = UIFont(name: "AvenirNext-Medium", size: 18)
         numericGoalLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
-        numericGoalLabel.frame = CGRect(x: 400, y: 110, width: numericGoalLabel.intrinsicContentSize.width, height: numericGoalLabel.intrinsicContentSize.height)
+        numericGoalLabel.frame = CGRect(x: 370, y: 120, width: numericGoalLabel.intrinsicContentSize.width, height: numericGoalLabel.intrinsicContentSize.height)
         settingsView.addSubview(numericGoalLabel)
         
         // Daily goal label
         dailyGoalLabel.text = "Daily Goal: "
-        dailyGoalLabel.font = UIFont(name: "montserrat-semibold", size: 20)
+        dailyGoalLabel.font = UIFont(name: "AvenirNext-Medium", size: 18)
         dailyGoalLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
-        dailyGoalLabel.frame = CGRect(x: 250, y: 150, width: dailyGoalLabel.intrinsicContentSize.width, height: dailyGoalLabel.intrinsicContentSize.height)
+        dailyGoalLabel.frame = CGRect(x: 250, y: 155, width: dailyGoalLabel.intrinsicContentSize.width, height: dailyGoalLabel.intrinsicContentSize.height)
         settingsView.addSubview(dailyGoalLabel)
         
         // Numeric goal text field
-        numericGoalTextField.font = UIFont(name: "montserrat-regular", size: 18)
+        numericGoalTextField.font = UIFont(name: "AvenirNext-Medium", size: 16)
         numericGoalTextField.attributedPlaceholder = NSAttributedString(string: "ex. 64", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         numericGoalTextField.textColor = UIColor.darkGray
         numericGoalTextField.borderStyle = UITextField.BorderStyle.roundedRect
         numericGoalTextField.keyboardType = UIKeyboardType.numberPad
-        numericGoalTextField.frame = CGRect(x: 370, y: 145, width: numericGoalTextField.intrinsicContentSize.width, height: numericGoalTextField.intrinsicContentSize.height)
+        numericGoalTextField.frame = CGRect(x: 347, y: 150, width: numericGoalTextField.intrinsicContentSize.width, height: numericGoalTextField.intrinsicContentSize.height)
         settingsView.addSubview(numericGoalTextField)
         
         // Keyboard functionality
@@ -206,16 +207,16 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         // Ounce label
         ounceLabel.text = "oz"
-        ounceLabel.font = UIFont(name: "montserrat-regular", size: 20)
+        ounceLabel.font = UIFont(name: "AvenirNext-Medium", size: 18)
         ounceLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
-        ounceLabel.frame = CGRect(x: 457, y: 150, width: ounceLabel.intrinsicContentSize.width, height: ounceLabel.intrinsicContentSize.height)
+        ounceLabel.frame = CGRect(x: 427, y: 155, width: ounceLabel.intrinsicContentSize.width, height: ounceLabel.intrinsicContentSize.height)
         settingsView.addSubview(ounceLabel)
         
         // Set goal button
         setGoalButton.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
         setGoalButton.setTitle("       Set goal       ", for: .normal)
         setGoalButton.setTitleColor(UIColor.white, for: .normal)
-        setGoalButton.titleLabel?.font = UIFont(name: "montserrat-regular", size: 18)
+        setGoalButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 16)
         setGoalButton.addTarget(self, action: #selector(setGoalButtonTapped), for: .touchUpInside)
         setGoalButton.layer.cornerRadius = 17
         setGoalButton.frame = CGRect(x: 250, y: 200, width: setGoalButton.intrinsicContentSize.width, height: setGoalButton.intrinsicContentSize.height)
@@ -234,19 +235,19 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         trackIntakeButton.backgroundColor = UIColor.white
         trackIntakeButton.setTitleColor(UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), for: .normal)
         trackIntakeButton.setTitle("+", for: .normal)
-        trackIntakeButton.titleLabel?.font = UIFont(name: "montserrat-regular", size: 35)!
+        trackIntakeButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 35)!
         trackIntakeButton.layer.cornerRadius = 30
         trackIntakeButton.addTarget(self, action: #selector(addUpdatesButtonTapped), for: .touchUpInside)
         trackIntakeButton.isEnabled = true
         homeView.addSubview(trackIntakeButton)
      
         // Greeting label
-        greetingLabel.font = UIFont(name: "montserrat-bold", size: 26)
+        greetingLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 26)
         greetingLabel.textColor = UIColor.white
         homeView.addSubview(greetingLabel)
         
         // Date label
-        dateLabel.font = UIFont(name: "montserrat-semibold", size: 19)
+        dateLabel.font = UIFont(name: "AvenirNext-Medium", size: 19)
         dateLabel.textColor = UIColor.white
         homeView.addSubview(dateLabel)
         
@@ -254,60 +255,48 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Threshold values: Min = 0.4, Max: 0.8
         dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.6))
         dropletFluidView.strokeColor = UIColor.clear
-        dropletFluidView.fillColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.2)
+        dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
         dropletFluidView.keepStationary()
         dropletFluidView.startAnimation()
-        var maskingImage = UIImage(named: "Droplet")
-        var maskingLayer = CALayer()
         maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-128, y: 150, width: maskingImage?.size.width ?? 0.0, height: maskingImage?.size.height ?? 0.0)
         maskingLayer.contents = maskingImage?.cgImage
         dropletFluidView.layer.mask = maskingLayer
         homeView.addSubview(dropletFluidView)
         homeView.sendSubviewToBack(dropletFluidView)
-        
-        // Second FluidView droplet
-        dropletFluidView2 = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.6-0.02))
-        dropletFluidView2.strokeColor = UIColor.clear
-        dropletFluidView2.fillColor = UIColor(red:0.54, green:0.60, blue:0.77, alpha:1.0)
-        dropletFluidView2.keepStationary()
-        dropletFluidView2.startAnimation()
-        maskingImage = UIImage(named: "Droplet")
-        maskingLayer = CALayer()
-        maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-128, y: 150, width: maskingImage?.size.width ?? 0.0, height: maskingImage?.size.height ?? 0.0)
-        maskingLayer.contents = maskingImage?.cgImage
-        dropletFluidView2.layer.mask = maskingLayer
-        homeView.addSubview(dropletFluidView2)
-        homeView.sendSubviewToBack(dropletFluidView2)
 
         // Droplet outline overlay
-        let dropletOutlineImage = UIImage(named: "Droplet Outline")
-        let dropletOutlineLayer = CALayer()
         dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-128, y: 150, width: dropletOutlineImage!.size.width, height: dropletOutlineImage!.size.height)
         dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
         dropletFluidView.layer.addSublayer(dropletOutlineLayer)
         
         // Percentage label
-        let percentageLabel = UILabel()
         percentageLabel.text = "60%"
-        percentageLabel.font = UIFont(name: "montserrat-semibold", size: 23)
+        percentageLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 23)
         percentageLabel.textColor = UIColor.white
         percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: 265, width: percentageLabel.intrinsicContentSize.width, height: percentageLabel.intrinsicContentSize.height)
         homeView.addSubview(percentageLabel)
         
         // Water intake label
-        let waterIntakeLabel = UILabel()
         waterIntakeLabel.text = "8 oz"
-        waterIntakeLabel.font = UIFont(name: "montserrat-regular", size: 18)
+        waterIntakeLabel.font = UIFont(name: "AvenirNext-Medium", size: 18)
         waterIntakeLabel.textColor = UIColor.white
         waterIntakeLabel.frame = CGRect(x: (view.frame.maxX/2)-(waterIntakeLabel.intrinsicContentSize.width/2), y: 290, width: waterIntakeLabel.intrinsicContentSize.width, height: waterIntakeLabel.intrinsicContentSize.height)
         homeView.addSubview(waterIntakeLabel)
         
         // Analytics view page
-        let analyticsView: UIView = UIView(frame: CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight))
-        analyticsView.backgroundColor = UIColor.white.withAlphaComponent(0)
+        let analyticsView: UIView = UIView(frame: CGRect(x: x + 20, y: padding + 100, width: viewWidth - 40, height: viewHeight))
+        analyticsView.backgroundColor = UIColor.white.withAlphaComponent(1)
+        analyticsView.layer.cornerRadius = 40
         scrollView.addSubview(analyticsView)
-        x = analyticsView.frame.origin.x + viewWidth + padding
+        x = analyticsView.frame.origin.x + viewWidth
         print(x)
+        
+        // Analytics label
+        analyticsLabel.text = "Analytics"
+        analyticsLabel.textColor = UIColor.black
+        analyticsLabel.font = UIFont(name: "montserrat-bold", size: 30)
+        analyticsLabel.frame = CGRect(x: 770, y: 30, width: analyticsLabel.intrinsicContentSize.width, height: analyticsLabel.intrinsicContentSize.height)
+        analyticsView.addSubview(analyticsLabel)
 
         // Scroll view metrics
         scrollView.contentSize = CGSize(width:x+padding, height:scrollView.frame.size.height)

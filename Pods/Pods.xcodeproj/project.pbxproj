@@ -71,6 +71,7 @@
 		A4FDAB0D76B2F645457621C86A44A913 /* BAFluidView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BAFluidView.m; path = Sources/BAFluidView/BAFluidView.m; sourceTree = "<group>"; };
 		AE2CB1E56618F43EF242649396CFB219 /* BubbleTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleTransition.swift; path = Source/BubbleTransition.swift; sourceTree = "<group>"; };
 		B84252D265C18360543A3AF09B9CCB9B /* BAFluidView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BAFluidView-dummy.m"; sourceTree = "<group>"; };
+		D166F30D23C00980006EBFFE /* HYPE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HYPE.ttf; path = ../../../HYPE.ttf; sourceTree = "<group>"; };
 		D4861DEEB0C15659C80F46BA5EADB61D /* Pods-Hydr8-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hydr8-acknowledgements.plist"; sourceTree = "<group>"; };
 		E414C738073F8825D743E6122162F65A /* Pods_Hydr8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hydr8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA506BAB134FD7F07877D51D2F2389EB /* Pods-Hydr8-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Hydr8-dummy.m"; sourceTree = "<group>"; };
@@ -215,6 +216,7 @@
 		E41CECFD538A0DAADEDE60B42D1B992A /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				D166F30D23C00980006EBFFE /* HYPE.ttf */,
 				6BE02329C22136A78E2A8AF3A707FA95 /* Pods-Hydr8 */,
 			);
 			name = "Targets Support Files";

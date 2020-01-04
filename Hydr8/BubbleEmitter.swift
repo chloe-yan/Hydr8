@@ -24,11 +24,11 @@ class BubbleEmitter {
         
         cell.contents = image.cgImage
         cell.birthRate = 2
-        cell.lifetime = 8
-        cell.velocity = CGFloat(25)
+        cell.lifetime = 7
+        cell.velocity = CGFloat(20)
         cell.emissionLongitude = 0
         cell.emissionRange = (45 * (.pi/180))
-        cell.scale = 0.08
+        cell.scale = 0.06
         cell.scaleRange = 0.1
         
         cells.append(cell)

@@ -20,18 +20,10 @@ class AddUpdatesViewController: UIViewController {
     var localWaterIntake = 0
     @IBAction func addUpdatesButtonTapped(_ sender: Any) {
         let homeVC = HomeViewController()
-        homeVC.defaults.set((homeVC.defaults.integer(forKey: "waterIntake") + ((addUpdateTextField.text as NSString?)?.integerValue ?? 0) ?? 0), forKey: "waterIntake")
-     //   print("water intake: \(homeVC.waterIntake)")*/
+        homeVC.defaults.set((homeVC.defaults.double(forKey: "waterIntake") + ((addUpdateTextField.text as NSString?)?.doubleValue ?? 0) ), forKey: "waterIntake")
         self.dismiss(animated: true, completion: nil)
         interactiveTransition?.finish()
     }
-    
-   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "addUpdates"){
-            let homeVC = segue.destination as! HomeViewController
-            homeVC.waterIntake = (addUpdateTextField.text as NSString?)?.integerValue ?? 0
-        }
-    }*/
     
     @IBOutlet weak var closeButton: UIButton!
     @IBAction func closeAction(_ sender: AnyObject) {

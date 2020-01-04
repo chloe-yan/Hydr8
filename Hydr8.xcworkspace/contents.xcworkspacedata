@@ -5,9 +5,6 @@
       location = "group:Hydr8.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:HYPE.ttf">
-   </FileRef>
-   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

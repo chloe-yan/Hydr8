@@ -28,9 +28,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Exception handling for nil user input
         if (numericGoalTextField.text != Optional("")) {
             defaults.set(Int(numericGoalTextField.text!)!, forKey: "dailyGoal")
-            goal = Int(numericGoalTextField.text!)!
+            goal = Double(Int(numericGoalTextField.text!)!)
             numericGoalLabel.text = "\(goal) oz"
             numericGoalTextField.text = ""
+            percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
         }
         else {
             let alert = UIAlertController(title: "Please enter a goal", message: "Sorry! We couldn't understand your input.", preferredStyle: UIAlertController.Style.alert)
@@ -50,6 +51,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     var dateFormatter = DateFormatter()
     var dateString = ""
     var updatedDateString = ""
+    var currentDateString = ""
     
     var calendar = Calendar.current
     var hour = 0
@@ -81,8 +83,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let setGoalButton = UIButton()
     
     let defaults = UserDefaults.standard
-    lazy var goal = defaults.integer(forKey: "dailyGoal")
-    lazy var waterIntake = defaults.integer(forKey: "waterIntake")
+    lazy var goal = defaults.double(forKey: "dailyGoal")
+    lazy var waterIntake = defaults.double(forKey: "waterIntake")
+    
+    lazy var currentDate = defaults.string(forKey: "currentDate")
     
     var maskingImage = UIImage(named: "Droplet")
     var maskingLayer = CALayer()
@@ -98,13 +102,33 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("intake amount: \(waterIntake)")
+        // New animation
+        let animation = CASpringAnimation(keyPath: "position")
+        animation.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
+        animation.toValue = CGPoint(x: (view.bounds.maxX/2), y: 45)
+        animation.duration = 2
+        animation.damping = 7
+        let animation2 = CASpringAnimation(keyPath: "position")
+        animation2.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
+        animation2.toValue = CGPoint(x: (view.bounds.maxX/2), y: 75)
+        animation2.duration = 2
+        animation2.damping = 7
+        greetingLabel.layer.add(animation, forKey: "basic animation")
+        dateLabel.layer.add(animation2, forKey: "basic animation")
 
-       // Date greeting
-       dateFormatter.dateStyle = .full
-       dateString = dateFormatter.string(from: date)
-       updatedDateString = String(dateString.prefix(dateString.count - 6))
-       hour = calendar.component(.hour, from: date)
+        
+        // Reset user data
+        dateFormatter.dateStyle = .full
+        dateString = dateFormatter.string(from: date)
+        currentDateString = String(dateString.prefix(dateString.count - 6))
+        if (currentDateString != defaults.string(forKey: "currentDate")) {
+            defaults.set(0, forKey: "waterIntake")
+        }
+        defaults.set(currentDateString, forKey: "currentDate")
+        
+        // Date greeting
+        updatedDateString = String(dateString.prefix(dateString.count - 6))
+        hour = calendar.component(.hour, from: date)
        
        // Accelerometer management
        if motionManager.isDeviceMotionAvailable {
@@ -162,7 +186,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        settingsView.layer.cornerRadius = 40
        scrollView.addSubview(settingsView)
        x = settingsView.frame.origin.x + viewWidth + padding + 200
-       print(x)
        
        // Settings label
        settingsLabel.text = "Settings"
@@ -180,10 +203,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        settingsView.addSubview(currentGoalLabel)
        
        // Numeric goal label
-       numericGoalLabel.text = "\(goal) oz"
+       numericGoalLabel.text = "\(Int(goal)) oz"
        numericGoalLabel.font = UIFont(name: "AvenirNext-Medium", size: 18)
        numericGoalLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
-       numericGoalLabel.frame = CGRect(x: 370, y: 120, width: numericGoalLabel.intrinsicContentSize.width, height: numericGoalLabel.intrinsicContentSize.height)
+       numericGoalLabel.frame = CGRect(x: 370, y: 120, width: numericGoalLabel.intrinsicContentSize.width + 50, height: numericGoalLabel.intrinsicContentSize.height)
        settingsView.addSubview(numericGoalLabel)
        
        // Daily goal label
@@ -235,7 +258,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        homeView.backgroundColor = UIColor.white.withAlphaComponent(0)
        x = homeView.frame.origin.x + viewWidth + padding
        scrollView.addSubview(homeView)
-       print(x)
        
        // Track intake button
        trackIntakeButton = UIButton()
@@ -261,7 +283,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        
        // Droplet FluidView
        // Threshold values: Min = 0.4, Max: 0.8
-       dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: 0.6))
+        dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
        dropletFluidView.strokeColor = UIColor.clear
        dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
        dropletFluidView.keepStationary()
@@ -278,10 +300,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        dropletFluidView.layer.addSublayer(dropletOutlineLayer)
        
        // Percentage label
-       percentageLabel.text = "60%"
+        percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
        percentageLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 23)
        percentageLabel.textColor = UIColor.white
-       percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: 265, width: percentageLabel.intrinsicContentSize.width, height: percentageLabel.intrinsicContentSize.height)
+       percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: 265, width: percentageLabel.intrinsicContentSize.width+50, height: percentageLabel.intrinsicContentSize.height)
        homeView.addSubview(percentageLabel)
        
        // Water intake label
@@ -292,12 +314,20 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        homeView.addSubview(waterIntakeLabel)
        
        // Analytics view page
-       let analyticsView: UIView = UIView(frame: CGRect(x: x + 20, y: padding + 100, width: viewWidth - 40, height: viewHeight))
-       analyticsView.backgroundColor = UIColor.white.withAlphaComponent(1)
+       let analyticsView: UIView = UIView(frame: CGRect(x: x + 20, y: padding + 10, width: viewWidth - 40, height: viewHeight))
+       analyticsView.backgroundColor = UIColor.white.withAlphaComponent(0)
        analyticsView.layer.cornerRadius = 40
        scrollView.addSubview(analyticsView)
-       x = analyticsView.frame.origin.x + viewWidth
-       print(x)
+        
+        // Analytics background
+        let analyticsBackgroundView: UIView = UIView(frame: CGRect(x: x + 20, y: padding + 90, width: viewWidth - 40, height: viewHeight))
+        analyticsBackgroundView.backgroundColor = UIColor.white.withAlphaComponent(1)
+        analyticsBackgroundView.layer.cornerRadius = 40
+        scrollView.addSubview(analyticsBackgroundView)
+        
+        x = analyticsView.frame.origin.x + viewWidth
+        
+        // Add picker view here thanks! :)
        
        // Analytics label
        analyticsLabel.text = "Analytics"
@@ -314,11 +344,21 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     override func viewDidAppear(_ animated: Bool) {
         
-        waterIntake = defaults.integer(forKey: "waterIntake")
-        waterIntakeLabel.text = "\(waterIntake) oz"
-        let auvc = AddUpdatesViewController()
-        print("intakeee: \(waterIntake)")
+        // Reset user data
+        dateFormatter.dateStyle = .full
+        dateString = dateFormatter.string(from: date)
+        currentDateString = String(dateString.prefix(dateString.count - 6))
+        if (currentDateString != defaults.string(forKey: "currentDate")) {
+            defaults.set(0, forKey: "waterIntake")
+        }
+        defaults.set(currentDateString, forKey: "currentDate")
         
+        // Update user data
+        waterIntake = defaults.double(forKey: "waterIntake")
+        waterIntakeLabel.text = "\(waterIntake) oz"
+        percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
+        dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
+
         // Determine greeting message
         dateLabel.text = updatedDateString
         if (hour >= 1 && hour < 12) {
@@ -336,18 +376,25 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dateLabel.isHidden = false
         
         // Greeting message metrics
-        greetingLabel.frame = CGRect(x: -200, y: 30, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
-        dateLabel.frame = CGRect(x: -275, y: 60, width: self.dateLabel.intrinsicContentSize.width, height: 30)
+        greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: 30, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
+        dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: 60, width: self.dateLabel.intrinsicContentSize.width, height: 30)
         
-        // Greeting message animations
-        UIView.animate(withDuration: 1.2) {
-            self.greetingLabel.frame = CGRect(x: self.addUpdatesButton.center.x-(self.greetingLabel.intrinsicContentSize.width/2), y: 30, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
-            self.greetingLabel.centerXAnchor.constraint(equalTo: self.addUpdatesButton.centerXAnchor).isActive = true
-            self.dateLabel.frame = CGRect(x: self.addUpdatesButton.center.x-(self.dateLabel.intrinsicContentSize.width/2), y: 60, width: self.dateLabel.intrinsicContentSize.width, height: 30)
-            self.dateLabel.centerXAnchor.constraint(equalTo: self.addUpdatesButton.centerXAnchor).isActive = true
-        }
-        
+        // New animation
+        let animation = CASpringAnimation(keyPath: "position")
+        animation.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
+        animation.toValue = CGPoint(x: (view.bounds.maxX/2), y: 45)
+        animation.duration = 2
+        animation.damping = 7
+        let animation2 = CASpringAnimation(keyPath: "position")
+        animation2.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
+        animation2.toValue = CGPoint(x: (view.bounds.maxX/2), y: 75)
+        animation2.duration = 2
+        animation2.damping = 7
+        greetingLabel.layer.add(animation, forKey: "basic animation")
+        dateLabel.layer.add(animation2, forKey: "basic animation")
+    
     }
+    
     // Initialize BubbleTransition
     let transition = BubbleTransition()
     let interactiveTransition = BubbleInteractiveTransition()
@@ -366,7 +413,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       transition.transitionMode = .present
-      transition.startingPoint = trackIntakeButton.center
+        transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: view.frame.maxY-100) //trackIntakeButton.center
+        print("transition starting point: \(transition.startingPoint)")
       transition.bubbleColor = trackIntakeButton.backgroundColor!
         greetingLabel.isHidden = true
         dateLabel.isHidden = true
@@ -375,7 +423,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       transition.transitionMode = .dismiss
-      transition.startingPoint = trackIntakeButton.center
+        transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: view.frame.maxY-100) //trackIntakeButton.center
       transition.bubbleColor = trackIntakeButton.backgroundColor!
       return transition
     }

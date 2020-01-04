@@ -144,7 +144,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbJ-5k-JZz">
-                                <rect key="frame" x="177" y="698" width="60" height="60"/>
+                                <rect key="frame" x="177" y="688" width="60" height="60"/>
                                 <color key="backgroundColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="Bma-rT-GME"/>
@@ -196,7 +196,7 @@
                             <constraint firstItem="cAk-7t-OeW" firstAttribute="trailing" secondItem="mDw-Ii-xO6" secondAttribute="trailing" constant="50" id="AVc-Q5-gah"/>
                             <constraint firstItem="DbJ-5k-JZz" firstAttribute="centerX" secondItem="utA-0b-iXH" secondAttribute="centerX" id="FS2-rj-ZHD"/>
                             <constraint firstItem="cAk-7t-OeW" firstAttribute="trailing" secondItem="gy1-aL-FX2" secondAttribute="trailing" constant="50" id="HIW-fL-97C"/>
-                            <constraint firstItem="cAk-7t-OeW" firstAttribute="bottom" secondItem="DbJ-5k-JZz" secondAttribute="bottom" constant="50" id="L9a-sm-P4i"/>
+                            <constraint firstItem="cAk-7t-OeW" firstAttribute="bottom" secondItem="DbJ-5k-JZz" secondAttribute="bottom" constant="60" id="L9a-sm-P4i"/>
                             <constraint firstItem="Aqg-KG-eOx" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="QMc-fd-u3T"/>
                             <constraint firstItem="gy1-aL-FX2" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="W3L-Mp-Uwk"/>
                             <constraint firstItem="uPl-DJ-1xe" firstAttribute="top" secondItem="Aqg-KG-eOx" secondAttribute="bottom" constant="15" id="X4I-GF-oAU"/>

@@ -1,2 +1,2 @@
 # Hydr8
-An ios water tracking app designed to improve hydration. 
+An iOS water tracking app designed to improve hydration. 

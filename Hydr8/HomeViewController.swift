@@ -45,6 +45,19 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         self.view.endEditing(true)
     }
     
+    // Button bar response
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        UIView.animate(withDuration: 0.3) {
+            self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
+        }
+    }
+    
+    func viewDidLoadDefaultButtonBar() {
+        UIView.animate(withDuration: 0.3) {
+            self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
+        }
+    }
+    
     // MARK: VARIABLES
     
     var date = Date()
@@ -96,6 +109,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let waterIntakeLabel = UILabel()
     
     let analyticsLabel = UILabel()
+    let segmentedControl = UISegmentedControl()
+    let buttonBar = UIView()
 
     // MARK: DEFAULT UI
     
@@ -327,8 +342,45 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         x = analyticsView.frame.origin.x + viewWidth
         
-        // Add picker view here thanks! :)
-       
+        // Segmented control
+        segmentedControl.insertSegment(withTitle: "Week", at: 0, animated: true)
+        segmentedControl.insertSegment(withTitle: "Month", at: 1, animated: true)
+        segmentedControl.insertSegment(withTitle: "Year", at: 2, animated: true)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.backgroundColor = .clear
+        segmentedControl.tintColor = .clear
+        segmentedControl.selectedSegmentTintColor = .clear
+        
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "AvenirNext-Medium", size: 18) ?? nil!, NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "AvenirNext-Bold", size: 18) ?? nil!, NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        let responder = HomeViewController()
+        segmentedControl.addTarget(responder, action: #selector(responder.segmentedControlValueChanged(_:)), for: UIControl.Event.valueChanged)
+        segmentedControl.removeBorders()
+        analyticsView.addSubview(segmentedControl)
+        
+        // Segmented control constraints
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.topAnchor.constraint(lessThanOrEqualTo: analyticsView.topAnchor, constant: 10).isActive = true
+        segmentedControl.widthAnchor.constraint(equalToConstant: analyticsView.bounds.maxX-40).isActive = true
+        segmentedControl.leadingAnchor.constraint(equalTo: analyticsView.leadingAnchor, constant: 20).isActive = true
+        segmentedControl.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        // Button bar
+        buttonBar.translatesAutoresizingMaskIntoConstraints = false
+        buttonBar.backgroundColor = UIColor.white
+        analyticsView.addSubview(buttonBar)
+        
+        // Button bar constraints
+        buttonBar.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor).isActive = true
+        buttonBar.heightAnchor.constraint(equalToConstant: 3).isActive = true
+        buttonBar.leadingAnchor.constraint(equalTo: segmentedControl.leadingAnchor, constant: (segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments) / 4)).isActive = true
+        print("leading anchor: \(buttonBar.leadingAnchor)")
+        print("other stuff: \((segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments) / 4))")
+        print("stuff: \(segmentedControl.frame.width)")
+        print("stuff2: \(segmentedControl.bounds.maxX)")
+        buttonBar.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        buttonBar.layer.cornerRadius = 3
+        
        // Analytics label
        analyticsLabel.text = "Analytics"
        analyticsLabel.textColor = UIColor.black
@@ -343,6 +395,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        viewDidLoadDefaultButtonBar()
         
         // Reset user data
         dateFormatter.dateStyle = .full
@@ -439,5 +493,24 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         emitter.emitterPosition = CGPoint(x: view.frame.width/2, y: view.frame.maxY)
         emitter.emitterSize = CGSize(width: view.frame.width, height: 2)
         view.layer.addSublayer(emitter)
+    }
+}
+
+extension UISegmentedControl {
+    func removeBorders() {
+        setBackgroundImage(imageWithColor(color: UIColor.clear), for: .normal, barMetrics: .default)
+        setBackgroundImage(imageWithColor(color: UIColor.clear), for: .selected, barMetrics: .default)
+        setDividerImage(imageWithColor(color: UIColor.clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+    }
+
+    private func imageWithColor(color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context!.setFillColor(color.cgColor);
+        context!.fill(rect);
+        let image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return image!
     }
 }

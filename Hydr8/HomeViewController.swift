@@ -52,6 +52,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         }
     }
     
+    // MARK: FUNCTIONS
+    
     func viewDidLoadDefaultButtonBar() {
         UIView.animate(withDuration: 0.3) {
             self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
@@ -117,7 +119,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // New animation
+        // Greeting animation
         let animation = CASpringAnimation(keyPath: "position")
         animation.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
         animation.toValue = CGPoint(x: (view.bounds.maxX/2), y: 45)
@@ -339,7 +341,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         analyticsBackgroundView.backgroundColor = UIColor.white.withAlphaComponent(1)
         analyticsBackgroundView.layer.cornerRadius = 40
         scrollView.addSubview(analyticsBackgroundView)
-        
         x = analyticsView.frame.origin.x + viewWidth
         
         // Segmented control
@@ -350,7 +351,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         segmentedControl.backgroundColor = .clear
         segmentedControl.tintColor = .clear
         segmentedControl.selectedSegmentTintColor = .clear
-        
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "AvenirNext-Medium", size: 18) ?? nil!, NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "AvenirNext-Bold", size: 18) ?? nil!, NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         let responder = HomeViewController()
@@ -396,6 +396,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     override func viewDidAppear(_ animated: Bool) {
         
+        // Corrects location of button bar
         viewDidLoadDefaultButtonBar()
         
         // Reset user data
@@ -433,7 +434,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: 30, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
         dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: 60, width: self.dateLabel.intrinsicContentSize.width, height: 30)
         
-        // New animation
+        // Greeting animations
         let animation = CASpringAnimation(keyPath: "position")
         animation.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
         animation.toValue = CGPoint(x: (view.bounds.maxX/2), y: 45)
@@ -449,6 +450,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     }
     
+    // MARK: BUBBLETRANSITION AND EMITTER ANIMATIONS
+    
     // Initialize BubbleTransition
     let transition = BubbleTransition()
     let interactiveTransition = BubbleInteractiveTransition()
@@ -463,8 +466,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
       }
     }
     
-    // MARK: UIViewControllerTransitioningDelegate
-    
+    // Animates presentation of BubbleTransition
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       transition.transitionMode = .present
         transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: view.frame.maxY-100) //trackIntakeButton.center
@@ -475,6 +477,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
       return transition
     }
     
+    // Animates dismissal of BubbleTransition
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       transition.transitionMode = .dismiss
         transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: view.frame.maxY-100) //trackIntakeButton.center
@@ -482,12 +485,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
       return transition
     }
     
+    // Assists dismissal of BubbleTransition
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
       return interactiveTransition
     }
 
-    // MARK: BUBBLE EMITTER
-    
+    // Bubble emitter
     func bubbleEmitter() {
         let emitter = BubbleEmitter.get(with: UIImage(named: "Bubble")!)
         emitter.emitterPosition = CGPoint(x: view.frame.width/2, y: view.frame.maxY)
@@ -496,13 +499,15 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     }
 }
 
+// MARK: EXTENSIONS
+
+// Bypasses iOS 13's clear background restrictions
 extension UISegmentedControl {
     func removeBorders() {
         setBackgroundImage(imageWithColor(color: UIColor.clear), for: .normal, barMetrics: .default)
         setBackgroundImage(imageWithColor(color: UIColor.clear), for: .selected, barMetrics: .default)
         setDividerImage(imageWithColor(color: UIColor.clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
     }
-
     private func imageWithColor(color: UIColor) -> UIImage {
         let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
         UIGraphicsBeginImageContext(rect.size)

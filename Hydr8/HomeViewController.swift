@@ -11,7 +11,6 @@ import UIKit
 import BubbleTransition
 import BAFluidView
 import CoreMotion
-import Charts
 
 class HomeViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
@@ -20,10 +19,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     @IBOutlet weak var addUpdatesButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var analyticsButton: UIButton!
-   // var weeklyChartView: MacawChartView!
-    @IBOutlet weak var weeklyChartView: UIView!
+    @IBOutlet weak var weeklyBarChart: BasicBarChart!
     
- //   @IBOutlet weak var weeklyChartView: MacawChartView!
     
     @objc func addUpdatesButtonTapped(sender: UIButton) {
         performSegue(withIdentifier: "addUpdates", sender: self)
@@ -55,7 +52,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         UIView.animate(withDuration: 0.3) {
             self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
         }
-    //    MacawChartView.playAnimations()
     }
     
     // MARK: FUNCTIONS
@@ -119,6 +115,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let analyticsLabel = UILabel()
     let segmentedControl = UISegmentedControl()
     let buttonBar = UIView()
+  //  let weeklyBarChart = StackViewBarChart(frame: .zero)
 
     // MARK: DEFAULT UI
     
@@ -384,16 +381,38 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         buttonBar.widthAnchor.constraint(equalToConstant: 40).isActive = true
         buttonBar.layer.cornerRadius = 3
         
-        // Weekly chart view
-      /*  weeklyChartView.frame = CGRect(x: (analyticsView.bounds.maxX/2)-(weeklyChartView.intrinsicContentSize.width/2.75), y: 80, width: 275, height: 275)
-            //   weeklyChartView.backgroundColor = UIColor.white.withAlphaComponent(0).
-        weeklyChartView.contentMode = .scaleAspectFit
-        analyticsView.addSubview(weeklyChartView)*/
-
+        // Weekly bar chart
+        let dataEntries = generateWeeklyDataEntries()
+        weeklyBarChart.updateDataEntries(dataEntries: dataEntries, animated: false)
+        weeklyBarChart.frame = CGRect(x: (analyticsView.bounds.maxX/2) - (weeklyBarChart.bounds.maxX/2), y: 30, width: 300, height: 300)
+        weeklyBarChart.backgroundColor = .clear
+        analyticsView.addSubview(weeklyBarChart)
+        
+        // Weekly bar constraints
+        /*
+        weeklyBarChart.topAnchor.constraint(equalTo: analyticsView.topAnchor, constant: 50).isActive = true
+        weeklyBarChart.heightAnchor.constraint(equalToConstant: 3).isActive = true
+                weeklyBarChart.widthAnchor.constraint(equalTo: analyticsView.widthAnchor, multiplier: 0.9).isActive = true
+        weeklyBarChart.leadingAnchor.constraint(equalTo: analyticsView.leadingAnchor, constant: (analyticsView.frame.width/2) - (weeklyBarChart.frame.width/2)).isActive = true*/
+        
        // Scroll view metrics
        scrollView.contentSize = CGSize(width:x+padding, height:scrollView.frame.size.height)
        scrollView.setContentOffset(CGPoint(x: 375, y: padding), animated: true)
         
+    }
+    
+    func generateWeeklyDataEntries() -> [DataEntry] {
+        var result: [DataEntry] = []
+        let waterIntakeData = [48, 23, 30, 32, 64, 30, 32]
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[0])/100, textValue: "\(waterIntakeData[0])", title: "M"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[1])/100, textValue: "\(waterIntakeData[1])", title: "T"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[2])/100, textValue: "\(waterIntakeData[2])", title: "W"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[3])/100, textValue: "\(waterIntakeData[3])", title: "T"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[4])/100, textValue: "\(waterIntakeData[4])", title: "F"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[5])/100, textValue: "\(waterIntakeData[5])", title: "S"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[6])/100, textValue: "\(waterIntakeData[6])", title: "S"))
+            
+        return result
     }
     
     override func viewDidAppear(_ animated: Bool) {

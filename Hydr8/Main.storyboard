@@ -86,8 +86,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="63q-pg-9ln">
-                                <rect key="frame" x="39" y="288" width="350" height="282"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HDa-J9-Z98" customClass="BasicBarChart" customModule="Hydr8" customModuleProvider="target">
+                                <rect key="frame" x="59" y="267" width="300" height="329"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
@@ -116,7 +116,7 @@
                         <outlet property="analyticsButton" destination="cMl-qp-h2Y" id="FbB-AR-lCo"/>
                         <outlet property="settingsButton" destination="oPw-30-mPO" id="aTt-Rf-83t"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="ecI-AX-uIn"/>
-                        <outlet property="weeklyChartView" destination="63q-pg-9ln" id="r0l-Nf-mAB"/>
+                        <outlet property="weeklyBarChart" destination="HDa-J9-Z98" id="DqM-iq-4rm"/>
                         <segue destination="okr-CF-ucO" kind="presentation" identifier="addUpdates" id="enI-IK-Iuf"/>
                     </connections>
                 </viewController>

@@ -1,26 +1,20 @@
 PODS:
   - BAFluidView (0.2.6)
   - BubbleTransition (3.2.0)
-  - Charts (3.4.0):
-    - Charts/Core (= 3.4.0)
-  - Charts/Core (3.4.0)
 
 DEPENDENCIES:
   - BAFluidView (~> 0.2.6)
   - BubbleTransition (~> 3.2.0)
-  - Charts
 
 SPEC REPOS:
   trunk:
     - BAFluidView
     - BubbleTransition
-    - Charts
 
 SPEC CHECKSUMS:
   BAFluidView: 4549a74865236c1ebb03fc06cddc979f7e28ac82
   BubbleTransition: 2f112cc19772d9ab199bc850de92f5eb34744bce
-  Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
 
-PODFILE CHECKSUM: 96bd93b9c3200655fb8ab07bf87549d388435cff
+PODFILE CHECKSUM: 493c9b07d3715398e0d86c627098f4733dbb931f
 
 COCOAPODS: 1.8.4

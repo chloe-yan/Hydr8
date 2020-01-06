@@ -86,6 +86,11 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="63q-pg-9ln">
+                                <rect key="frame" x="39" y="288" width="350" height="282"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.27311476150000003" green="0.35076587339999998" blue="0.6879758883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -111,6 +116,7 @@
                         <outlet property="analyticsButton" destination="cMl-qp-h2Y" id="FbB-AR-lCo"/>
                         <outlet property="settingsButton" destination="oPw-30-mPO" id="aTt-Rf-83t"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="ecI-AX-uIn"/>
+                        <outlet property="weeklyChartView" destination="63q-pg-9ln" id="r0l-Nf-mAB"/>
                         <segue destination="okr-CF-ucO" kind="presentation" identifier="addUpdates" id="enI-IK-Iuf"/>
                     </connections>
                 </viewController>

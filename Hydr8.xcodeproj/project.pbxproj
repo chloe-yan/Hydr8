@@ -10,7 +10,6 @@
 		18910B932EE24349F20C0359 /* Pods_Hydr8.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAAA6FD3BB11AF94F09A576 /* Pods_Hydr8.framework */; };
 		D17519F323BADB8200E85762 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17519F223BADB8200E85762 /* AppDelegate.swift */; };
 		D17519F523BADB8200E85762 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17519F423BADB8200E85762 /* SceneDelegate.swift */; };
-		D17519FA23BADB8200E85762 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17519F823BADB8200E85762 /* Main.storyboard */; };
 		D17519FD23BADB8200E85762 /* Hydr8.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D17519FB23BADB8200E85762 /* Hydr8.xcdatamodeld */; };
 		D1751A0223BADB8600E85762 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1751A0023BADB8600E85762 /* LaunchScreen.storyboard */; };
 		D1751A0A23BAEC7F00E85762 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1751A0923BAEC7F00E85762 /* HomeViewController.swift */; };
@@ -53,6 +52,9 @@
 		D1751AA023BAEE5100E85762 /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1751A7B23BAEE5100E85762 /* Montserrat-SemiBold.otf */; };
 		D1751AA223BB294400E85762 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1751AA123BB294400E85762 /* SettingsViewController.swift */; };
 		D1751AA423BB295300E85762 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1751AA323BB295300E85762 /* AnalyticsViewController.swift */; };
+		D188B23B23C26FFD00110889 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D188B23A23C26FFD00110889 /* Main.storyboard */; };
+		D188B23D23C2712100110889 /* DataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188B23C23C2712100110889 /* DataGenerator.swift */; };
+		D188B23F23C2716300110889 /* WeeklyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188B23E23C2716300110889 /* WeeklyChartView.swift */; };
 		D1DE3F3623BBFA6E005341C2 /* AddUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */; };
 		D1FBDDC423BD6C8C00003306 /* BubbleEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */; };
 		D1FBDDD223BEA39100003306 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FBDDD123BEA39100003306 /* Assets.xcassets */; };
@@ -64,7 +66,6 @@
 		D17519EF23BADB8200E85762 /* Hydr8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydr8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17519F223BADB8200E85762 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17519F423BADB8200E85762 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D17519F923BADB8200E85762 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D17519FC23BADB8200E85762 /* Hydr8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hydr8.xcdatamodel; sourceTree = "<group>"; };
 		D1751A0123BADB8600E85762 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1751A0323BADB8600E85762 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +109,9 @@
 		D1751A7B23BAEE5100E85762 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
 		D1751AA123BB294400E85762 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D1751AA323BB295300E85762 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
+		D188B23A23C26FFD00110889 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D188B23C23C2712100110889 /* DataGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGenerator.swift; sourceTree = "<group>"; };
+		D188B23E23C2716300110889 /* WeeklyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChartView.swift; sourceTree = "<group>"; };
 		D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdatesViewController.swift; sourceTree = "<group>"; };
 		D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleEmitter.swift; sourceTree = "<group>"; };
 		D1FBDDD123BEA39100003306 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -172,8 +176,10 @@
 				D1751AA123BB294400E85762 /* SettingsViewController.swift */,
 				D1751AA323BB295300E85762 /* AnalyticsViewController.swift */,
 				D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */,
+				D188B23C23C2712100110889 /* DataGenerator.swift */,
+				D188B23E23C2716300110889 /* WeeklyChartView.swift */,
 				D1FBDDD123BEA39100003306 /* Assets.xcassets */,
-				D17519F823BADB8200E85762 /* Main.storyboard */,
+				D188B23A23C26FFD00110889 /* Main.storyboard */,
 				D1751A0023BADB8600E85762 /* LaunchScreen.storyboard */,
 				D1751A0323BADB8600E85762 /* Info.plist */,
 				D17519FB23BADB8200E85762 /* Hydr8.xcdatamodeld */,
@@ -296,6 +302,7 @@
 				D1751A8923BAEE5100E85762 /* MontserratAlternates-BlackItalic.otf in Resources */,
 				D1751AA023BAEE5100E85762 /* Montserrat-SemiBold.otf in Resources */,
 				D1751A0223BADB8600E85762 /* LaunchScreen.storyboard in Resources */,
+				D188B23B23C26FFD00110889 /* Main.storyboard in Resources */,
 				D1751A8323BAEE5100E85762 /* Montserrat-BoldItalic.otf in Resources */,
 				D1751A9C23BAEE5100E85762 /* MontserratAlternates-ThinItalic.otf in Resources */,
 				D1751A8523BAEE5100E85762 /* Montserrat-ThinItalic.otf in Resources */,
@@ -316,7 +323,6 @@
 				D1751A9123BAEE5100E85762 /* Montserrat-ExtraBoldItalic.otf in Resources */,
 				D1751A9423BAEE5100E85762 /* Montserrat-Regular.otf in Resources */,
 				D1751A7C23BAEE5100E85762 /* Montserrat-MediumItalic.otf in Resources */,
-				D17519FA23BADB8200E85762 /* Main.storyboard in Resources */,
 				D1751A9A23BAEE5100E85762 /* MontserratAlternates-ExtraLight.otf in Resources */,
 				D1751A9623BAEE5100E85762 /* MontserratAlternates-BoldItalic.otf in Resources */,
 				D1751A8A23BAEE5100E85762 /* MontserratAlternates-Bold.otf in Resources */,
@@ -377,12 +383,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D188B23F23C2716300110889 /* WeeklyChartView.swift in Sources */,
 				D1751A0A23BAEC7F00E85762 /* HomeViewController.swift in Sources */,
 				D1751AA423BB295300E85762 /* AnalyticsViewController.swift in Sources */,
 				D17519FD23BADB8200E85762 /* Hydr8.xcdatamodeld in Sources */,
 				D17519F323BADB8200E85762 /* AppDelegate.swift in Sources */,
 				D1FBDDC423BD6C8C00003306 /* BubbleEmitter.swift in Sources */,
 				D17519F523BADB8200E85762 /* SceneDelegate.swift in Sources */,
+				D188B23D23C2712100110889 /* DataGenerator.swift in Sources */,
 				D1751AA223BB294400E85762 /* SettingsViewController.swift in Sources */,
 				D1DE3F3623BBFA6E005341C2 /* AddUpdatesViewController.swift in Sources */,
 			);
@@ -391,14 +399,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D17519F823BADB8200E85762 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D17519F923BADB8200E85762 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D1751A0023BADB8600E85762 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

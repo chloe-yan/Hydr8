@@ -11,6 +11,7 @@ import UIKit
 import BubbleTransition
 import BAFluidView
 import CoreMotion
+import Charts
 
 class HomeViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
@@ -19,6 +20,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     @IBOutlet weak var addUpdatesButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var analyticsButton: UIButton!
+   // var weeklyChartView: MacawChartView!
+    @IBOutlet weak var weeklyChartView: UIView!
+    
+ //   @IBOutlet weak var weeklyChartView: MacawChartView!
     
     @objc func addUpdatesButtonTapped(sender: UIButton) {
         performSegue(withIdentifier: "addUpdates", sender: self)
@@ -50,6 +55,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         UIView.animate(withDuration: 0.3) {
             self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
         }
+    //    MacawChartView.playAnimations()
     }
     
     // MARK: FUNCTIONS
@@ -342,6 +348,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         analyticsBackgroundView.layer.cornerRadius = 40
         scrollView.addSubview(analyticsBackgroundView)
         x = analyticsView.frame.origin.x + viewWidth
+        scrollView.sendSubviewToBack(analyticsBackgroundView)
         
         // Segmented control
         segmentedControl.insertSegment(withTitle: "Week", at: 0, animated: true)
@@ -374,19 +381,14 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         buttonBar.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor).isActive = true
         buttonBar.heightAnchor.constraint(equalToConstant: 3).isActive = true
         buttonBar.leadingAnchor.constraint(equalTo: segmentedControl.leadingAnchor, constant: (segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments) / 4)).isActive = true
-        print("leading anchor: \(buttonBar.leadingAnchor)")
-        print("other stuff: \((segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments) / 4))")
-        print("stuff: \(segmentedControl.frame.width)")
-        print("stuff2: \(segmentedControl.bounds.maxX)")
         buttonBar.widthAnchor.constraint(equalToConstant: 40).isActive = true
         buttonBar.layer.cornerRadius = 3
         
-       // Analytics label
-       analyticsLabel.text = "Analytics"
-       analyticsLabel.textColor = UIColor.black
-       analyticsLabel.font = UIFont(name: "montserrat-bold", size: 30)
-       analyticsLabel.frame = CGRect(x: 770, y: 30, width: analyticsLabel.intrinsicContentSize.width, height: analyticsLabel.intrinsicContentSize.height)
-       analyticsView.addSubview(analyticsLabel)
+        // Weekly chart view
+      /*  weeklyChartView.frame = CGRect(x: (analyticsView.bounds.maxX/2)-(weeklyChartView.intrinsicContentSize.width/2.75), y: 80, width: 275, height: 275)
+            //   weeklyChartView.backgroundColor = UIColor.white.withAlphaComponent(0).
+        weeklyChartView.contentMode = .scaleAspectFit
+        analyticsView.addSubview(weeklyChartView)*/
 
        // Scroll view metrics
        scrollView.contentSize = CGSize(width:x+padding, height:scrollView.frame.size.height)
@@ -470,7 +472,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       transition.transitionMode = .present
         transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: view.frame.maxY-100) //trackIntakeButton.center
-        print("transition starting point: \(transition.startingPoint)")
       transition.bubbleColor = trackIntakeButton.backgroundColor!
         greetingLabel.isHidden = true
         dateLabel.isHidden = true

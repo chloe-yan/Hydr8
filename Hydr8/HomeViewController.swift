@@ -437,7 +437,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
 
         // Determine greeting message
         dateLabel.text = updatedDateString
-        if (hour >= 1 && hour < 12) {
+        if (hour >= 0 && hour < 12) {
             greetingLabel.text = "Good morning"
         }
         else if (hour >= 12 && hour < 17) {

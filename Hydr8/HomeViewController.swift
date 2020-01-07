@@ -115,7 +115,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let analyticsLabel = UILabel()
     let segmentedControl = UISegmentedControl()
     let buttonBar = UIView()
-  //  let weeklyBarChart = StackViewBarChart(frame: .zero)
+    lazy var weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
 
     // MARK: DEFAULT UI
     
@@ -136,6 +136,11 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         greetingLabel.layer.add(animation, forKey: "basic animation")
         dateLabel.layer.add(animation2, forKey: "basic animation")
 
+        // Update daily water intake
+        let components = calendar.dateComponents([.month], from: date)
+        let day = components.day
+        weeklyWaterIntakeData?[(day ?? 5)-1] = Int(defaults.double(forKey: "waterIntake"))
+        defaults.set(weeklyWaterIntakeData, forKey: "weeklyWaterIntakeData")
         
         // Reset user data
         dateFormatter.dateStyle = .full
@@ -403,14 +408,14 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     func generateWeeklyDataEntries() -> [DataEntry] {
         var result: [DataEntry] = []
-        let waterIntakeData = [48, 23, 30, 32, 64, 30, 32]
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[0])/100, textValue: "\(waterIntakeData[0])", title: "M"))
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[1])/100, textValue: "\(waterIntakeData[1])", title: "T"))
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[2])/100, textValue: "\(waterIntakeData[2])", title: "W"))
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[3])/100, textValue: "\(waterIntakeData[3])", title: "T"))
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[4])/100, textValue: "\(waterIntakeData[4])", title: "F"))
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[5])/100, textValue: "\(waterIntakeData[5])", title: "S"))
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(waterIntakeData[6])/100, textValue: "\(waterIntakeData[6])", title: "S"))
+        weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[0] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![0])", title: "M"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[1] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![1])", title: "T"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[2] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![2])", title: "W"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[3] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![3])", title: "T"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[4] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![4])", title: "F"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[5] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![5])", title: "S"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[6] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![6])", title: "S"))
             
         return result
     }

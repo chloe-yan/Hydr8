@@ -86,6 +86,11 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLr-WC-w3L" customClass="BasicBarChart" customModule="Hydr8" customModuleProvider="target">
+                                <rect key="frame" x="57" y="266" width="300" height="329"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HDa-J9-Z98" customClass="BasicBarChart" customModule="Hydr8" customModuleProvider="target">
                                 <rect key="frame" x="59" y="267" width="300" height="329"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -114,6 +119,7 @@
                     <connections>
                         <outlet property="addUpdatesButton" destination="kuH-Zc-lvS" id="AIf-bV-aUY"/>
                         <outlet property="analyticsButton" destination="cMl-qp-h2Y" id="FbB-AR-lCo"/>
+                        <outlet property="monthlyBarChart" destination="cLr-WC-w3L" id="gt9-LY-aw8"/>
                         <outlet property="settingsButton" destination="oPw-30-mPO" id="aTt-Rf-83t"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="ecI-AX-uIn"/>
                         <outlet property="weeklyBarChart" destination="HDa-J9-Z98" id="DqM-iq-4rm"/>

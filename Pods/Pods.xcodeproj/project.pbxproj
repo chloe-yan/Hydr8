@@ -52,7 +52,7 @@
 		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		36649CB3023D65044E6F7C3B830A7C9A /* BAFluidView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BAFluidView-Info.plist"; sourceTree = "<group>"; };
 		37CB5C69990920AAACD7C46AFCD82EE2 /* BubbleTransition-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BubbleTransition-prefix.pch"; sourceTree = "<group>"; };
-		3A130E3941325A4ED5A19E0D5091713C /* BubbleTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BubbleTransition.framework; path = BubbleTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A130E3941325A4ED5A19E0D5091713C /* BubbleTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BubbleTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		412CB881F8615676F90F64B3FA5D74B8 /* Pods-Hydr8-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Hydr8-umbrella.h"; sourceTree = "<group>"; };
 		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		44056C6D09A6E76DDE2B6EA0193D22D9 /* Pods-Hydr8.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Hydr8.modulemap"; sourceTree = "<group>"; };
@@ -61,18 +61,18 @@
 		52A71B34F933DF99688232FFBE157F1B /* BAFluidView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BAFluidView.h; path = Sources/BAFluidView/include/BAFluidView.h; sourceTree = "<group>"; };
 		5A91D674E62A4EF05511DC94842BF5BA /* BubbleTransition.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BubbleTransition.xcconfig; sourceTree = "<group>"; };
 		73A1874E3B6D7144A4D01A0779C87EC7 /* BubbleTransition-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BubbleTransition-dummy.m"; sourceTree = "<group>"; };
-		749F130136BA16E75F38E60FDC721D25 /* BAFluidView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BAFluidView.framework; path = BAFluidView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		749F130136BA16E75F38E60FDC721D25 /* BAFluidView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BAFluidView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D6EF6BD624DBC1B88687EC3F8ED712 /* BAFluidView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BAFluidView-prefix.pch"; sourceTree = "<group>"; };
 		95EA87B09E588EB4B60912708D7AC1D2 /* BAFluidView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BAFluidView.modulemap; sourceTree = "<group>"; };
 		9C5D21ECCD23963BA28ECD76387670F3 /* Pods-Hydr8-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Hydr8-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E3D0091E330D149A347CE8EF25A3E16 /* Pods-Hydr8.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hydr8.debug.xcconfig"; sourceTree = "<group>"; };
 		A1F97B625C5444AA115C363D61A29D3D /* BubbleTransition.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BubbleTransition.modulemap; sourceTree = "<group>"; };
 		A4FDAB0D76B2F645457621C86A44A913 /* BAFluidView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BAFluidView.m; path = Sources/BAFluidView/BAFluidView.m; sourceTree = "<group>"; };
 		AE2CB1E56618F43EF242649396CFB219 /* BubbleTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleTransition.swift; path = Source/BubbleTransition.swift; sourceTree = "<group>"; };
 		B84252D265C18360543A3AF09B9CCB9B /* BAFluidView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BAFluidView-dummy.m"; sourceTree = "<group>"; };
 		D4861DEEB0C15659C80F46BA5EADB61D /* Pods-Hydr8-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hydr8-acknowledgements.plist"; sourceTree = "<group>"; };
-		E414C738073F8825D743E6122162F65A /* Pods_Hydr8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Hydr8.framework; path = "Pods-Hydr8.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E414C738073F8825D743E6122162F65A /* Pods_Hydr8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hydr8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA506BAB134FD7F07877D51D2F2389EB /* Pods-Hydr8-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Hydr8-dummy.m"; sourceTree = "<group>"; };
 		EDB9251CA2406DFFDA5EBD822CC5C98F /* BAFluidView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BAFluidView-umbrella.h"; sourceTree = "<group>"; };
 		EDD536BD25917165DA86B3650CCF0FE3 /* UIColor+ColorWithHex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ColorWithHex.m"; path = "Sources/BAFluidView/UIColor+ColorWithHex.m"; sourceTree = "<group>"; };
@@ -135,7 +135,6 @@
 				AE2CB1E56618F43EF242649396CFB219 /* BubbleTransition.swift */,
 				0920D90B8FE66F94D54DA40865656D91 /* Support Files */,
 			);
-			name = BubbleTransition;
 			path = BubbleTransition;
 			sourceTree = "<group>";
 		};
@@ -201,7 +200,6 @@
 				EDD536BD25917165DA86B3650CCF0FE3 /* UIColor+ColorWithHex.m */,
 				C542422B418A0CCBAF98205D37420189 /* Support Files */,
 			);
-			name = BAFluidView;
 			path = BAFluidView;
 			sourceTree = "<group>";
 		};
@@ -328,6 +326,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					3237480E91E6E4E92E78E976E235A0FB = {
+						LastSwiftMigration = 1120;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 11.0";
@@ -335,6 +338,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = BE280953D36136E510077ED1D9FE04FB /* Products */;
@@ -484,7 +488,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -751,7 +755,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

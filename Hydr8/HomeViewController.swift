@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var analyticsButton: UIButton!
     @IBOutlet weak var weeklyBarChart: BasicBarChart!
+    @IBOutlet weak var monthlyBarChart: BasicBarChart!
     
     
     @objc func addUpdatesButtonTapped(sender: UIButton) {
@@ -116,11 +117,22 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let segmentedControl = UISegmentedControl()
     let buttonBar = UIView()
     lazy var weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
+    lazy var monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
 
     // MARK: DEFAULT UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Initialize weekly water intake data
+        for i in 0...6 {
+            if (weeklyWaterIntakeData?[i] == nil) {
+                let initArray: Array! = [0, 0, 0, 0, 0, 0, 0]
+                defaults.set(initArray, forKey: "weeklyWaterIntakeData")
+                print(defaults.array(forKey: "weeklyWaterIntakeData")!)
+                //defaults.set(weeklyWaterIntakeData, forKey: "weeklyWaterIntakeData")
+            }
+        }
         
         // Greeting animation
         let animation = CASpringAnimation(keyPath: "position")
@@ -137,9 +149,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dateLabel.layer.add(animation2, forKey: "basic animation")
 
         // Update daily water intake
-        let components = calendar.dateComponents([.month], from: date)
-        let day = components.day
-        weeklyWaterIntakeData?[(day ?? 5)-1] = Int(defaults.double(forKey: "waterIntake"))
+        let components = calendar.dateComponents([.weekday], from: date)
+        print("components: \(components)")
+        let day = components.weekday! - 1
+        print("day: \(day)")
+        weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
+        weeklyWaterIntakeData![day-1] = Int(defaults.double(forKey: "waterIntake"))
         defaults.set(weeklyWaterIntakeData, forKey: "weeklyWaterIntakeData")
         
         // Reset user data
@@ -387,6 +402,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         buttonBar.layer.cornerRadius = 3
         
         // Weekly bar chart
+     //   print("after: \(defaults.array(forKey: "weeklyWaterIntakeData"))")
         let dataEntries = generateWeeklyDataEntries()
         weeklyBarChart.updateDataEntries(dataEntries: dataEntries, animated: false)
         weeklyBarChart.frame = CGRect(x: (analyticsView.bounds.maxX/2) - (weeklyBarChart.bounds.maxX/2), y: 30, width: 300, height: 300)
@@ -409,14 +425,35 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     func generateWeeklyDataEntries() -> [DataEntry] {
         var result: [DataEntry] = []
         weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[0] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![0])", title: "M"))
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[1] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![1])", title: "T"))
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[2] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![2])", title: "W"))
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[3] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![3])", title: "T"))
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[4] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![4])", title: "F"))
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[5] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![5])", title: "S"))
-        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: Float(((weeklyWaterIntakeData?[6] as? Int)!)/100), textValue: "\(weeklyWaterIntakeData![6])", title: "S"))
-            
+        print(defaults.array(forKey: "weeklyWaterIntakeData")![0])
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(weeklyWaterIntakeData?[0] as! Int)/100, textValue: "\(weeklyWaterIntakeData![0])", title: "M"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(weeklyWaterIntakeData?[1] as! Int)/100, textValue: "\(weeklyWaterIntakeData![1])", title: "T"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(weeklyWaterIntakeData?[2] as! Int)/100, textValue: "\(weeklyWaterIntakeData![2])", title: "W"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(weeklyWaterIntakeData?[3] as! Int)/100, textValue: "\(weeklyWaterIntakeData![3])", title: "T"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(weeklyWaterIntakeData?[4] as! Int)/100, textValue: "\(weeklyWaterIntakeData![4])", title: "F"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(weeklyWaterIntakeData?[5] as! Int)/100, textValue: "\(weeklyWaterIntakeData![5])", title: "S"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(weeklyWaterIntakeData?[6] as! Int)/100, textValue: "\(weeklyWaterIntakeData![6])", title: "S"))
+        
+        return result
+    }
+    
+    func generateMonthlyDataEntries() -> [DataEntry] {
+        var result: [DataEntry] = []
+        monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
+        print(defaults.array(forKey: "monthlyWaterIntakeData")![0])
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[0] as! Int)/100, textValue: "\(monthlyWaterIntakeData![0])", title: "J"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[1] as! Int)/100, textValue: "\(monthlyWaterIntakeData![1])", title: "F"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[2] as! Int)/100, textValue: "\(monthlyWaterIntakeData![2])", title: "M"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[3] as! Int)/100, textValue: "\(monthlyWaterIntakeData![3])", title: "A"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[4] as! Int)/100, textValue: "\(monthlyWaterIntakeData![4])", title: "M"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[5] as! Int)/100, textValue: "\(monthlyWaterIntakeData![5])", title: "J"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[6] as! Int)/100, textValue: "\(monthlyWaterIntakeData![6])", title: "J"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[7] as! Int)/100, textValue: "\(monthlyWaterIntakeData![7])", title: "A"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[8] as! Int)/100, textValue: "\(monthlyWaterIntakeData![8])", title: "S"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[9] as! Int)/100, textValue: "\(monthlyWaterIntakeData![9])", title: "O"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[10] as! Int)/100, textValue: "\(monthlyWaterIntakeData![10])", title: "N"))
+        result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[11] as! Int)/100, textValue: "\(monthlyWaterIntakeData![11])", title: "D"))
+        
         return result
     }
     

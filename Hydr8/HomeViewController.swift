@@ -53,6 +53,18 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         UIView.animate(withDuration: 0.3) {
             self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
         }
+        if (segmentedControl.selectedSegmentIndex == 0) {
+            weeklyBarChart.isHidden = false
+            monthlyBarChart.isHidden = true
+        }
+        else if (segmentedControl.selectedSegmentIndex == 1) {
+            weeklyBarChart.isHidden = true
+            monthlyBarChart.isHidden = false
+        }
+        else {
+            weeklyBarChart.isHidden = true
+            monthlyBarChart.isHidden = true
+        }
     }
     
     // MARK: FUNCTIONS
@@ -103,8 +115,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let defaults = UserDefaults.standard
     lazy var goal = defaults.double(forKey: "dailyGoal")
     lazy var waterIntake = defaults.double(forKey: "waterIntake")
+    lazy var monthlyWaterIntake = defaults.double(forKey: "monthlyWaterIntake")
     
     lazy var currentDate = defaults.string(forKey: "currentDate")
+    lazy var currentMonth = defaults.integer(forKey: "currentMonth")
     
     var maskingImage = UIImage(named: "Droplet")
     var maskingLayer = CALayer()
@@ -123,6 +137,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Bar graph appearances
+        weeklyBarChart.isHidden = false
+        monthlyBarChart.isHidden = true
         
         // Initialize weekly water intake data
         for i in 0...6 {
@@ -170,10 +188,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         let month = components.month!
         print("month: \(month)")
         monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
-        monthlyWaterIntakeData![month-1] = Int(defaults.double(forKey: "waterIntake"))
+        monthlyWaterIntakeData![month-1] = Int(defaults.double(forKey: "monthlyWaterIntake"))
         defaults.set(monthlyWaterIntakeData, forKey: "monthlyWaterIntakeData")
         
-        // Reset user data
+        // Reset daily user data
         dateFormatter.dateStyle = .full
         dateString = dateFormatter.string(from: date)
         currentDateString = String(dateString.prefix(dateString.count - 6))
@@ -181,6 +199,13 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             defaults.set(0, forKey: "waterIntake")
         }
         defaults.set(currentDateString, forKey: "currentDate")
+        
+        // Reset monthly user data
+        currentMonth = components.month!
+        if (currentMonth != defaults.integer(forKey: "currentMonth")) {
+            defaults.set(0, forKey: "monthlyWaterIntake")
+        }
+        defaults.set(currentMonth, forKey: "currentMonth")
         
         // Date greeting
         updatedDateString = String(dateString.prefix(dateString.count - 6))
@@ -434,7 +459,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Monthly bar chart
         let monthlyDataEntries = generateMonthlyDataEntries()
         monthlyBarChart.updateDataEntries(dataEntries: monthlyDataEntries, animated: false)
-        monthlyBarChart.frame = CGRect(x: (analyticsView.bounds.maxX/2) - (monthlyBarChart.bounds.maxX/2), y: 30, width: 300, height: 300)
+        monthlyBarChart.frame = CGRect(x: (analyticsView.bounds.maxX/2) - (monthlyBarChart.bounds.maxX/2 - 7), y: 30, width: 300, height: 300)
         monthlyBarChart.backgroundColor = .clear
         analyticsView.addSubview(monthlyBarChart)
         

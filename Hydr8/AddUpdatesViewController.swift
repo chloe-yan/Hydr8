@@ -21,6 +21,7 @@ class AddUpdatesViewController: UIViewController {
     @IBAction func addUpdatesButtonTapped(_ sender: Any) {
         let homeVC = HomeViewController()
         homeVC.defaults.set((homeVC.defaults.double(forKey: "waterIntake") + ((addUpdateTextField.text as NSString?)?.doubleValue ?? 0) ), forKey: "waterIntake")
+        homeVC.defaults.set((homeVC.defaults.double(forKey: "monthlyWaterIntake") + ((addUpdateTextField.text as NSString?)?.doubleValue ?? 0) ), forKey: "monthlyWaterIntake")
         self.dismiss(animated: true, completion: nil)
         interactiveTransition?.finish()
     }

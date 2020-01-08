@@ -130,7 +130,15 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
                 let initArray: Array! = [0, 0, 0, 0, 0, 0, 0]
                 defaults.set(initArray, forKey: "weeklyWaterIntakeData")
                 print(defaults.array(forKey: "weeklyWaterIntakeData")!)
-                //defaults.set(weeklyWaterIntakeData, forKey: "weeklyWaterIntakeData")
+            }
+        }
+        
+        // Initialize monthly water intake data
+        for i in 0...11 {
+            if (monthlyWaterIntakeData?[i] == nil) {
+                let monthlyInitArray: Array! = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                defaults.set(monthlyInitArray, forKey: "monthlyWaterIntakeData")
+                print(defaults.array(forKey: "monthlyWaterIntakeData")!)
             }
         }
         
@@ -149,13 +157,21 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dateLabel.layer.add(animation2, forKey: "basic animation")
 
         // Update daily water intake
-        let components = calendar.dateComponents([.weekday], from: date)
+        var components = calendar.dateComponents([.weekday], from: date)
         print("components: \(components)")
         let day = components.weekday! - 1
         print("day: \(day)")
         weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
         weeklyWaterIntakeData![day-1] = Int(defaults.double(forKey: "waterIntake"))
         defaults.set(weeklyWaterIntakeData, forKey: "weeklyWaterIntakeData")
+        
+        // Update monthly water intake
+        components = calendar.dateComponents([.month], from: date)
+        let month = components.month!
+        print("month: \(month)")
+        monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
+        monthlyWaterIntakeData![month-1] = Int(defaults.double(forKey: "waterIntake"))
+        defaults.set(monthlyWaterIntakeData, forKey: "monthlyWaterIntakeData")
         
         // Reset user data
         dateFormatter.dateStyle = .full
@@ -402,7 +418,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         buttonBar.layer.cornerRadius = 3
         
         // Weekly bar chart
-     //   print("after: \(defaults.array(forKey: "weeklyWaterIntakeData"))")
         let dataEntries = generateWeeklyDataEntries()
         weeklyBarChart.updateDataEntries(dataEntries: dataEntries, animated: false)
         weeklyBarChart.frame = CGRect(x: (analyticsView.bounds.maxX/2) - (weeklyBarChart.bounds.maxX/2), y: 30, width: 300, height: 300)
@@ -415,6 +430,13 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         weeklyBarChart.heightAnchor.constraint(equalToConstant: 3).isActive = true
                 weeklyBarChart.widthAnchor.constraint(equalTo: analyticsView.widthAnchor, multiplier: 0.9).isActive = true
         weeklyBarChart.leadingAnchor.constraint(equalTo: analyticsView.leadingAnchor, constant: (analyticsView.frame.width/2) - (weeklyBarChart.frame.width/2)).isActive = true*/
+        
+        // Monthly bar chart
+        let monthlyDataEntries = generateMonthlyDataEntries()
+        monthlyBarChart.updateDataEntries(dataEntries: monthlyDataEntries, animated: false)
+        monthlyBarChart.frame = CGRect(x: (analyticsView.bounds.maxX/2) - (monthlyBarChart.bounds.maxX/2), y: 30, width: 300, height: 300)
+        monthlyBarChart.backgroundColor = .clear
+        analyticsView.addSubview(monthlyBarChart)
         
        // Scroll view metrics
        scrollView.contentSize = CGSize(width:x+padding, height:scrollView.frame.size.height)

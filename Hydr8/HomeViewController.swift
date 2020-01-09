@@ -581,13 +581,13 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
       transition.transitionMode = .present
         transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: view.frame.maxY-100) //trackIntakeButton.center
       transition.bubbleColor = trackIntakeButton.backgroundColor!
-        greetingLabel.isHidden = true
-        dateLabel.isHidden = true
       return transition
     }
     
     // Animates dismissal of BubbleTransition
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+      greetingLabel.isHidden = true
+      dateLabel.isHidden = true
       transition.transitionMode = .dismiss
         transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: view.frame.maxY-100) //trackIntakeButton.center
       transition.bubbleColor = trackIntakeButton.backgroundColor!

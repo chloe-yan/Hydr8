@@ -1,6 +1,6 @@
 //
 //  BubbleEmitter.swift
-//  Hydr8
+//  Hydra
 //
 //  Created by Chloe Yan on 1/1/20.
 //  Copyright © 2020 Chloe Yan. All rights reserved.

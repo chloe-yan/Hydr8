@@ -1,6 +1,6 @@
 //
 //  SettingsViewController.swift
-//  Hydr8
+//  Hydra
 //
 //  Created by Chloe Yan on 12/30/19.
 //  Copyright © 2019 Chloe Yan. All rights reserved.

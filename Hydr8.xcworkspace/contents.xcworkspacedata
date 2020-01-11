@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Hydr8.xcodeproj">
+      location = "group:/Users/chloeyan/Documents/Hydr8/Hydr8/Hydra.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

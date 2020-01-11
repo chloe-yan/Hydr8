@@ -90,7 +90,7 @@
 /* Begin PBXFileReference section */
 		2FAAA6FD3BB11AF94F09A576 /* Pods_Hydr8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hydr8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6685786E772233E8561C1EA /* Pods-Hydr8.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hydr8.release.xcconfig"; path = "Target Support Files/Pods-Hydr8/Pods-Hydr8.release.xcconfig"; sourceTree = "<group>"; };
-		D17519EF23BADB8200E85762 /* Hydr8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydr8.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D17519EF23BADB8200E85762 /* Hydra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17519F223BADB8200E85762 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17519F423BADB8200E85762 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D17519FC23BADB8200E85762 /* Hydr8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hydr8.xcdatamodel; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 		D17519E623BADB8200E85762 = {
 			isa = PBXGroup;
 			children = (
-				D17519F123BADB8200E85762 /* Hydr8 */,
+				D17519F123BADB8200E85762 /* Hydra */,
 				D17519F023BADB8200E85762 /* Products */,
 				D1751A5623BAEE5100E85762 /* montserrat */,
 				C9C68A6F50116101BD62A165 /* Pods */,
@@ -202,12 +202,12 @@
 		D17519F023BADB8200E85762 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D17519EF23BADB8200E85762 /* Hydr8.app */,
+				D17519EF23BADB8200E85762 /* Hydra.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D17519F123BADB8200E85762 /* Hydr8 */ = {
+		D17519F123BADB8200E85762 /* Hydra */ = {
 			isa = PBXGroup;
 			children = (
 				D17519F223BADB8200E85762 /* AppDelegate.swift */,
@@ -226,7 +226,7 @@
 				D1751A0323BADB8600E85762 /* Info.plist */,
 				D17519FB23BADB8200E85762 /* Hydr8.xcdatamodeld */,
 			);
-			path = Hydr8;
+			path = Hydra;
 			sourceTree = "<group>";
 		};
 		D1751A5623BAEE5100E85762 /* montserrat */ = {
@@ -295,9 +295,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D17519EE23BADB8200E85762 /* Hydr8 */ = {
+		D17519EE23BADB8200E85762 /* Hydra */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1751A0623BADB8600E85762 /* Build configuration list for PBXNativeTarget "Hydr8" */;
+			buildConfigurationList = D1751A0623BADB8600E85762 /* Build configuration list for PBXNativeTarget "Hydra" */;
 			buildPhases = (
 				612AAC53DED0881B2EB52C0E /* [CP] Check Pods Manifest.lock */,
 				D17519EB23BADB8200E85762 /* Sources */,
@@ -311,11 +311,11 @@
 			);
 			dependencies = (
 			);
-			name = Hydr8;
+			name = Hydra;
 			packageProductDependencies = (
 			);
 			productName = Hydr8;
-			productReference = D17519EF23BADB8200E85762 /* Hydr8.app */;
+			productReference = D17519EF23BADB8200E85762 /* Hydra.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -333,7 +333,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D17519EA23BADB8200E85762 /* Build configuration list for PBXProject "Hydr8" */;
+			buildConfigurationList = D17519EA23BADB8200E85762 /* Build configuration list for PBXProject "Hydra" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -348,7 +348,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D17519EE23BADB8200E85762 /* Hydr8 */,
+				D17519EE23BADB8200E85762 /* Hydra */,
 			);
 		};
 /* End PBXProject section */
@@ -669,7 +669,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D17519EA23BADB8200E85762 /* Build configuration list for PBXProject "Hydr8" */ = {
+		D17519EA23BADB8200E85762 /* Build configuration list for PBXProject "Hydra" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1751A0423BADB8600E85762 /* Debug */,
@@ -678,7 +678,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1751A0623BADB8600E85762 /* Build configuration list for PBXNativeTarget "Hydr8" */ = {
+		D1751A0623BADB8600E85762 /* Build configuration list for PBXNativeTarget "Hydra" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1751A0723BADB8600E85762 /* Debug */,

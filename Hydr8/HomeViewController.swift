@@ -523,7 +523,24 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         waterIntakeLabel.text = "\(waterIntake) oz"
         percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
         dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
-
+        
+        // Reset daily user data
+        dateFormatter.dateStyle = .full
+        dateString = dateFormatter.string(from: date)
+        currentDateString = String(dateString.prefix(dateString.count - 6))
+        if (currentDateString != defaults.string(forKey: "currentDate")) {
+            defaults.set(0, forKey: "waterIntake")
+        }
+        defaults.set(currentDateString, forKey: "currentDate")
+        
+        // Reset monthly user data
+        let components = calendar.dateComponents([.month], from: date)
+        currentMonth = components.month!
+        if (currentMonth != defaults.integer(forKey: "currentMonth")) {
+            defaults.set(0, forKey: "monthlyWaterIntake")
+        }
+        defaults.set(currentMonth, forKey: "currentMonth")
+        
         // Determine greeting message
         dateLabel.text = updatedDateString
         if (hour >= 0 && hour < 12) {

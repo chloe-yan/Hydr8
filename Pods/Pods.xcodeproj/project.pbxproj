@@ -3,22 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		105B0598CB6F045745DBA0B85AE6FFA9 /* Pods-Hydr8-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA506BAB134FD7F07877D51D2F2389EB /* Pods-Hydr8-dummy.m */; };
 		2A6755C79EF2AD617B28234591E2884D /* BubbleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2CB1E56618F43EF242649396CFB219 /* BubbleTransition.swift */; };
 		2AAD4B2BC6455455C46FE5D9A6912707 /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D19A28AABDF66E0B5B508A9D4C6BA67 /* Constants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F8AFE214340A496B846D2FC2EB719D6 /* Pods-Hydra-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 53097A0FC2B8E0C8F138BED9002D6C48 /* Pods-Hydra-dummy.m */; };
 		427F9B15E4244F2368120FEA69B6E5FB /* BAFluidView.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A71B34F933DF99688232FFBE157F1B /* BAFluidView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		46FA05693E9F489785798681A36A132C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
 		4E305AD42FF1BA96803D1524A671FA53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		5E25D7D2648BC7566DBF6EB105B24ECF /* Pods-Hydra-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 68A9EE26FD56B93A6AD4E4B2C5497005 /* Pods-Hydra-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62887581C7BAE7F8357E5BB147F0720F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
 		8D6963B958F5481E93101EC0D76C112E /* BAFluidView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FDAB0D76B2F645457621C86A44A913 /* BAFluidView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		95DFD5D7EC610CF62443E485D3F4A85E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
 		9FAFE89CEF1F0A8991D2CA312A3F8BA0 /* BubbleTransition-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A1874E3B6D7144A4D01A0779C87EC7 /* BubbleTransition-dummy.m */; };
 		A5CB2B0B4C554AE24F20F93DAB6EEB1F /* BAFluidView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B84252D265C18360543A3AF09B9CCB9B /* BAFluidView-dummy.m */; };
-		B0BB20227737BF14086A48BAA4E9EFCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		B4BF36B56FCF978C6F1B9BE90ED2CF99 /* Pods-Hydr8-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 412CB881F8615676F90F64B3FA5D74B8 /* Pods-Hydr8-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF0B0738A7022E4D88403B5BED7CC607 /* BubbleTransition-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 201F6C3B3A83BC6D8B3E8AD6E748019C /* BubbleTransition-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9F4205C7DEC86880B860F1B95B81E89 /* BAFluidView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EDB9251CA2406DFFDA5EBD822CC5C98F /* BAFluidView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E11340D1FED042C6BFC7A1A5E7E1D694 /* UIColor+ColorWithHex.h in Headers */ = {isa = PBXBuildFile; fileRef = 099A83B9EA658F5AEE52553147D594BC /* UIColor+ColorWithHex.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,54 +26,54 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		734B16D2C292FD4F32948B2878D70DD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3237480E91E6E4E92E78E976E235A0FB;
-			remoteInfo = BubbleTransition;
-		};
-		775E3632AD316AF4AD0AA4C9BDEADD55 /* PBXContainerItemProxy */ = {
+		7E02F4ACF1DF019141DBFF5C435E51A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 521B89D018DE6930928376B79FBC69C1;
 			remoteInfo = BAFluidView;
 		};
+		AF61FBD2F2BE59741C27132BDD262C54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3237480E91E6E4E92E78E976E235A0FB;
+			remoteInfo = BubbleTransition;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		099A83B9EA658F5AEE52553147D594BC /* UIColor+ColorWithHex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+ColorWithHex.h"; path = "Sources/BAFluidView/include/UIColor+ColorWithHex.h"; sourceTree = "<group>"; };
-		163EC2CBDCE8568714CB9975C93E3530 /* Pods-Hydr8.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hydr8.release.xcconfig"; sourceTree = "<group>"; };
 		1D19A28AABDF66E0B5B508A9D4C6BA67 /* Constants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Sources/BAFluidView/include/Constants.h; sourceTree = "<group>"; };
-		1E30B17E140100539A3AB1C22527F1D9 /* Pods-Hydr8-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Hydr8-frameworks.sh"; sourceTree = "<group>"; };
 		201F6C3B3A83BC6D8B3E8AD6E748019C /* BubbleTransition-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BubbleTransition-umbrella.h"; sourceTree = "<group>"; };
-		20BF078F8CC9D7FB1862B3AD1F353FC2 /* Pods-Hydr8-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hydr8-Info.plist"; sourceTree = "<group>"; };
 		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		36649CB3023D65044E6F7C3B830A7C9A /* BAFluidView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BAFluidView-Info.plist"; sourceTree = "<group>"; };
 		37CB5C69990920AAACD7C46AFCD82EE2 /* BubbleTransition-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BubbleTransition-prefix.pch"; sourceTree = "<group>"; };
-		3A130E3941325A4ED5A19E0D5091713C /* BubbleTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BubbleTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		412CB881F8615676F90F64B3FA5D74B8 /* Pods-Hydr8-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Hydr8-umbrella.h"; sourceTree = "<group>"; };
+		3A130E3941325A4ED5A19E0D5091713C /* BubbleTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BubbleTransition.framework; path = BubbleTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		44056C6D09A6E76DDE2B6EA0193D22D9 /* Pods-Hydr8.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Hydr8.modulemap"; sourceTree = "<group>"; };
 		4CAB84796F90379660A4181BF48F9884 /* BubbleTransition-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BubbleTransition-Info.plist"; sourceTree = "<group>"; };
 		4F40C0E358794830DBA88F09F67978E9 /* BAFluidView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BAFluidView.xcconfig; sourceTree = "<group>"; };
 		52A71B34F933DF99688232FFBE157F1B /* BAFluidView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BAFluidView.h; path = Sources/BAFluidView/include/BAFluidView.h; sourceTree = "<group>"; };
+		53097A0FC2B8E0C8F138BED9002D6C48 /* Pods-Hydra-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Hydra-dummy.m"; sourceTree = "<group>"; };
 		5A91D674E62A4EF05511DC94842BF5BA /* BubbleTransition.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BubbleTransition.xcconfig; sourceTree = "<group>"; };
+		68A9EE26FD56B93A6AD4E4B2C5497005 /* Pods-Hydra-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Hydra-umbrella.h"; sourceTree = "<group>"; };
+		69FA568BD65B75039A641C46AB988C0B /* Pods-Hydra-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hydra-acknowledgements.plist"; sourceTree = "<group>"; };
 		73A1874E3B6D7144A4D01A0779C87EC7 /* BubbleTransition-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BubbleTransition-dummy.m"; sourceTree = "<group>"; };
-		749F130136BA16E75F38E60FDC721D25 /* BAFluidView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BAFluidView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		749F130136BA16E75F38E60FDC721D25 /* BAFluidView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BAFluidView.framework; path = BAFluidView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		798D701F93C95179F99C43A5C27EE895 /* Pods-Hydra-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Hydra-frameworks.sh"; sourceTree = "<group>"; };
 		83D6EF6BD624DBC1B88687EC3F8ED712 /* BAFluidView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BAFluidView-prefix.pch"; sourceTree = "<group>"; };
 		95EA87B09E588EB4B60912708D7AC1D2 /* BAFluidView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BAFluidView.modulemap; sourceTree = "<group>"; };
-		9C5D21ECCD23963BA28ECD76387670F3 /* Pods-Hydr8-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Hydr8-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E3D0091E330D149A347CE8EF25A3E16 /* Pods-Hydr8.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hydr8.debug.xcconfig"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1F97B625C5444AA115C363D61A29D3D /* BubbleTransition.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BubbleTransition.modulemap; sourceTree = "<group>"; };
 		A4FDAB0D76B2F645457621C86A44A913 /* BAFluidView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BAFluidView.m; path = Sources/BAFluidView/BAFluidView.m; sourceTree = "<group>"; };
+		A58640F20F06D07465B03231D0CEC3A3 /* Pods-Hydra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hydra.release.xcconfig"; sourceTree = "<group>"; };
 		AE2CB1E56618F43EF242649396CFB219 /* BubbleTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleTransition.swift; path = Source/BubbleTransition.swift; sourceTree = "<group>"; };
+		B37FEBE5678406E9489AC678E0E5596A /* Pods-Hydra-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Hydra-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B84252D265C18360543A3AF09B9CCB9B /* BAFluidView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BAFluidView-dummy.m"; sourceTree = "<group>"; };
-		D4861DEEB0C15659C80F46BA5EADB61D /* Pods-Hydr8-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hydr8-acknowledgements.plist"; sourceTree = "<group>"; };
-		E414C738073F8825D743E6122162F65A /* Pods_Hydr8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hydr8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA506BAB134FD7F07877D51D2F2389EB /* Pods-Hydr8-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Hydr8-dummy.m"; sourceTree = "<group>"; };
+		BE0C80A4707F6C5D736EFBD9DF27149C /* Pods_Hydra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Hydra.framework; path = "Pods-Hydra.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE1E507624B07C5D4DF87A4A7F105E81 /* Pods-Hydra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hydra.debug.xcconfig"; sourceTree = "<group>"; };
+		DA52F1D3A4B4E4E39FA172C82ED81116 /* Pods-Hydra.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Hydra.modulemap"; sourceTree = "<group>"; };
+		E8F5208BDEC2BFA90757D7E3680C9F5D /* Pods-Hydra-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hydra-Info.plist"; sourceTree = "<group>"; };
 		EDB9251CA2406DFFDA5EBD822CC5C98F /* BAFluidView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BAFluidView-umbrella.h"; sourceTree = "<group>"; };
 		EDD536BD25917165DA86B3650CCF0FE3 /* UIColor+ColorWithHex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ColorWithHex.m"; path = "Sources/BAFluidView/UIColor+ColorWithHex.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,11 +87,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9CE36EA6F84DFD57978CEAF1FEF7EC96 /* Frameworks */ = {
+		34E9F8F89D907802D4094D4B640FFFC3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0BB20227737BF14086A48BAA4E9EFCF /* Foundation.framework in Frameworks */,
+				46FA05693E9F489785798681A36A132C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,34 +135,35 @@
 				AE2CB1E56618F43EF242649396CFB219 /* BubbleTransition.swift */,
 				0920D90B8FE66F94D54DA40865656D91 /* Support Files */,
 			);
+			name = BubbleTransition;
 			path = BubbleTransition;
 			sourceTree = "<group>";
 		};
-		6BE02329C22136A78E2A8AF3A707FA95 /* Pods-Hydr8 */ = {
-			isa = PBXGroup;
-			children = (
-				44056C6D09A6E76DDE2B6EA0193D22D9 /* Pods-Hydr8.modulemap */,
-				9C5D21ECCD23963BA28ECD76387670F3 /* Pods-Hydr8-acknowledgements.markdown */,
-				D4861DEEB0C15659C80F46BA5EADB61D /* Pods-Hydr8-acknowledgements.plist */,
-				EA506BAB134FD7F07877D51D2F2389EB /* Pods-Hydr8-dummy.m */,
-				1E30B17E140100539A3AB1C22527F1D9 /* Pods-Hydr8-frameworks.sh */,
-				20BF078F8CC9D7FB1862B3AD1F353FC2 /* Pods-Hydr8-Info.plist */,
-				412CB881F8615676F90F64B3FA5D74B8 /* Pods-Hydr8-umbrella.h */,
-				9E3D0091E330D149A347CE8EF25A3E16 /* Pods-Hydr8.debug.xcconfig */,
-				163EC2CBDCE8568714CB9975C93E3530 /* Pods-Hydr8.release.xcconfig */,
-			);
-			name = "Pods-Hydr8";
-			path = "Target Support Files/Pods-Hydr8";
-			sourceTree = "<group>";
-		};
-		BE280953D36136E510077ED1D9FE04FB /* Products */ = {
+		3D62DEC919086DBCBAFA7BC7D661FA27 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				749F130136BA16E75F38E60FDC721D25 /* BAFluidView.framework */,
 				3A130E3941325A4ED5A19E0D5091713C /* BubbleTransition.framework */,
-				E414C738073F8825D743E6122162F65A /* Pods_Hydr8.framework */,
+				BE0C80A4707F6C5D736EFBD9DF27149C /* Pods_Hydra.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		402B0C1F2454D73779A1186176E7345E /* Pods-Hydra */ = {
+			isa = PBXGroup;
+			children = (
+				DA52F1D3A4B4E4E39FA172C82ED81116 /* Pods-Hydra.modulemap */,
+				B37FEBE5678406E9489AC678E0E5596A /* Pods-Hydra-acknowledgements.markdown */,
+				69FA568BD65B75039A641C46AB988C0B /* Pods-Hydra-acknowledgements.plist */,
+				53097A0FC2B8E0C8F138BED9002D6C48 /* Pods-Hydra-dummy.m */,
+				798D701F93C95179F99C43A5C27EE895 /* Pods-Hydra-frameworks.sh */,
+				E8F5208BDEC2BFA90757D7E3680C9F5D /* Pods-Hydra-Info.plist */,
+				68A9EE26FD56B93A6AD4E4B2C5497005 /* Pods-Hydra-umbrella.h */,
+				BE1E507624B07C5D4DF87A4A7F105E81 /* Pods-Hydra.debug.xcconfig */,
+				A58640F20F06D07465B03231D0CEC3A3 /* Pods-Hydra.release.xcconfig */,
+			);
+			name = "Pods-Hydra";
+			path = "Target Support Files/Pods-Hydra";
 			sourceTree = "<group>";
 		};
 		C542422B418A0CCBAF98205D37420189 /* Support Files */ = {
@@ -185,9 +186,17 @@
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
 				EE581A22CE50A0BC51F54D72F8B7CD23 /* Pods */,
-				BE280953D36136E510077ED1D9FE04FB /* Products */,
-				E41CECFD538A0DAADEDE60B42D1B992A /* Targets Support Files */,
+				3D62DEC919086DBCBAFA7BC7D661FA27 /* Products */,
+				D86327EA7C4C46DF57DD321EC6C083DE /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		D86327EA7C4C46DF57DD321EC6C083DE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				402B0C1F2454D73779A1186176E7345E /* Pods-Hydra */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		DD9068F96DD5F7BB12640C36E74BC1DC /* BAFluidView */ = {
@@ -200,6 +209,7 @@
 				EDD536BD25917165DA86B3650CCF0FE3 /* UIColor+ColorWithHex.m */,
 				C542422B418A0CCBAF98205D37420189 /* Support Files */,
 			);
+			name = BAFluidView;
 			path = BAFluidView;
 			sourceTree = "<group>";
 		};
@@ -210,14 +220,6 @@
 				312B988EF117AE4DE76A268D970131FE /* UIKit.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		E41CECFD538A0DAADEDE60B42D1B992A /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				6BE02329C22136A78E2A8AF3A707FA95 /* Pods-Hydr8 */,
-			);
-			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		EE581A22CE50A0BC51F54D72F8B7CD23 /* Pods */ = {
@@ -251,11 +253,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BAE63678BFB9399361EDECBF4C7490E7 /* Headers */ = {
+		F88B8FB535C4A694993DFD8D8ECF58FF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4BF36B56FCF978C6F1B9BE90ED2CF99 /* Pods-Hydr8-umbrella.h in Headers */,
+				5E25D7D2648BC7566DBF6EB105B24ECF /* Pods-Hydra-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,24 +300,24 @@
 			productReference = 749F130136BA16E75F38E60FDC721D25 /* BAFluidView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A0EFF0656F70139D1B75BD744439EB95 /* Pods-Hydr8 */ = {
+		FBF77C4D9B186EE0DEB6B74C31D43D43 /* Pods-Hydra */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 78820BA901584E603E28426EDFD7C089 /* Build configuration list for PBXNativeTarget "Pods-Hydr8" */;
+			buildConfigurationList = ED7C7E3038319A2D5E9B91446BFF34D7 /* Build configuration list for PBXNativeTarget "Pods-Hydra" */;
 			buildPhases = (
-				BAE63678BFB9399361EDECBF4C7490E7 /* Headers */,
-				EE21BE22A2ADB08A694E39483609F57D /* Sources */,
-				9CE36EA6F84DFD57978CEAF1FEF7EC96 /* Frameworks */,
-				6B725F082645311F2BD8B8D032636496 /* Resources */,
+				F88B8FB535C4A694993DFD8D8ECF58FF /* Headers */,
+				E7AA4F7F3F0BDA2EC425903E0067F455 /* Sources */,
+				34E9F8F89D907802D4094D4B640FFFC3 /* Frameworks */,
+				322067E5548452F2949BE45124403EDD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E485FE93F221FDFED924A71631B832E6 /* PBXTargetDependency */,
-				1058DE87AA5EB3FAFC8C309FAAFC5844 /* PBXTargetDependency */,
+				511CC13D46C4F88AA8F172C8298CE217 /* PBXTargetDependency */,
+				E57A5469075E9BE5934A62842FFD0E08 /* PBXTargetDependency */,
 			);
-			name = "Pods-Hydr8";
-			productName = "Pods-Hydr8";
-			productReference = E414C738073F8825D743E6122162F65A /* Pods_Hydr8.framework */;
+			name = "Pods-Hydra";
+			productName = "Pods-Hydra";
+			productReference = BE0C80A4707F6C5D736EFBD9DF27149C /* Pods_Hydra.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -326,34 +328,28 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
-				TargetAttributes = {
-					3237480E91E6E4E92E78E976E235A0FB = {
-						LastSwiftMigration = 1120;
-					};
-				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 11.0";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = BE280953D36136E510077ED1D9FE04FB /* Products */;
+			productRefGroup = 3D62DEC919086DBCBAFA7BC7D661FA27 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				521B89D018DE6930928376B79FBC69C1 /* BAFluidView */,
 				3237480E91E6E4E92E78E976E235A0FB /* BubbleTransition */,
-				A0EFF0656F70139D1B75BD744439EB95 /* Pods-Hydr8 */,
+				FBF77C4D9B186EE0DEB6B74C31D43D43 /* Pods-Hydra */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6B725F082645311F2BD8B8D032636496 /* Resources */ = {
+		322067E5548452F2949BE45124403EDD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -396,70 +392,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EE21BE22A2ADB08A694E39483609F57D /* Sources */ = {
+		E7AA4F7F3F0BDA2EC425903E0067F455 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				105B0598CB6F045745DBA0B85AE6FFA9 /* Pods-Hydr8-dummy.m in Sources */,
+				3F8AFE214340A496B846D2FC2EB719D6 /* Pods-Hydra-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1058DE87AA5EB3FAFC8C309FAAFC5844 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BubbleTransition;
-			target = 3237480E91E6E4E92E78E976E235A0FB /* BubbleTransition */;
-			targetProxy = 734B16D2C292FD4F32948B2878D70DD3 /* PBXContainerItemProxy */;
-		};
-		E485FE93F221FDFED924A71631B832E6 /* PBXTargetDependency */ = {
+		511CC13D46C4F88AA8F172C8298CE217 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BAFluidView;
 			target = 521B89D018DE6930928376B79FBC69C1 /* BAFluidView */;
-			targetProxy = 775E3632AD316AF4AD0AA4C9BDEADD55 /* PBXContainerItemProxy */;
+			targetProxy = 7E02F4ACF1DF019141DBFF5C435E51A9 /* PBXContainerItemProxy */;
+		};
+		E57A5469075E9BE5934A62842FFD0E08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BubbleTransition;
+			target = 3237480E91E6E4E92E78E976E235A0FB /* BubbleTransition */;
+			targetProxy = AF61FBD2F2BE59741C27132BDD262C54 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		13190BE6626EE4E8D031C83E40FC6A91 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 163EC2CBDCE8568714CB9975C93E3530 /* Pods-Hydr8.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Hydr8/Pods-Hydr8-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Hydr8/Pods-Hydr8.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		1724F1CE6FB87D5164112A31786B9C8A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A91D674E62A4EF05511DC94842BF5BA /* BubbleTransition.xcconfig */;
@@ -488,7 +446,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -530,9 +488,9 @@
 			};
 			name = Debug;
 		};
-		6EF9165D1CC62CE7F81050AF1135D7A0 /* Debug */ = {
+		39D44182390FC0DE39F7BBDAAC1306E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E3D0091E330D149A347CE8EF25A3E16 /* Pods-Hydr8.debug.xcconfig */;
+			baseConfigurationReference = A58640F20F06D07465B03231D0CEC3A3 /* Pods-Hydra.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -544,7 +502,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Hydr8/Pods-Hydr8-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Hydra/Pods-Hydra-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -553,7 +511,45 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Hydr8/Pods-Hydr8.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Hydra/Pods-Hydra.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		791AC5713DFF8DA9CA22B36D14EDC614 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE1E507624B07C5D4DF87A4A7F105E81 /* Pods-Hydra.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Hydra/Pods-Hydra-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Hydra/Pods-Hydra.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -755,7 +751,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -793,11 +789,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		78820BA901584E603E28426EDFD7C089 /* Build configuration list for PBXNativeTarget "Pods-Hydr8" */ = {
+		ED7C7E3038319A2D5E9B91446BFF34D7 /* Build configuration list for PBXNativeTarget "Pods-Hydra" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6EF9165D1CC62CE7F81050AF1135D7A0 /* Debug */,
-				13190BE6626EE4E8D031C83E40FC6A91 /* Release */,
+				791AC5713DFF8DA9CA22B36D14EDC614 /* Debug */,
+				39D44182390FC0DE39F7BBDAAC1306E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

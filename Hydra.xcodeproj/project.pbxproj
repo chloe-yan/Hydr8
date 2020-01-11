@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18910B932EE24349F20C0359 /* Pods_Hydr8.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAAA6FD3BB11AF94F09A576 /* Pods_Hydr8.framework */; };
 		D17519F323BADB8200E85762 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17519F223BADB8200E85762 /* AppDelegate.swift */; };
 		D17519F523BADB8200E85762 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17519F423BADB8200E85762 /* SceneDelegate.swift */; };
 		D17519FD23BADB8200E85762 /* Hydr8.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D17519FB23BADB8200E85762 /* Hydr8.xcdatamodeld */; };
@@ -55,8 +54,6 @@
 		D188B23B23C26FFD00110889 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D188B23A23C26FFD00110889 /* Main.storyboard */; };
 		D188B23D23C2712100110889 /* DataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188B23C23C2712100110889 /* DataGenerator.swift */; };
 		D188B23F23C2716300110889 /* WeeklyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188B23E23C2716300110889 /* WeeklyChartView.swift */; };
-		D188B24123C2E88F00110889 /* StackViewBarChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D188B24023C2E88E00110889 /* StackViewBarChart.framework */; };
-		D188B24223C2E88F00110889 /* StackViewBarChart.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D188B24023C2E88E00110889 /* StackViewBarChart.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D188B28723C2FDD200110889 /* CustomSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188B27423C2FDD200110889 /* CustomSegments.swift */; };
 		D188B28823C2FDD200110889 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188B27523C2FDD200110889 /* CALayerExtension.swift */; };
 		D188B28A23C2FDD200110889 /* UIBezierPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188B27723C2FDD200110889 /* UIBezierPathExtension.swift */; };
@@ -68,9 +65,11 @@
 		D1AFBE4723C5C1080051CF45 /* MonthlyBasicBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFBE4623C5C1080051CF45 /* MonthlyBasicBarChart.swift */; };
 		D1AFBE4923C5C1350051CF45 /* MonthlyBasicBarChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFBE4823C5C1340051CF45 /* MonthlyBasicBarChartPresenter.swift */; };
 		D1AFBE4B23C5C1570051CF45 /* MonthlyBasicBarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFBE4A23C5C1570051CF45 /* MonthlyBasicBarEntry.swift */; };
+		D1C1B5F623C9AE3000D54983 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1C1B5F523C9AE3000D54983 /* Default-568h@2x.png */; };
 		D1DE3F3623BBFA6E005341C2 /* AddUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */; };
 		D1FBDDC423BD6C8C00003306 /* BubbleEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */; };
 		D1FBDDD223BEA39100003306 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FBDDD123BEA39100003306 /* Assets.xcassets */; };
+		FF56968AF033A99096393EF1 /* Pods_Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91B1F8B52A16BBE5BB1CFB1 /* Pods_Hydra.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,7 +79,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D188B24223C2E88F00110889 /* StackViewBarChart.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,8 +86,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2FAAA6FD3BB11AF94F09A576 /* Pods_Hydr8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hydr8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6685786E772233E8561C1EA /* Pods-Hydr8.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hydr8.release.xcconfig"; path = "Target Support Files/Pods-Hydr8/Pods-Hydr8.release.xcconfig"; sourceTree = "<group>"; };
+		A449EDDACA356339DE641FCA /* Pods-Hydra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hydra.debug.xcconfig"; path = "Target Support Files/Pods-Hydra/Pods-Hydra.debug.xcconfig"; sourceTree = "<group>"; };
+		BE7020C0F359947630178A2A /* Pods-Hydra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hydra.release.xcconfig"; path = "Target Support Files/Pods-Hydra/Pods-Hydra.release.xcconfig"; sourceTree = "<group>"; };
 		D17519EF23BADB8200E85762 /* Hydra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17519F223BADB8200E85762 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17519F423BADB8200E85762 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 		D188B23A23C26FFD00110889 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D188B23C23C2712100110889 /* DataGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGenerator.swift; sourceTree = "<group>"; };
 		D188B23E23C2716300110889 /* WeeklyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChartView.swift; sourceTree = "<group>"; };
-		D188B24023C2E88E00110889 /* StackViewBarChart.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StackViewBarChart.framework; path = Carthage/Build/iOS/StackViewBarChart.framework; sourceTree = "<group>"; };
 		D188B27423C2FDD200110889 /* CustomSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegments.swift; sourceTree = "<group>"; };
 		D188B27523C2FDD200110889 /* CALayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
 		D188B27723C2FDD200110889 /* UIBezierPathExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtension.swift; sourceTree = "<group>"; };
@@ -151,10 +148,11 @@
 		D1AFBE4623C5C1080051CF45 /* MonthlyBasicBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyBasicBarChart.swift; sourceTree = "<group>"; };
 		D1AFBE4823C5C1340051CF45 /* MonthlyBasicBarChartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyBasicBarChartPresenter.swift; sourceTree = "<group>"; };
 		D1AFBE4A23C5C1570051CF45 /* MonthlyBasicBarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyBasicBarEntry.swift; sourceTree = "<group>"; };
+		D1C1B5F523C9AE3000D54983 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdatesViewController.swift; sourceTree = "<group>"; };
 		D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleEmitter.swift; sourceTree = "<group>"; };
 		D1FBDDD123BEA39100003306 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		DE7639662755AA6B6B9D03F6 /* Pods-Hydr8.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hydr8.debug.xcconfig"; path = "Target Support Files/Pods-Hydr8/Pods-Hydr8.debug.xcconfig"; sourceTree = "<group>"; };
+		F91B1F8B52A16BBE5BB1CFB1 /* Pods_Hydra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hydra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,19 +160,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18910B932EE24349F20C0359 /* Pods_Hydr8.framework in Frameworks */,
-				D188B24123C2E88F00110889 /* StackViewBarChart.framework in Frameworks */,
+				FF56968AF033A99096393EF1 /* Pods_Hydra.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C09FCC7DB7BA49B764D8E69A /* Frameworks */ = {
+		0719FEB0A67BA5879FD6B421 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D188B24023C2E88E00110889 /* StackViewBarChart.framework */,
-				2FAAA6FD3BB11AF94F09A576 /* Pods_Hydr8.framework */,
+				F91B1F8B52A16BBE5BB1CFB1 /* Pods_Hydra.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,8 +178,8 @@
 		C9C68A6F50116101BD62A165 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DE7639662755AA6B6B9D03F6 /* Pods-Hydr8.debug.xcconfig */,
-				A6685786E772233E8561C1EA /* Pods-Hydr8.release.xcconfig */,
+				A449EDDACA356339DE641FCA /* Pods-Hydra.debug.xcconfig */,
+				BE7020C0F359947630178A2A /* Pods-Hydra.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -191,11 +187,12 @@
 		D17519E623BADB8200E85762 = {
 			isa = PBXGroup;
 			children = (
+				D1C1B5F523C9AE3000D54983 /* Default-568h@2x.png */,
 				D17519F123BADB8200E85762 /* Hydra */,
 				D17519F023BADB8200E85762 /* Products */,
 				D1751A5623BAEE5100E85762 /* montserrat */,
 				C9C68A6F50116101BD62A165 /* Pods */,
-				C09FCC7DB7BA49B764D8E69A /* Frameworks */,
+				0719FEB0A67BA5879FD6B421 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -299,21 +296,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1751A0623BADB8600E85762 /* Build configuration list for PBXNativeTarget "Hydra" */;
 			buildPhases = (
-				612AAC53DED0881B2EB52C0E /* [CP] Check Pods Manifest.lock */,
+				A16827CF5A4384CE27838FA4 /* [CP] Check Pods Manifest.lock */,
 				D17519EB23BADB8200E85762 /* Sources */,
 				D17519EC23BADB8200E85762 /* Frameworks */,
 				D17519ED23BADB8200E85762 /* Resources */,
-				99462FDDED39C8C792505758 /* [CP] Embed Pods Frameworks */,
 				D188B24323C2E88F00110889 /* Embed Frameworks */,
 				D188B24423C2E8A900110889 /* ShellScript */,
+				62C7615F1B3A87D2252A0C7A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Hydra;
-			packageProductDependencies = (
-			);
 			productName = Hydr8;
 			productReference = D17519EF23BADB8200E85762 /* Hydra.app */;
 			productType = "com.apple.product-type.application";
@@ -342,8 +337,6 @@
 				Base,
 			);
 			mainGroup = D17519E623BADB8200E85762;
-			packageReferences = (
-			);
 			productRefGroup = D17519F023BADB8200E85762 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -383,6 +376,7 @@
 				D1751A8123BAEE5100E85762 /* MontserratAlternates-LightItalic.otf in Resources */,
 				D1751A9223BAEE5100E85762 /* Montserrat-Italic.otf in Resources */,
 				D1751A8D23BAEE5100E85762 /* Montserrat-LightItalic.otf in Resources */,
+				D1C1B5F623C9AE3000D54983 /* Default-568h@2x.png in Resources */,
 				D1FBDDD223BEA39100003306 /* Assets.xcassets in Resources */,
 				D1751A8623BAEE5100E85762 /* Montserrat-Thin.otf in Resources */,
 				D1751A8C23BAEE5100E85762 /* MontserratAlternates-Thin.otf in Resources */,
@@ -404,7 +398,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		612AAC53DED0881B2EB52C0E /* [CP] Check Pods Manifest.lock */ = {
+		62C7615F1B3A87D2252A0C7A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hydra/Pods-Hydra-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hydra/Pods-Hydra-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hydra/Pods-Hydra-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A16827CF5A4384CE27838FA4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -419,28 +430,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Hydr8-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Hydra-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		99462FDDED39C8C792505758 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hydr8/Pods-Hydr8-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hydr8/Pods-Hydr8-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hydr8/Pods-Hydr8-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D188B24423C2E8A900110889 /* ShellScript */ = {
@@ -622,7 +616,7 @@
 		};
 		D1751A0723BADB8600E85762 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE7639662755AA6B6B9D03F6 /* Pods-Hydr8.debug.xcconfig */;
+			baseConfigurationReference = A449EDDACA356339DE641FCA /* Pods-Hydra.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -631,12 +625,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Hydr8/Info.plist;
+				INFOPLIST_FILE = Hydra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = chloeyan.Hydr8;
+				PRODUCT_BUNDLE_IDENTIFIER = chloeyan.Hydra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -645,7 +639,7 @@
 		};
 		D1751A0823BADB8600E85762 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6685786E772233E8561C1EA /* Pods-Hydr8.release.xcconfig */;
+			baseConfigurationReference = BE7020C0F359947630178A2A /* Pods-Hydra.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -654,12 +648,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Hydr8/Info.plist;
+				INFOPLIST_FILE = Hydra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = chloeyan.Hydr8;
+				PRODUCT_BUNDLE_IDENTIFIER = chloeyan.Hydra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

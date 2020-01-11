@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D17519EE23BADB8200E85762"
-               BuildableName = "Hydr8.app"
-               BlueprintName = "Hydr8"
+               BuildableName = "Hydra.app"
+               BlueprintName = "Hydra"
                ReferencedContainer = "container:Hydra.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D17519EE23BADB8200E85762"
-            BuildableName = "Hydr8.app"
-            BlueprintName = "Hydr8"
+            BuildableName = "Hydra.app"
+            BlueprintName = "Hydra"
             ReferencedContainer = "container:Hydra.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,8 +69,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D17519EE23BADB8200E85762"
-            BuildableName = "Hydr8.app"
-            BlueprintName = "Hydr8"
+            BuildableName = "Hydra.app"
+            BlueprintName = "Hydra"
             ReferencedContainer = "container:Hydra.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -126,6 +126,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     lazy var currentDate = defaults.string(forKey: "currentDate")
     lazy var currentMonth = defaults.integer(forKey: "currentMonth")
     
+    let homeView = UIView()
     var maskingImage = UIImage(named: "Droplet")
     var maskingLayer = CALayer()
     let dropletOutlineImage = UIImage(named: "Droplet Outline")
@@ -191,7 +192,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         let day = components.weekday! - 1
         print("day: \(day)")
         weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
-        weeklyWaterIntakeData![day-1] = Int(defaults.double(forKey: "waterIntake"))
+        if (day == 0) {
+            weeklyWaterIntakeData![6] = Int(defaults.double(forKey: "waterIntake"))
+        }
+        else {
+            weeklyWaterIntakeData![day-1] = Int(defaults.double(forKey: "waterIntake"))
+        }
         defaults.set(weeklyWaterIntakeData, forKey: "weeklyWaterIntakeData")
         
         // Update monthly water intake
@@ -347,21 +353,22 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         settingsView.addSubview(setGoalButton)
        
         // Home view page
-        let homeView: UIView = UIView(frame: CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight))
+        homeView.frame = CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight)
         homeView.backgroundColor = UIColor.white.withAlphaComponent(0)
         x = homeView.frame.origin.x + viewWidth + padding
         scrollView.addSubview(homeView)
        
         // Track intake button
         trackIntakeButton = UIButton()
-        trackIntakeButton.frame = CGRect(x: (view.frame.maxX/2)-30, y: view.frame.maxY/2+150, width: 60, height: 60)
+        trackIntakeButton.frame = CGRect(x: (homeView.bounds.maxX/2)-(((60/650)*(homeView.bounds.maxY))/2), y: homeView.bounds.maxY-((175/650)*homeView.bounds.maxY), width: ((60/650)*(homeView.bounds.maxY)), height: ((60/650)*(homeView.bounds.maxY)))
+        print("maxY: ", homeView.frame.maxY)
        // trackIntakeButton.frame = CGRect(x: 70, y: 100, width: 60, height: 60)
         trackIntakeButton.backgroundColor = UIColor.white
         trackIntakeButton.setTitleColor(UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), for: .normal)
         trackIntakeButton.setTitle("+", for: .normal)
         trackIntakeButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 35)!
         //trackIntakeButton.frame = CGRect(x: 100, y: 100, width: 60, height: 60)
-        trackIntakeButton.layer.cornerRadius = 30
+        trackIntakeButton.layer.cornerRadius = (30/650)*(homeView.bounds.maxY)
         trackIntakeButton.addTarget(self, action: #selector(addUpdatesButtonTapped), for: .touchUpInside)
         trackIntakeButton.isEnabled = true
         homeView.addSubview(trackIntakeButton)
@@ -612,7 +619,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     // Animates presentation of BubbleTransition
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       transition.transitionMode = .present
-        transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: view.frame.maxY-100) //trackIntakeButton.center
+        transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: trackIntakeButton.center.y+((30/650)*homeView.bounds.maxY)) //trackIntakeButton.center
       transition.bubbleColor = trackIntakeButton.backgroundColor!
       return transition
     }
@@ -622,7 +629,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
       greetingLabel.isHidden = true
       dateLabel.isHidden = true
       transition.transitionMode = .dismiss
-        transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: view.frame.maxY-100) //trackIntakeButton.center
+      transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: (trackIntakeButton.center.y)+((30/650)*homeView.bounds.maxY))  //trackIntakeButton.center
       transition.bubbleColor = trackIntakeButton.backgroundColor!
       return transition
     }

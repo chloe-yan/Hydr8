@@ -31,6 +31,7 @@ class AddUpdatesViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
         interactiveTransition?.finish()
     }
+
     
     // MARK: VARIABLES
     
@@ -44,6 +45,10 @@ class AddUpdatesViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let hvc = HomeViewController()
+        closeButton.frame = CGRect(x: (view.bounds.maxX/2)-(((60/650)*(view.bounds.maxY))/2), y: view.bounds.maxY-((175/650)*view.bounds.maxY), width: ((60/650)*(view.bounds.maxY)), height: ((60/650)*(view.bounds.maxY)))
+        print("hvc x", view.bounds.maxX)
+        print("hvc y", view.bounds.maxY)
     }
   
     override func viewWillDisappear(_ animated: Bool) {

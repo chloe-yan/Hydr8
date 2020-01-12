@@ -154,15 +154,9 @@
                                     <action selector="addUpdatesButtonTapped:" destination="okr-CF-ucO" eventType="touchUpInside" id="YfA-oY-1Vt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbJ-5k-JZz">
-                                <rect key="frame" x="177" y="688" width="60" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbJ-5k-JZz">
+                                <rect key="frame" x="192" y="695" width="30" height="53"/>
                                 <color key="backgroundColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="Bma-rT-GME"/>
-                                    <constraint firstAttribute="width" constant="60" id="Pgb-Ah-hwF"/>
-                                    <constraint firstAttribute="height" constant="60" id="lYa-LX-iEj"/>
-                                    <constraint firstAttribute="height" constant="60" id="y0p-SG-o8g"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="30"/>
                                 <state key="normal" title="×">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -174,7 +168,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="closeAction:" destination="okr-CF-ucO" eventType="touchUpInside" id="vfo-SO-L0g"/>
+                                    <action selector="closeAction:" destination="okr-CF-ucO" eventType="touchUpInside" id="haF-Xb-cUH"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Aqg-KG-eOx">
@@ -196,6 +190,7 @@
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track your water intake" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gy1-aL-FX2">
                                 <rect key="frame" x="50" y="50" width="314" height="40"/>
+                                <viewLayoutGuide key="safeArea" id="CJg-1z-N6n"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="29"/>
                                 <color key="textColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -207,7 +202,6 @@
                             <constraint firstItem="cAk-7t-OeW" firstAttribute="trailing" secondItem="mDw-Ii-xO6" secondAttribute="trailing" constant="50" id="AVc-Q5-gah"/>
                             <constraint firstItem="DbJ-5k-JZz" firstAttribute="centerX" secondItem="utA-0b-iXH" secondAttribute="centerX" id="FS2-rj-ZHD"/>
                             <constraint firstItem="cAk-7t-OeW" firstAttribute="trailing" secondItem="gy1-aL-FX2" secondAttribute="trailing" constant="50" id="HIW-fL-97C"/>
-                            <constraint firstItem="cAk-7t-OeW" firstAttribute="bottom" secondItem="DbJ-5k-JZz" secondAttribute="bottom" constant="60" id="L9a-sm-P4i"/>
                             <constraint firstItem="Aqg-KG-eOx" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="QMc-fd-u3T"/>
                             <constraint firstItem="gy1-aL-FX2" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="W3L-Mp-Uwk"/>
                             <constraint firstItem="uPl-DJ-1xe" firstAttribute="top" secondItem="Aqg-KG-eOx" secondAttribute="bottom" constant="15" id="X4I-GF-oAU"/>
@@ -224,7 +218,7 @@
                     <connections>
                         <outlet property="addUpdateTextField" destination="ZeY-4Q-Owl" id="3im-JV-TK3"/>
                         <outlet property="addUpdatesButton" destination="uPl-DJ-1xe" id="ZCW-VR-XqF"/>
-                        <outlet property="closeButton" destination="utA-0b-iXH" id="fg9-0M-K43"/>
+                        <outlet property="closeButton" destination="DbJ-5k-JZz" id="x4c-Fo-PVE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qoy-hf-fdf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

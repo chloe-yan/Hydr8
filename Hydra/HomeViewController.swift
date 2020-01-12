@@ -281,7 +281,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        
         // Settings label
         settingsLabel.text = "Settings"
-        settingsLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 30)
+        print("settings view bounds maxX: ", settingsView.bounds.maxX)
+        settingsLabel.font = UIFont(name: "AvenirNext-DemiBold", size: (30/550)*(settingsView.bounds.maxX))
         settingsLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
         settingsLabel.frame = CGRect(x: 250, y: 50, width: settingsLabel.intrinsicContentSize.width, height: settingsLabel.intrinsicContentSize.height
         )
@@ -377,19 +378,20 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        
         // Droplet FluidView
         // Threshold values: Min = 0.4, Max: 0.8
-       dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
+        dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
         dropletFluidView.strokeColor = UIColor.clear
         dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
         dropletFluidView.keepStationary()
         dropletFluidView.startAnimation()
-        maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-128, y: 150, width: maskingImage?.size.width ?? 0.0, height: maskingImage?.size.height ?? 0.0)
+        maskingLayer.frame = CGRect(x: (scrollView.bounds.maxX/2)-128, y: (scrollView.bounds.maxY/2)-128, width: maskingImage?.size.width ?? 256.0, height: maskingImage?.size.height ?? 256.0)
         maskingLayer.contents = maskingImage?.cgImage
         dropletFluidView.layer.mask = maskingLayer
         homeView.addSubview(dropletFluidView)
         homeView.sendSubviewToBack(dropletFluidView)
 
         // Droplet outline overlay
-        dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-128, y: 150, width: dropletOutlineImage!.size.width, height: dropletOutlineImage!.size.height)
+        dropletOutlineLayer.frame = CGRect(x: (homeView.bounds.maxX/2)-128, y: (scrollView.bounds.maxY/2)-128, width: dropletOutlineImage!.size.width, height: dropletOutlineImage!.size.height)
+        //dropletOutlineImage.translatesAutoresizingMasksIntoConstraints = false
         dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
         dropletFluidView.layer.addSublayer(dropletOutlineLayer) // CHANGED
        
@@ -478,7 +480,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         
        // Scroll view metrics
        scrollView.contentSize = CGSize(width:x+padding, height:scrollView.frame.size.height)
-       scrollView.setContentOffset(CGPoint(x: 375, y: padding), animated: true)
+        scrollView.setContentOffset(CGPoint(x: homeView.bounds.maxX, y: padding), animated: true)
         
     }
     

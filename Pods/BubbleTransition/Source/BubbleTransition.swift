@@ -272,6 +272,6 @@ private extension BubbleTransition {
     let offset = sqrt(lengthX * lengthX + lengthY * lengthY) * 2
     let size = CGSize(width: offset, height: offset)
     
-    return CGRect(origin: CGPoint.zero, size: size)
+    return CGRect(origin: CGPoint(x: 70, y: 100), size: size) //CGPoint.zero CHANGED
   }
 }

@@ -16,7 +16,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     // MARK: OUTLETS & ACTIONS
     
-    @IBOutlet weak var addUpdatesButton: UIButton!
+   // @IBOutlet weak var trackIntakeButton: UIButton!
+    //@IBOutlet weak var trackIntakeButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var analyticsButton: UIButton!
     @IBOutlet weak var weeklyBarChart: BasicBarChart!
@@ -29,12 +30,17 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     @objc func setGoalButtonTapped(_ sender: Any) {
         // Exception handling for nil user input
-        if (numericGoalTextField.text != Optional("")) {
+        if (numericGoalTextField.text != Optional("") && (numericGoalTextField.text as NSString?)!.integerValue > 0) {
             defaults.set(Int(numericGoalTextField.text!)!, forKey: "dailyGoal")
             goal = Double(Int(numericGoalTextField.text!)!)
             numericGoalLabel.text = "\(goal) oz"
             numericGoalTextField.text = ""
             percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
+        }
+        else if (numericGoalTextField.text != Optional("") && (numericGoalTextField.text as NSString?)!.integerValue <= 0) {
+            let alert = UIAlertController(title: "Try setting a higher goal", message: "You got this! Tackle hydration.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
         else {
             let alert = UIAlertController(title: "Please enter a goal", message: "Sorry! We couldn't understand your input.", preferredStyle: UIAlertController.Style.alert)
@@ -94,7 +100,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     let motionManager = CMMotionManager()
     
-    var trackIntakeButton: UIButton = UIButton()
+    var trackIntakeButton = UIButton()
     
     var greetingLabel: UILabel = UILabel()
     var dateLabel: UILabel = UILabel()
@@ -158,6 +164,11 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
                 defaults.set(monthlyInitArray, forKey: "monthlyWaterIntakeData")
                 print(defaults.array(forKey: "monthlyWaterIntakeData")!)
             }
+        }
+        
+        // Set daily goal if not set
+        if (defaults.double(forKey: "dailyGoal") == 0) {
+            defaults.set(64, forKey: "dailyGoal")
         }
         
         // Greeting animation
@@ -343,10 +354,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Track intake button
         trackIntakeButton = UIButton()
         trackIntakeButton.frame = CGRect(x: (view.frame.maxX/2)-30, y: view.frame.maxY/2+150, width: 60, height: 60)
+       // trackIntakeButton.frame = CGRect(x: 70, y: 100, width: 60, height: 60)
         trackIntakeButton.backgroundColor = UIColor.white
         trackIntakeButton.setTitleColor(UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), for: .normal)
         trackIntakeButton.setTitle("+", for: .normal)
         trackIntakeButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 35)!
+        //trackIntakeButton.frame = CGRect(x: 100, y: 100, width: 60, height: 60)
         trackIntakeButton.layer.cornerRadius = 30
         trackIntakeButton.addTarget(self, action: #selector(addUpdatesButtonTapped), for: .touchUpInside)
         trackIntakeButton.isEnabled = true
@@ -364,7 +377,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        
         // Droplet FluidView
         // Threshold values: Min = 0.4, Max: 0.8
-        dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
+       dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
         dropletFluidView.strokeColor = UIColor.clear
         dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
         dropletFluidView.keepStationary()
@@ -378,7 +391,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Droplet outline overlay
         dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-128, y: 150, width: dropletOutlineImage!.size.width, height: dropletOutlineImage!.size.height)
         dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
-        dropletFluidView.layer.addSublayer(dropletOutlineLayer)
+        dropletFluidView.layer.addSublayer(dropletOutlineLayer) // CHANGED
        
         // Percentage label
         percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
@@ -521,7 +534,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Update user data
         waterIntake = defaults.double(forKey: "waterIntake")
         waterIntakeLabel.text = "\(waterIntake) oz"
-        percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
+        //percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
+        print("water intake: \(defaults.double(forKey: "waterIntake"))")
         dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
         
         // Reset daily user data

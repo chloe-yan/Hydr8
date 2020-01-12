@@ -31,7 +31,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Hydr8" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Hydra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,12 +86,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLr-WC-w3L" customClass="MonthlyBasicBarChart" customModule="Hydr8" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLr-WC-w3L" customClass="MonthlyBasicBarChart" customModule="Hydra" customModuleProvider="target">
                                 <rect key="frame" x="57" y="266" width="300" height="329"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HDa-J9-Z98" customClass="BasicBarChart" customModule="Hydr8" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HDa-J9-Z98" customClass="BasicBarChart" customModule="Hydra" customModuleProvider="target">
                                 <rect key="frame" x="59" y="267" width="300" height="329"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -117,7 +117,6 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="NIQ-lv-cXO"/>
                     <connections>
-                        <outlet property="addUpdatesButton" destination="kuH-Zc-lvS" id="AIf-bV-aUY"/>
                         <outlet property="analyticsButton" destination="cMl-qp-h2Y" id="FbB-AR-lCo"/>
                         <outlet property="monthlyBarChart" destination="cLr-WC-w3L" id="gt9-LY-aw8"/>
                         <outlet property="settingsButton" destination="oPw-30-mPO" id="aTt-Rf-83t"/>
@@ -133,7 +132,7 @@
         <!--Add Updates View Controller-->
         <scene sceneID="GjV-uV-8ts">
             <objects>
-                <viewController storyboardIdentifier="AddUpdatesViewController" id="okr-CF-ucO" customClass="AddUpdatesViewController" customModule="Hydr8" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddUpdatesViewController" id="okr-CF-ucO" customClass="AddUpdatesViewController" customModule="Hydra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="utA-0b-iXH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -238,6 +237,6 @@
         <image name="Settings - Gray" width="209" height="202"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="enI-IK-Iuf"/>
+        <segue reference="qlF-Bp-rWh"/>
     </inferredMetricsTieBreakers>
 </document>

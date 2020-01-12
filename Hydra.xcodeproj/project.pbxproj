@@ -65,7 +65,6 @@
 		D1AFBE4723C5C1080051CF45 /* MonthlyBasicBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFBE4623C5C1080051CF45 /* MonthlyBasicBarChart.swift */; };
 		D1AFBE4923C5C1350051CF45 /* MonthlyBasicBarChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFBE4823C5C1340051CF45 /* MonthlyBasicBarChartPresenter.swift */; };
 		D1AFBE4B23C5C1570051CF45 /* MonthlyBasicBarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFBE4A23C5C1570051CF45 /* MonthlyBasicBarEntry.swift */; };
-		D1C1B5F623C9AE3000D54983 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1C1B5F523C9AE3000D54983 /* Default-568h@2x.png */; };
 		D1DE3F3623BBFA6E005341C2 /* AddUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */; };
 		D1FBDDC423BD6C8C00003306 /* BubbleEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */; };
 		D1FBDDD223BEA39100003306 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FBDDD123BEA39100003306 /* Assets.xcassets */; };
@@ -148,7 +147,6 @@
 		D1AFBE4623C5C1080051CF45 /* MonthlyBasicBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyBasicBarChart.swift; sourceTree = "<group>"; };
 		D1AFBE4823C5C1340051CF45 /* MonthlyBasicBarChartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyBasicBarChartPresenter.swift; sourceTree = "<group>"; };
 		D1AFBE4A23C5C1570051CF45 /* MonthlyBasicBarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyBasicBarEntry.swift; sourceTree = "<group>"; };
-		D1C1B5F523C9AE3000D54983 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdatesViewController.swift; sourceTree = "<group>"; };
 		D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleEmitter.swift; sourceTree = "<group>"; };
 		D1FBDDD123BEA39100003306 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -187,7 +185,6 @@
 		D17519E623BADB8200E85762 = {
 			isa = PBXGroup;
 			children = (
-				D1C1B5F523C9AE3000D54983 /* Default-568h@2x.png */,
 				D17519F123BADB8200E85762 /* Hydra */,
 				D17519F023BADB8200E85762 /* Products */,
 				D1751A5623BAEE5100E85762 /* montserrat */,
@@ -376,7 +373,6 @@
 				D1751A8123BAEE5100E85762 /* MontserratAlternates-LightItalic.otf in Resources */,
 				D1751A9223BAEE5100E85762 /* Montserrat-Italic.otf in Resources */,
 				D1751A8D23BAEE5100E85762 /* Montserrat-LightItalic.otf in Resources */,
-				D1C1B5F623C9AE3000D54983 /* Default-568h@2x.png in Resources */,
 				D1FBDDD223BEA39100003306 /* Assets.xcassets in Resources */,
 				D1751A8623BAEE5100E85762 /* Montserrat-Thin.otf in Resources */,
 				D1751A8C23BAEE5100E85762 /* MontserratAlternates-Thin.otf in Resources */,

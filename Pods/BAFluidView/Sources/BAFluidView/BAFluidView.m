@@ -464,7 +464,7 @@ NSString * const kBAFluidViewCMMotionUpdate = @"BAFluidViewCMMotionUpdate";
     //limiting tilt
     if((roll + self.rollOrientationAdjustment)< -1){
         roll = -1;
-    } else if((roll + self.rollOrientationAdjustment)	 > 1){
+    } else if((roll + self.rollOrientationAdjustment)     > 1){
         roll = 1;
     }
     self.roll = roll;

@@ -41,14 +41,18 @@ class AddUpdatesViewController: UIViewController {
 
     override func viewDidLoad() {
       super.viewDidLoad()
+        let hvc = HomeViewController()
+        print("hvc x", view.bounds.maxX)
+        print("hvc y", view.bounds.maxY)
+        print("x: ", (view.bounds.maxX/2)-(((60/650)*(view.bounds.maxY))/2))
+        print("y: ", view.bounds.maxY-((175/650)*view.bounds.maxY))
+        closeButton.frame = CGRect(x: (view.bounds.maxX/2)-(((60/650)*(view.bounds.maxY))/2), y: view.bounds.maxY-((175/650)*view.bounds.maxY), width: ((60/650)*(view.bounds.maxY)), height: ((60/650)*(view.bounds.maxY)))
+        closeButton.sizeToFit()
+        closeButton.transform = CGAffineTransform(scaleX: 1, y: 1)
         addUpdatesButton.layer.cornerRadius = 16
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let hvc = HomeViewController()
-        closeButton.frame = CGRect(x: (view.bounds.maxX/2)-(((60/650)*(view.bounds.maxY))/2), y: view.bounds.maxY-((175/650)*view.bounds.maxY), width: ((60/650)*(view.bounds.maxY)), height: ((60/650)*(view.bounds.maxY)))
-        print("hvc x", view.bounds.maxX)
-        print("hvc y", view.bounds.maxY)
     }
   
     override func viewWillDisappear(_ animated: Bool) {

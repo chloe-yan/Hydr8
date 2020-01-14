@@ -81,7 +81,7 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday, December 30" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xov-uN-1hd">
-                                <rect key="frame" x="97" y="189" width="220.5" height="23.5"/>
+                                <rect key="frame" x="110.5" y="189" width="193" height="22.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -154,9 +154,12 @@
                                     <action selector="addUpdatesButtonTapped:" destination="okr-CF-ucO" eventType="touchUpInside" id="YfA-oY-1Vt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbJ-5k-JZz">
-                                <rect key="frame" x="192" y="695" width="30" height="53"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbJ-5k-JZz">
+                                <rect key="frame" x="180.5" y="702" width="53" height="53"/>
                                 <color key="backgroundColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="DbJ-5k-JZz" secondAttribute="height" multiplier="1:1" id="GIo-Rd-2D2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="30"/>
                                 <state key="normal" title="×">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -201,6 +204,7 @@
                             <constraint firstItem="mDw-Ii-xO6" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="7tl-UN-r1t"/>
                             <constraint firstItem="cAk-7t-OeW" firstAttribute="trailing" secondItem="mDw-Ii-xO6" secondAttribute="trailing" constant="50" id="AVc-Q5-gah"/>
                             <constraint firstItem="DbJ-5k-JZz" firstAttribute="centerX" secondItem="utA-0b-iXH" secondAttribute="centerX" id="FS2-rj-ZHD"/>
+                            <constraint firstItem="cAk-7t-OeW" firstAttribute="bottom" secondItem="DbJ-5k-JZz" secondAttribute="bottom" constant="53" id="Fpr-RM-W5Y"/>
                             <constraint firstItem="cAk-7t-OeW" firstAttribute="trailing" secondItem="gy1-aL-FX2" secondAttribute="trailing" constant="50" id="HIW-fL-97C"/>
                             <constraint firstItem="Aqg-KG-eOx" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="QMc-fd-u3T"/>
                             <constraint firstItem="gy1-aL-FX2" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="W3L-Mp-Uwk"/>
@@ -210,7 +214,6 @@
                             <constraint firstItem="mDw-Ii-xO6" firstAttribute="top" secondItem="gy1-aL-FX2" secondAttribute="bottom" constant="30" id="gNk-qP-zht"/>
                             <constraint firstItem="cAk-7t-OeW" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uPl-DJ-1xe" secondAttribute="trailing" symbolic="YES" id="uOA-6O-Jqe"/>
                             <constraint firstItem="Aqg-KG-eOx" firstAttribute="top" secondItem="mDw-Ii-xO6" secondAttribute="bottom" constant="10" id="uqJ-fr-mg7"/>
-                            <constraint firstItem="uPl-DJ-1xe" firstAttribute="leading" secondItem="cAk-7t-OeW" secondAttribute="leading" constant="50" id="wE2-Rk-Cyi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cAk-7t-OeW"/>
                     </view>

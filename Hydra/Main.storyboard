@@ -154,7 +154,7 @@
                                     <action selector="addUpdatesButtonTapped:" destination="okr-CF-ucO" eventType="touchUpInside" id="YfA-oY-1Vt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbJ-5k-JZz">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbJ-5k-JZz">
                                 <rect key="frame" x="180.5" y="702" width="53" height="53"/>
                                 <color key="backgroundColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -170,9 +170,6 @@
                                         <integer key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="closeAction:" destination="okr-CF-ucO" eventType="touchUpInside" id="haF-Xb-cUH"/>
-                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Aqg-KG-eOx">
                                 <rect key="frame" x="50" y="152" width="106" height="34"/>
@@ -221,7 +218,6 @@
                     <connections>
                         <outlet property="addUpdateTextField" destination="ZeY-4Q-Owl" id="3im-JV-TK3"/>
                         <outlet property="addUpdatesButton" destination="uPl-DJ-1xe" id="ZCW-VR-XqF"/>
-                        <outlet property="closeButton" destination="DbJ-5k-JZz" id="x4c-Fo-PVE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qoy-hf-fdf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

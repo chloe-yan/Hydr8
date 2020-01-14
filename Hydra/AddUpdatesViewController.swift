@@ -26,8 +26,7 @@ class AddUpdatesViewController: UIViewController {
         interactiveTransition?.finish()
     }
     
-    @IBOutlet weak var closeButton: UIButton!
-    @IBAction func closeAction(_ sender: AnyObject) {
+    @objc func closeAction(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
         interactiveTransition?.finish()
     }
@@ -36,20 +35,28 @@ class AddUpdatesViewController: UIViewController {
     // MARK: VARIABLES
     
     weak var interactiveTransition: BubbleInteractiveTransition?
+    var cancelButton = UIButton()
   
     // MARK: DEFAULT APPEARANCES
 
     override func viewDidLoad() {
       super.viewDidLoad()
-        let hvc = HomeViewController()
-        print("hvc x", view.bounds.maxX)
-        print("hvc y", view.bounds.maxY)
+        print("view bounds x", view.bounds.maxX)
+        print("view bounds y", view.bounds.maxY)
         print("x: ", (view.bounds.maxX/2)-(((60/650)*(view.bounds.maxY))/2))
         print("y: ", view.bounds.maxY-((175/650)*view.bounds.maxY))
-        closeButton.frame = CGRect(x: (view.bounds.maxX/2)-(((60/650)*(view.bounds.maxY))/2), y: view.bounds.maxY-((175/650)*view.bounds.maxY), width: ((60/650)*(view.bounds.maxY)), height: ((60/650)*(view.bounds.maxY)))
-        closeButton.sizeToFit()
-        closeButton.transform = CGAffineTransform(scaleX: 1, y: 1)
         addUpdatesButton.layer.cornerRadius = 16
+        cancelButton = UIButton()
+        cancelButton.frame = CGRect(x: (view.bounds.maxX/2)-(((60/650)*(view.bounds.maxY))/2), y: view.bounds.maxY-((175/650)*view.bounds.maxY)+15, width: ((60/650)*(view.bounds.maxY)), height: ((60/650)*(view.bounds.maxY)))
+         cancelButton.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
+            cancelButton.setTitleColor(UIColor.white, for: .normal)
+         cancelButton.setTitle("+", for: .normal)
+         cancelButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 35)!
+         //trackIntakeButton.frame = CGRect(x: 100, y: 100, width: 60, height: 60)
+         cancelButton.layer.cornerRadius = (30/650)*(view.bounds.maxY)
+         cancelButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
+         cancelButton.isEnabled = true
+         view.addSubview(cancelButton)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

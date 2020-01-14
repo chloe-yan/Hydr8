@@ -372,6 +372,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         trackIntakeButton.addTarget(self, action: #selector(addUpdatesButtonTapped), for: .touchUpInside)
         trackIntakeButton.isEnabled = true
         homeView.addSubview(trackIntakeButton)
+        print("home view bounds y ", homeView.bounds.maxY)
     
         // Greeting label
         greetingLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 26)

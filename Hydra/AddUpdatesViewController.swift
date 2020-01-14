@@ -47,16 +47,19 @@ class AddUpdatesViewController: UIViewController {
         print("y: ", view.bounds.maxY-((175/650)*view.bounds.maxY))
         addUpdatesButton.layer.cornerRadius = 16
         cancelButton = UIButton()
-        cancelButton.frame = CGRect(x: (view.bounds.maxX/2)-(((60/650)*(view.bounds.maxY))/2), y: view.bounds.maxY-((175/650)*view.bounds.maxY)+15, width: ((60/650)*(view.bounds.maxY)), height: ((60/650)*(view.bounds.maxY)))
-         cancelButton.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
-            cancelButton.setTitleColor(UIColor.white, for: .normal)
-         cancelButton.setTitle("+", for: .normal)
-         cancelButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 35)!
-         //trackIntakeButton.frame = CGRect(x: 100, y: 100, width: 60, height: 60)
-         cancelButton.layer.cornerRadius = (30/650)*(view.bounds.maxY)
-         cancelButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
-         cancelButton.isEnabled = true
-         view.addSubview(cancelButton)
+        let xVal = (view.bounds.maxX/2)-(((60/650)*(view.bounds.maxY))/2)
+        let yVal = (view.bounds.maxY-16)-((175/650)*(view.bounds.maxY-15))
+        let cbWidth = ((60/650)*(view.bounds.maxY))
+        let cbHeight = ((60/650)*(view.bounds.maxY))
+        cancelButton.frame = CGRect(x: xVal, y: yVal, width: cbWidth, height: cbHeight)
+        cancelButton.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
+        cancelButton.setTitleColor(UIColor.white, for: .normal)
+        cancelButton.setTitle("+", for: .normal)
+        cancelButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 35)!
+        cancelButton.layer.cornerRadius = (30/650)*(view.bounds.maxY)
+        cancelButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
+        cancelButton.isEnabled = true
+        view.addSubview(cancelButton)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

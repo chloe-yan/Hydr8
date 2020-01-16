@@ -530,15 +530,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Corrects location of button bar
         viewDidLoadDefaultButtonBar()
         
-        // Reset user data
-        dateFormatter.dateStyle = .full
-        dateString = dateFormatter.string(from: date)
-        currentDateString = String(dateString.prefix(dateString.count - 6))
-        if (currentDateString != defaults.string(forKey: "currentDate")) {
-            defaults.set(0, forKey: "waterIntake")
-        }
-        defaults.set(currentDateString, forKey: "currentDate")
-        
         // Update user data
         waterIntake = defaults.double(forKey: "waterIntake")
         waterIntakeLabel.text = "\(waterIntake) oz"

@@ -657,4 +657,11 @@ extension UISegmentedControl {
         UIGraphicsEndImageContext();
         return image!
     }
+    
+    // MARK: KEYBOARD FUNCTIONALITY
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
 }

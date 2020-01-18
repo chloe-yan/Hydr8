@@ -47,11 +47,11 @@ class AddUpdatesViewController: UIViewController {
         print("y: ", view.bounds.maxY-((175/650)*view.bounds.maxY))
         addUpdatesButton.layer.cornerRadius = 16
         cancelButton = UIButton()
-        let xVal = (view.bounds.maxX/2)-(((60/650)*(view.bounds.maxY))/2)
-        let yVal = (view.bounds.maxY-16)-((175/650)*(view.bounds.maxY-15))
-        let cbWidth = ((60/650)*(view.bounds.maxY))
-        let cbHeight = ((60/650)*(view.bounds.maxY))
-        cancelButton.frame = CGRect(x: xVal, y: yVal, width: cbWidth, height: cbHeight)
+        //let xVal = (view.bounds.maxX/2)-(((60/650)*(view.bounds.maxY))/2)
+      //  let yVal = (view.bounds.maxY-16)-((175/650)*(view.bounds.maxY-15))
+        //    let cbWidth = ((60/650)*(view.bounds.maxY))
+     //   let cbHeight = ((60/650)*(view.bounds.maxY))
+     //   cancelButton.frame = CGRect(x: xVal, y: yVal, width: cbWidth, height: cbHeight)
         cancelButton.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
         cancelButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.setTitle("+", for: .normal)
@@ -70,6 +70,7 @@ class AddUpdatesViewController: UIViewController {
     }
     
     // MARK: KEYBOARD FUNCTIONALITY
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)

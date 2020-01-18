@@ -12,6 +12,7 @@ import BubbleTransition
 import BAFluidView
 import CoreMotion
 
+
 class HomeViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     // MARK: OUTLETS & ACTIONS
@@ -80,6 +81,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     }
     
     // MARK: VARIABLES
+    
+    let scrollView = UIScrollView()
     
     var date = Date()
     var dateFormatter = DateFormatter()
@@ -268,7 +271,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         bubbleEmitter()
 
         // Scroll view
-        let scrollView : UIScrollView = UIScrollView(frame: CGRect(x: 0, y: 60, width: view.frame.maxX, height: view.frame.maxY-15))
+        scrollView.frame = CGRect(x: 0, y: 60, width: view.frame.maxX, height: view.frame.maxY-15)
         scrollView.isPagingEnabled = true
         scrollView.backgroundColor = UIColor.clear
         view.addSubview(scrollView)
@@ -522,6 +525,11 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[10] as! Int)/100, textValue: monthlyWaterIntakeData![10] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![10])", title: "N"))
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[11] as! Int)/100, textValue: monthlyWaterIntakeData![11] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![11])", title: "D"))
         
+        // Keyboard functionality
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        scrollView.keyboardDismissMode = .interactive
+        
         return result
     }
     
@@ -656,12 +664,5 @@ extension UISegmentedControl {
         let image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         return image!
-    }
-    
-    // MARK: KEYBOARD FUNCTIONALITY
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-        super.touchesBegan(touches, with: event)
     }
 }

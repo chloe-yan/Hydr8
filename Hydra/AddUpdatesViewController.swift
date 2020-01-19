@@ -44,10 +44,6 @@ class AddUpdatesViewController: UIViewController {
 
     override func viewDidLoad() {
       super.viewDidLoad()
-        print("view bounds x", view.bounds.maxX)
-        print("view bounds y", view.bounds.maxY)
-        print("x: ", (view.bounds.maxX/2)-(((60/650)*(view.bounds.maxY))/2))
-        print("y: ", view.bounds.maxY-((175/650)*view.bounds.maxY))
         addUpdatesButton.layer.cornerRadius = 16
         cancelButton = UIButton()
         let xVal = (view.bounds.maxX/2)-((0.04615)*(view.bounds.maxY))

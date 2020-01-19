@@ -355,7 +355,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        
         // Home view page
         homeView.frame = CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight)
-        homeView.backgroundColor = UIColor.white.withAlphaComponent(0)
+        print(view.bounds.maxY)
+        homeView.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         x = homeView.frame.origin.x + viewWidth + padding
         scrollView.addSubview(homeView)
        

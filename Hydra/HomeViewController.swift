@@ -363,6 +363,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Track intake button
         trackIntakeButton = UIButton()
         trackIntakeButton.frame = CGRect(x: (homeView.bounds.maxX/2)-(((60/650)*(homeView.bounds.maxY))/2), y: homeView.bounds.maxY-((175/650)*homeView.bounds.maxY), width: ((60/650)*(homeView.bounds.maxY)), height: ((60/650)*(homeView.bounds.maxY)))
+        print(homeView.bounds.maxY-((175/650)*homeView.bounds.maxY))
+        print(((60/650)*(homeView.bounds.maxY)))
         print("maxY: ", homeView.frame.maxY)
         // trackIntakeButton.frame = CGRect(x: 70, y: 100, width: 60, height: 60)
         trackIntakeButton.backgroundColor = UIColor.white

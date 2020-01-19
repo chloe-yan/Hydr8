@@ -31,6 +31,9 @@ class AddUpdatesViewController: UIViewController {
         interactiveTransition?.finish()
     }
 
+    @objc func doneButtonAction() {
+        self.view.endEditing(true)
+    }
     
     // MARK: VARIABLES
     
@@ -60,6 +63,16 @@ class AddUpdatesViewController: UIViewController {
         cancelButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
         cancelButton.isEnabled = true
         view.addSubview(cancelButton)
+        
+        func setupTextFields() {
+            let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: view.frame.size.width, height: 30)))
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonAction))
+            toolbar.setItems([flexSpace, doneButton], animated: false)
+            toolbar.sizeToFit()
+            addUpdateTextField.inputAccessoryView = toolbar
+        }
+        setupTextFields()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

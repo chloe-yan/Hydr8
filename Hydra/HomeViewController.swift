@@ -395,8 +395,11 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
         dropletFluidView.keepStationary()
         dropletFluidView.startAnimation()
-        maskingLayer.frame = CGRect(x: (scrollView.bounds.maxX/2)-128, y: (scrollView.bounds.maxY/2)-128, width: maskingImage?.size.width ?? 256.0, height: maskingImage?.size.height ?? 256.0)
+        maskingLayer.frame = CGRect(x: (scrollView.bounds.maxX/2)-128, y: UIScreen.main.bounds.midY-128, width: maskingImage?.size.width ?? 256.0, height: maskingImage?.size.height ?? 256.0)
+        print("scroll view bounds maxY", (scrollView.bounds.maxY))
         maskingLayer.contents = maskingImage?.cgImage
+        maskingLayer.anchorPoint = self.view.center
+        print(maskingLayer.anchorPoint)
         dropletFluidView.layer.mask = maskingLayer
         homeView.addSubview(dropletFluidView)
         homeView.sendSubviewToBack(dropletFluidView)
@@ -411,7 +414,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
         percentageLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 23)
         percentageLabel.textColor = UIColor.white
-        percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: 265, width: percentageLabel.intrinsicContentSize.width+50, height: percentageLabel.intrinsicContentSize.height)
+        percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: 256, width: percentageLabel.intrinsicContentSize.width+50, height: percentageLabel.intrinsicContentSize.height)
         homeView.addSubview(percentageLabel)
        
         // Water intake label

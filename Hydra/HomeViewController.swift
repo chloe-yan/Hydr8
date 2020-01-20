@@ -356,7 +356,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Home view page
         homeView.frame = CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight)
         print(view.bounds.maxY)
-        homeView.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+        homeView.backgroundColor = UIColor.white.withAlphaComponent(0)
         x = homeView.frame.origin.x + viewWidth + padding
         scrollView.addSubview(homeView)
        
@@ -620,7 +620,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     // Animates presentation of BubbleTransition
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       transition.transitionMode = .present
-        transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: trackIntakeButton.center.y+((30/650)*homeView.bounds.maxY)) //trackIntakeButton.center
+        transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: trackIntakeButton.center.y+((60/650)*homeView.bounds.maxY)) //trackIntakeButton.center
       transition.bubbleColor = trackIntakeButton.backgroundColor!
       return transition
     }
@@ -630,7 +630,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
       greetingLabel.isHidden = true
       dateLabel.isHidden = true
       transition.transitionMode = .dismiss
-      transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: (trackIntakeButton.center.y)+((30/650)*homeView.bounds.maxY))  //trackIntakeButton.center
+      transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: (trackIntakeButton.center.y)+((60/650)*homeView.bounds.maxY))  //trackIntakeButton.center
       transition.bubbleColor = trackIntakeButton.backgroundColor!
       return transition
     }

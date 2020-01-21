@@ -396,7 +396,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletFluidView.keepStationary()
         dropletFluidView.startAnimation()
         maskingLayer.frame = CGRect(x: (scrollView.bounds.maxX/2)-128, y: UIScreen.main.bounds.midY-128, width: maskingImage?.size.width ?? 256.0, height: maskingImage?.size.height ?? 256.0)
-        print("scroll view bounds maxY", (scrollView.bounds.maxY))
+        // print("scroll view bounds maxY", (scrollView.bounds.maxY))
         maskingLayer.contents = maskingImage?.cgImage
         maskingLayer.anchorPoint = self.view.center
         print(maskingLayer.anchorPoint)

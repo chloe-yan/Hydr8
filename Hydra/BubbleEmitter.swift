@@ -11,6 +11,8 @@ import Foundation
 import UIKit
 
 class BubbleEmitter {
+    
+    // Creates emitter cells from image parameter
     static func get(with image: UIImage) -> CAEmitterLayer {
         let emitter = CAEmitterLayer()
         emitter.emitterShape = CAEmitterLayerEmitterShape.line
@@ -18,10 +20,13 @@ class BubbleEmitter {
         return emitter
     }
     
+    // Generates emitter cells with customizable features
     static func generateEmitterCells(with image: UIImage) -> [CAEmitterCell] {
         var cells = [CAEmitterCell]()
         let cell = CAEmitterCell()
         
+        
+        // Cell features
         cell.contents = image.cgImage
         cell.birthRate = 2
         cell.lifetime = 7

@@ -12,7 +12,6 @@ import BubbleTransition
 import BAFluidView
 import CoreMotion
 
-
 class HomeViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     // MARK: OUTLETS & ACTIONS
@@ -74,6 +73,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     // MARK: FUNCTIONS
     
+    // Controls bottom bar of segmented control
     func viewDidLoadDefaultButtonBar() {
         UIView.animate(withDuration: 0.3) {
             self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)

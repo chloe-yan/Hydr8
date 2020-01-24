@@ -36,7 +36,6 @@ class BubbleEmitter {
         cell.scale = 0.06
         cell.scaleRange = 0.1
         let hvc = HomeViewController()
-        print("view bounds maxY: ", hvc.homeView.bounds.maxY)
         
         cells.append(cell)
         return cells

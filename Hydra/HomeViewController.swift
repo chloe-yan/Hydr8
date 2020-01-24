@@ -155,7 +155,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             if (weeklyWaterIntakeData?[i] == nil) {
                 let initArray: Array! = [0, 0, 0, 0, 0, 0, 0]
                 defaults.set(initArray, forKey: "weeklyWaterIntakeData")
-                print(defaults.array(forKey: "weeklyWaterIntakeData")!)
             }
         }
         
@@ -164,7 +163,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             if (monthlyWaterIntakeData?[i] == nil) {
                 let monthlyInitArray: Array! = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 defaults.set(monthlyInitArray, forKey: "monthlyWaterIntakeData")
-                print(defaults.array(forKey: "monthlyWaterIntakeData")!)
             }
         }
         
@@ -189,9 +187,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
 
         // Update daily water intake
         var components = calendar.dateComponents([.weekday], from: date)
-        print("components: \(components)")
         let day = components.weekday! - 1
-        print("day: \(day)")
         weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
         if (day == 0) {
             weeklyWaterIntakeData![6] = Int(defaults.double(forKey: "waterIntake"))
@@ -204,7 +200,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Update monthly water intake
         components = calendar.dateComponents([.month], from: date)
         let month = components.month!
-        print("month: \(month)")
         monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
         monthlyWaterIntakeData![month-1] = Int(defaults.double(forKey: "monthlyWaterIntake"))
         defaults.set(monthlyWaterIntakeData, forKey: "monthlyWaterIntakeData")
@@ -288,7 +283,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        
         // Settings label
         settingsLabel.text = "Settings"
-        print("settings view bounds maxX: ", settingsView.bounds.maxX)
         settingsLabel.font = UIFont(name: "AvenirNext-DemiBold", size: (30/550)*(settingsView.bounds.maxX))
         settingsLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
         settingsLabel.frame = CGRect(x: 250, y: 50, width: settingsLabel.intrinsicContentSize.width, height: settingsLabel.intrinsicContentSize.height
@@ -355,7 +349,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        
         // Home view page
         homeView.frame = CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight)
-        print(view.bounds.maxY)
         homeView.backgroundColor = UIColor.white.withAlphaComponent(0)
         x = homeView.frame.origin.x + viewWidth + padding
         scrollView.addSubview(homeView)
@@ -363,9 +356,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Track intake button
         trackIntakeButton = UIButton()
         trackIntakeButton.frame = CGRect(x: (homeView.bounds.maxX/2)-(((60/650)*(homeView.bounds.maxY))/2), y: homeView.bounds.maxY-((175/650)*homeView.bounds.maxY), width: ((60/650)*(homeView.bounds.maxY)), height: ((60/650)*(homeView.bounds.maxY)))
-        print(homeView.bounds.maxY-((175/650)*homeView.bounds.maxY))
-        print(((60/650)*(homeView.bounds.maxY)))
-        print("maxY: ", homeView.frame.maxY)
         // trackIntakeButton.frame = CGRect(x: 70, y: 100, width: 60, height: 60)
         trackIntakeButton.backgroundColor = UIColor.white
         trackIntakeButton.setTitleColor(UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), for: .normal)
@@ -376,7 +366,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         trackIntakeButton.addTarget(self, action: #selector(addUpdatesButtonTapped), for: .touchUpInside)
         trackIntakeButton.isEnabled = true
         homeView.addSubview(trackIntakeButton)
-        print("home view bounds y ", homeView.bounds.maxY)
     
         // Greeting label
         greetingLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 26)
@@ -396,10 +385,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletFluidView.keepStationary()
         dropletFluidView.startAnimation()
         maskingLayer.frame = CGRect(x: (scrollView.bounds.maxX/2)-128, y: UIScreen.main.bounds.midY-128, width: maskingImage?.size.width ?? 256.0, height: maskingImage?.size.height ?? 256.0)
-        // print("scroll view bounds maxY", (scrollView.bounds.maxY))
         maskingLayer.contents = maskingImage?.cgImage
         maskingLayer.anchorPoint = self.view.center
-        print(maskingLayer.anchorPoint)
         dropletFluidView.layer.mask = maskingLayer
         homeView.addSubview(dropletFluidView)
         homeView.sendSubviewToBack(dropletFluidView)
@@ -502,7 +489,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     func generateWeeklyDataEntries() -> [DataEntry] {
         var result: [DataEntry] = []
         weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
-        print(defaults.array(forKey: "weeklyWaterIntakeData")![0])
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(weeklyWaterIntakeData?[0] as! Int)/100, textValue: weeklyWaterIntakeData![0] as! Int == 0 ? "" : "\(weeklyWaterIntakeData![0])", title: "M"))
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(weeklyWaterIntakeData?[1] as! Int)/100, textValue: weeklyWaterIntakeData![1] as! Int == 0 ? "" : "\(weeklyWaterIntakeData![1])", title: "T"))
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(weeklyWaterIntakeData?[2] as! Int)/100, textValue: weeklyWaterIntakeData![2] as! Int == 0 ? "" : "\(weeklyWaterIntakeData![2])", title: "W"))
@@ -517,7 +503,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     func generateMonthlyDataEntries() -> [DataEntry] {
         var result: [DataEntry] = []
         monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
-        print(defaults.array(forKey: "monthlyWaterIntakeData")![0])
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[0] as! Int)/100, textValue: monthlyWaterIntakeData![0] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![0])", title: "J"))
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[1] as! Int)/100, textValue: monthlyWaterIntakeData![1] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![1])", title: "F"))
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[2] as! Int)/100, textValue: monthlyWaterIntakeData![2] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![2])", title: "M"))
@@ -547,8 +532,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Update user data
         waterIntake = defaults.double(forKey: "waterIntake")
         waterIntakeLabel.text = "\(waterIntake) oz"
-        //percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
-        print("water intake: \(defaults.double(forKey: "waterIntake"))")
         dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
         
         // Reset daily user data

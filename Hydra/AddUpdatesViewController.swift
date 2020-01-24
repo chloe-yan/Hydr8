@@ -17,8 +17,6 @@ class AddUpdatesViewController: UIViewController {
     @IBOutlet weak var addUpdateTextField: UITextField!
     @IBOutlet weak var addUpdatesButton: UIButton!
     
-    var localWaterIntake = 0
-    
     // Updates weekly and monthly water intake values
     @IBAction func addUpdatesButtonTapped(_ sender: Any) {
         let homeVC = HomeViewController()

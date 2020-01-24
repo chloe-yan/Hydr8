@@ -18,6 +18,8 @@ class AddUpdatesViewController: UIViewController {
     @IBOutlet weak var addUpdatesButton: UIButton!
     
     var localWaterIntake = 0
+    
+    // Updates weekly and monthly water intake values
     @IBAction func addUpdatesButtonTapped(_ sender: Any) {
         let homeVC = HomeViewController()
         homeVC.defaults.set((homeVC.defaults.double(forKey: "waterIntake") + ((addUpdateTextField.text as NSString?)?.doubleValue ?? 0) ), forKey: "waterIntake")
@@ -26,11 +28,13 @@ class AddUpdatesViewController: UIViewController {
         interactiveTransition?.finish()
     }
     
+    // Dismisses BubbleTransition to HomeViewController
     @objc func closeAction(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
         interactiveTransition?.finish()
     }
 
+    // Closes the keyboard after done button is pressed
     @objc func doneButtonAction() {
         self.view.endEditing(true)
     }
@@ -73,6 +77,7 @@ class AddUpdatesViewController: UIViewController {
         }
         setupTextFields()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }

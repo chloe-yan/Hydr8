@@ -62,6 +62,7 @@ class AddUpdatesViewController: UIViewController {
         cancelButton.isEnabled = true
         view.addSubview(cancelButton)
         
+        // Manages the done button on keyboard toolbar
         func setupTextFields() {
             let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: view.frame.size.width, height: 30)))
             let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

@@ -524,6 +524,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         return result
     }
     
+    // Runs before viewDidLoad
     override func viewDidAppear(_ animated: Bool) {
         
         // Corrects location of button bar

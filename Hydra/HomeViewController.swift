@@ -360,7 +360,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         trackIntakeButton.backgroundColor = UIColor.white
         trackIntakeButton.setTitleColor(UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), for: .normal)
         trackIntakeButton.setTitle("+", for: .normal)
-        trackIntakeButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 35)!
+        trackIntakeButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 35/60*trackIntakeButton.bounds.height)!
         //trackIntakeButton.frame = CGRect(x: 100, y: 100, width: 60, height: 60)
         trackIntakeButton.layer.cornerRadius = (30/650)*(homeView.bounds.maxY)
         trackIntakeButton.addTarget(self, action: #selector(addUpdatesButtonTapped), for: .touchUpInside)
@@ -376,7 +376,29 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dateLabel.font = UIFont(name: "AvenirNext-Medium", size: 19)
         dateLabel.textColor = UIColor.white
         homeView.addSubview(dateLabel)
-       
+
+        // Droplet FluidView
+        // Threshold values: Min = 0.4, Max: 0.8
+         dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
+        dropletFluidView.strokeColor = UIColor.clear
+        dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
+        dropletFluidView.keepStationary()
+        dropletFluidView.startAnimation()
+        let offsetConst = (256/200) //adjust
+        maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-128-100, y: (view.frame.maxY/2)-((maskingImage?.size.width)! + CGFloat(200)/2), width: ((maskingImage?.size.height)! + CGFloat(200)) ?? 0.0, height: ((maskingImage?.size.height)! + 200) ?? 0.0)
+        maskingLayer.contents = maskingImage?.cgImage
+        dropletFluidView.layer.mask = maskingLayer
+        homeView.addSubview(dropletFluidView)
+        homeView.sendSubviewToBack(dropletFluidView)
+
+        // Droplet outline overlay
+        dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-128-100, y: (view.frame.maxY/2)-((maskingImage?.size.width)! + CGFloat(200)/2), width: ((maskingImage?.size.height)! + CGFloat(200)) ?? 0.0, height: ((maskingImage?.size.height)! + 200) ?? 0.0)
+        print("lol", (maskingImage?.size.height)! + CGFloat(200))
+        //dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-128-100, y: 150+100, width: ((maskingImage?.size.width)! + CGFloat(200)) ?? 0.0, height: ((maskingImage?.size.height)! + 200) ?? 0.0)//CGRect(x: (view.frame.maxX/2)-128, y: 150, width: dropletOutlineImage!.size.width, height: dropletOutlineImage!.size.height)
+        dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
+        dropletFluidView.layer.addSublayer(dropletOutlineLayer)
+        
+        /*
         // Droplet FluidView
         // Threshold values: Min = 0.4, Max: 0.8
         dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
@@ -395,7 +417,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletOutlineLayer.frame = CGRect(x: (homeView.bounds.maxX/2)-128, y: (scrollView.bounds.maxY/2)-128, width: dropletOutlineImage!.size.width, height: dropletOutlineImage!.size.height)
         //dropletOutlineImage.translatesAutoresizingMasksIntoConstraints = false
         dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
-        dropletFluidView.layer.addSublayer(dropletOutlineLayer) // CHANGED
+        //dropletFluidView.layer.addSublayer(dropletOutlineLayer) // CHANGED
+ */
        
         // Percentage label
         percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
@@ -516,7 +539,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[10] as! Int)/100, textValue: monthlyWaterIntakeData![10] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![10])", title: "N"))
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[11] as! Int)/100, textValue: monthlyWaterIntakeData![11] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![11])", title: "D"))
         
-        // Keyboard functionality
+        // Add keyboard functionality
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
         scrollView.keyboardDismissMode = .interactive

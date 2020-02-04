@@ -355,25 +355,25 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        
         // Track intake button
         trackIntakeButton = UIButton()
-        trackIntakeButton.frame = CGRect(x: (homeView.bounds.maxX/2)-(((60/650)*(homeView.bounds.maxY))/2), y: homeView.bounds.maxY-((175/650)*homeView.bounds.maxY), width: ((60/650)*(homeView.bounds.maxY)), height: ((60/650)*(homeView.bounds.maxY)))
+        trackIntakeButton.frame = CGRect(x: (homeView.bounds.maxX/2)-(((60/375)*(homeView.bounds.maxX))/2), y: homeView.bounds.maxY-((175/375)*homeView.bounds.maxX), width: ((60/375)*(homeView.bounds.maxX)), height: ((60/375)*(homeView.bounds.maxX)))
         // trackIntakeButton.frame = CGRect(x: 70, y: 100, width: 60, height: 60)
         trackIntakeButton.backgroundColor = UIColor.white
         trackIntakeButton.setTitleColor(UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), for: .normal)
         trackIntakeButton.setTitle("+", for: .normal)
         trackIntakeButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 35/60*trackIntakeButton.bounds.height)!
         //trackIntakeButton.frame = CGRect(x: 100, y: 100, width: 60, height: 60)
-        trackIntakeButton.layer.cornerRadius = (30/650)*(homeView.bounds.maxY)
+        trackIntakeButton.layer.cornerRadius = (30/375)*(homeView.bounds.maxX)
         trackIntakeButton.addTarget(self, action: #selector(addUpdatesButtonTapped), for: .touchUpInside)
         trackIntakeButton.isEnabled = true
         homeView.addSubview(trackIntakeButton)
     
         // Greeting label
-        greetingLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 26)
+        greetingLabel.font = UIFont(name: "AvenirNext-DemiBold", size: (26/375)*view.frame.maxX)
         greetingLabel.textColor = UIColor.white
         homeView.addSubview(greetingLabel)
        
         // Date label
-        dateLabel.font = UIFont(name: "AvenirNext-Medium", size: 19)
+        dateLabel.font = UIFont(name: "AvenirNext-Medium", size: (19/375)*view.frame.maxX)
         dateLabel.textColor = UIColor.white
         homeView.addSubview(dateLabel)
 
@@ -384,7 +384,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
         dropletFluidView.keepStationary()
         dropletFluidView.startAnimation()
-        let offsetConstant = (((256/650)*(view.frame.maxY))/2)
+        let offsetConstant = (((256/375)*(view.frame.maxX))/2)
         maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2) //offsetConstant, height: offsetConstant)
         print("offsetConst", offsetConstant)
         print("maxX", view.frame.maxX)
@@ -595,8 +595,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dateLabel.isHidden = false
         
         // Greeting message metrics
-        greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: 30, width: self.greetingLabel.intrinsicContentSize.width, height: 30)
-        dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: 60, width: self.dateLabel.intrinsicContentSize.width, height: 30)
+        greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: (30/375)*view.frame.maxX, width: self.greetingLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
+        dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: (60/375)*view.frame.maxX, width: self.dateLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
         
         // Greeting animations
         let animation = CASpringAnimation(keyPath: "position")
@@ -633,7 +633,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     // Animates presentation of BubbleTransition
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       transition.transitionMode = .present
-        transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: trackIntakeButton.center.y+((60/650)*homeView.bounds.maxY)) //trackIntakeButton.center
+        transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: trackIntakeButton.center.y+((60/375)*homeView.bounds.maxX)) //trackIntakeButton.center
       transition.bubbleColor = trackIntakeButton.backgroundColor!
       return transition
     }
@@ -643,7 +643,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
       greetingLabel.isHidden = true
       dateLabel.isHidden = true
       transition.transitionMode = .dismiss
-      transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: (trackIntakeButton.center.y)+((60/650)*homeView.bounds.maxY))  //trackIntakeButton.center
+      transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: (trackIntakeButton.center.y)+((60/375)*homeView.bounds.maxX))  //trackIntakeButton.center
       transition.bubbleColor = trackIntakeButton.backgroundColor!
       return transition
     }

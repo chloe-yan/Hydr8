@@ -356,12 +356,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Track intake button
         trackIntakeButton = UIButton()
         trackIntakeButton.frame = CGRect(x: (homeView.bounds.maxX/2)-(((60/375)*(homeView.bounds.maxX))/2), y: homeView.bounds.maxY-((175/375)*homeView.bounds.maxX), width: ((60/375)*(homeView.bounds.maxX)), height: ((60/375)*(homeView.bounds.maxX)))
-        // trackIntakeButton.frame = CGRect(x: 70, y: 100, width: 60, height: 60)
         trackIntakeButton.backgroundColor = UIColor.white
         trackIntakeButton.setTitleColor(UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), for: .normal)
         trackIntakeButton.setTitle("+", for: .normal)
         trackIntakeButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 35/60*trackIntakeButton.bounds.height)!
-        //trackIntakeButton.frame = CGRect(x: 100, y: 100, width: 60, height: 60)
         trackIntakeButton.layer.cornerRadius = (30/375)*(homeView.bounds.maxX)
         trackIntakeButton.addTarget(self, action: #selector(addUpdatesButtonTapped), for: .touchUpInside)
         trackIntakeButton.isEnabled = true
@@ -385,7 +383,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletFluidView.keepStationary()
         dropletFluidView.startAnimation()
         let offsetConstant = (((256/375)*(view.frame.maxX))/2)
-        maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2) //offsetConstant, height: offsetConstant)
+        maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2)
         print("offsetConst", offsetConstant)
         print("maxX", view.frame.maxX)
         print("maxY", view.frame.maxY)
@@ -396,33 +394,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         homeView.sendSubviewToBack(dropletFluidView)
 
         // Droplet outline overlay
-        dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2) //width: ((maskingImage?.size.height)! + CGFloat(200)) ?? 0.0, height: ((maskingImage?.size.height)! + 200) ?? 0.0)
-        //dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-128-100, y: 150+100, width: ((maskingImage?.size.width)! + CGFloat(200)) ?? 0.0, height: ((maskingImage?.size.height)! + 200) ?? 0.0)//CGRect(x: (view.frame.maxX/2)-128, y: 150, width: dropletOutlineImage!.size.width, height: dropletOutlineImage!.size.height)
+        dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2)
         dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
         dropletFluidView.layer.addSublayer(dropletOutlineLayer)
-        
-        /*
-        // Droplet FluidView
-        // Threshold values: Min = 0.4, Max: 0.8
-        dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
-        dropletFluidView.strokeColor = UIColor.clear
-        dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
-        dropletFluidView.keepStationary()
-        dropletFluidView.startAnimation()
-        maskingLayer.frame = CGRect(x: (scrollView.bounds.maxX/2)-128, y: UIScreen.main.bounds.midY-128, width: maskingImage?.size.width ?? 256.0, height: maskingImage?.size.height ?? 256.0)
-        maskingLayer.contents = maskingImage?.cgImage
-        maskingLayer.anchorPoint = self.view.center
-        dropletFluidView.layer.mask = maskingLayer
-        homeView.addSubview(dropletFluidView)
-        homeView.sendSubviewToBack(dropletFluidView)
 
-        // Droplet outline overlay
-        dropletOutlineLayer.frame = CGRect(x: (homeView.bounds.maxX/2)-128, y: (scrollView.bounds.maxY/2)-128, width: dropletOutlineImage!.size.width, height: dropletOutlineImage!.size.height)
-        //dropletOutlineImage.translatesAutoresizingMasksIntoConstraints = false
-        dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
-        //dropletFluidView.layer.addSublayer(dropletOutlineLayer) // CHANGED
- */
-       
         // Percentage label
         percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
         percentageLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 23)

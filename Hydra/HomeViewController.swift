@@ -384,16 +384,19 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
         dropletFluidView.keepStationary()
         dropletFluidView.startAnimation()
-        let offsetConst = (256/200) //adjust
-        maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-128-100, y: (view.frame.maxY/2)-((maskingImage?.size.width)! + CGFloat(200)/2), width: ((maskingImage?.size.height)! + CGFloat(200)) ?? 0.0, height: ((maskingImage?.size.height)! + 200) ?? 0.0)
+        let offsetConstant = (((256/650)*(view.frame.maxY))/2)
+        maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2) //offsetConstant, height: offsetConstant)
+        print("offsetConst", offsetConstant)
+        print("maxX", view.frame.maxX)
+        print("maxY", view.frame.maxY)
+        print("mlWidth", maskingLayer.frame.width)
         maskingLayer.contents = maskingImage?.cgImage
         dropletFluidView.layer.mask = maskingLayer
         homeView.addSubview(dropletFluidView)
         homeView.sendSubviewToBack(dropletFluidView)
 
         // Droplet outline overlay
-        dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-128-100, y: (view.frame.maxY/2)-((maskingImage?.size.width)! + CGFloat(200)/2), width: ((maskingImage?.size.height)! + CGFloat(200)) ?? 0.0, height: ((maskingImage?.size.height)! + 200) ?? 0.0)
-        print("lol", (maskingImage?.size.height)! + CGFloat(200))
+        dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2) //width: ((maskingImage?.size.height)! + CGFloat(200)) ?? 0.0, height: ((maskingImage?.size.height)! + 200) ?? 0.0)
         //dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-128-100, y: 150+100, width: ((maskingImage?.size.width)! + CGFloat(200)) ?? 0.0, height: ((maskingImage?.size.height)! + 200) ?? 0.0)//CGRect(x: (view.frame.maxX/2)-128, y: 150, width: dropletOutlineImage!.size.width, height: dropletOutlineImage!.size.height)
         dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
         dropletFluidView.layer.addSublayer(dropletOutlineLayer)

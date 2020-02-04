@@ -12,7 +12,7 @@ import BubbleTransition
 import BAFluidView
 import CoreMotion
 
-class HomeViewController: UIViewController, UIViewControllerTransitioningDelegate {
+class HomeViewController: UIViewController, UIViewControllerTransitioningDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
     // MARK: OUTLETS & ACTIONS
     
@@ -20,7 +20,14 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     @IBOutlet weak var analyticsButton: UIButton!
     @IBOutlet weak var weeklyBarChart: BasicBarChart!
     @IBOutlet weak var monthlyBarChart: BasicBarChart!
+    @IBAction func settingsSwipeGestureSwiped(_ sender: UISwipeGestureRecognizer) {
+        print("SETTINGS")
+    }
+    @IBAction func analyticsSwipeGestureSwiped(_ sender: UISwipeGestureRecognizer) {
+        print("ANALYTICS")
+    }
     
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @objc func addUpdatesButtonTapped(sender: UIButton) {
         performSegue(withIdentifier: "addUpdates", sender: self)
@@ -71,18 +78,9 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         }
     }
     
-    // MARK: FUNCTIONS
-    
-    // Controls bottom bar of segmented control
-    func viewDidLoadDefaultButtonBar() {
-        UIView.animate(withDuration: 0.3) {
-            self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
-        }
-    }
-    
     // MARK: VARIABLES
     
-    let scrollView = UIScrollView()
+    //let scrollView = UIScrollView()
     
     var date = Date()
     var dateFormatter = DateFormatter()
@@ -140,12 +138,74 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let buttonBar = UIView()
     lazy var weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
     lazy var monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
+    
+    private var isTracking: Bool = false
 
+    // MARK: FUNCTIONS
+    
+    // Controls bottom bar of segmented control
+    func viewDidLoadDefaultButtonBar() {
+        UIView.animate(withDuration: 0.3) {
+            self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
+        }
+    }
+    
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
+    if sender.state == .ended {
+        switch sender.direction {
+        case .right:
+            view.backgroundColor = .red
+        case .left:
+            view.backgroundColor = .blue
+        case .up:
+            view.backgroundColor = .green
+        case .down:
+            view.backgroundColor = .yellow
+        default:
+            break
+        }
+    }
+    }
+    
     // MARK: DEFAULT UI
+    var count = 0
+    @objc func update() {
+        if (scrollView.currentPage == 1) {
+            settingsButton.setImage(UIImage(named: "Settings - White"), for: .normal)
+            analyticsButton.setImage(UIImage(named: "Graph - Gray"), for: .normal)
+        }
+        else if (scrollView.currentPage == 2) {
+            settingsButton.setImage(UIImage(named: "Settings - Gray"), for: .normal)
+            analyticsButton.setImage(UIImage(named: "Graph - Gray"), for: .normal)
+        }
+        else {
+            settingsButton.setImage(UIImage(named: "Settings - Gray"), for: .normal)
+            analyticsButton.setImage(UIImage(named: "Graph - White"), for: .normal)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+ 
+        /*
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        // the default direction is right
         
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        leftSwipe.direction = .left
+        
+        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        upSwipe.direction = .up
+        
+        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        downSwipe.direction = .down
+        
+        view.addGestureRecognizer(rightSwipe)
+        view.addGestureRecognizer(leftSwipe)
+        view.addGestureRecognizer(upSwipe)
+        view.addGestureRecognizer(downSwipe)
+        */
         // Bar graph appearances
         weeklyBarChart.isHidden = false
         monthlyBarChart.isHidden = true
@@ -485,6 +545,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
        scrollView.contentSize = CGSize(width:x+padding, height:scrollView.frame.size.height)
         scrollView.setContentOffset(CGPoint(x: homeView.bounds.maxX, y: padding), animated: true)
         
+        
     }
     
     func generateWeeklyDataEntries() -> [DataEntry] {
@@ -586,7 +647,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         animation2.damping = 7
         greetingLabel.layer.add(animation, forKey: "basic animation")
         dateLabel.layer.add(animation2, forKey: "basic animation")
-    
+        
     }
     
     // MARK: BUBBLETRANSITION AND EMITTER ANIMATIONS
@@ -657,3 +718,10 @@ extension UISegmentedControl {
         return image!
     }
 }
+    
+    // Gets current page of UIScrollView
+    extension UIScrollView {
+        var currentPage:Int{
+            return Int((self.contentOffset.x+(0.5*self.frame.size.width))/self.frame.width)+1
+        }
+    }

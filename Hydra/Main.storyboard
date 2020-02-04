@@ -94,6 +94,19 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HDa-J9-Z98" customClass="BasicBarChart" customModule="Hydra" customModuleProvider="target">
                                 <rect key="frame" x="59" y="267" width="300" height="329"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f28-fi-qXN">
+                                        <rect key="frame" x="-21" y="53" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="FHd-Hx-T2Q"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="1kb-4J-7d5"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="GHb-uw-kUk" appends="YES" id="Vez-wT-HSY"/>
+                                            <outletCollection property="gestureRecognizers" destination="10C-Je-rAx" appends="YES" id="P5C-ZS-qe4"/>
+                                        </connections>
+                                    </scrollView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
@@ -119,6 +132,7 @@
                     <connections>
                         <outlet property="analyticsButton" destination="cMl-qp-h2Y" id="FbB-AR-lCo"/>
                         <outlet property="monthlyBarChart" destination="cLr-WC-w3L" id="gt9-LY-aw8"/>
+                        <outlet property="scrollView" destination="f28-fi-qXN" id="W8h-a6-Ucb"/>
                         <outlet property="settingsButton" destination="oPw-30-mPO" id="aTt-Rf-83t"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="ecI-AX-uIn"/>
                         <outlet property="weeklyBarChart" destination="HDa-J9-Z98" id="DqM-iq-4rm"/>
@@ -126,6 +140,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="GHb-uw-kUk">
+                    <connections>
+                        <action selector="analyticsSwipeGestureSwiped:" destination="BYZ-38-t0r" id="eau-Xd-1kZ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="up" id="10C-Je-rAx">
+                    <connections>
+                        <action selector="settingsSwipeGesture:" destination="BYZ-38-t0r" id="e8d-ep-mN7"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
         </scene>
@@ -230,6 +254,6 @@
         <image name="Settings - Gray" width="209" height="202"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qlF-Bp-rWh"/>
+        <segue reference="enI-IK-Iuf"/>
     </inferredMetricsTieBreakers>
 </document>

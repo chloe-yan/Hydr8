@@ -48,16 +48,12 @@ class AddUpdatesViewController: UIViewController {
       super.viewDidLoad()
         addUpdatesButton.layer.cornerRadius = 16
         cancelButton = UIButton()
-        let xVal = (view.bounds.maxX/2)-((0.04615)*(view.bounds.maxY))
-        let yVal = (view.bounds.maxY)-((0.2692)*(view.bounds.maxY-15))
-        let cbWidth = ((0.0923)*(view.bounds.maxY))
-        let cbHeight = ((0.0923)*(view.bounds.maxY))
-        cancelButton.frame = CGRect(x: xVal, y: yVal+50, width: cbWidth, height: cbHeight)
+        cancelButton.frame = CGRect(x: (view.bounds.maxX/2)-(((60/375)*(view.bounds.maxX))/2), y: (view.bounds.maxY+45)-((175/375)*view.bounds.maxX), width: ((60/375)*(view.bounds.maxX)), height: ((60/375)*(view.bounds.maxX)))
+        cancelButton.layer.cornerRadius = (30/375)*(view.bounds.maxX)
         cancelButton.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
         cancelButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.setTitle("+", for: .normal)
         cancelButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 35)!
-        cancelButton.layer.cornerRadius = (30/650)*(view.bounds.maxY)
         cancelButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
         cancelButton.isEnabled = true
         view.addSubview(cancelButton)

@@ -20,14 +20,22 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     @IBOutlet weak var analyticsButton: UIButton!
     @IBOutlet weak var weeklyBarChart: BasicBarChart!
     @IBOutlet weak var monthlyBarChart: BasicBarChart!
-    @IBAction func settingsSwipeGestureSwiped(_ sender: UISwipeGestureRecognizer) {
-        print("SETTINGS")
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBAction func settingsButtonTapped(_ sender: Any) {
+        if (settingsButton.currentImage == UIImage(named: "Settings - Gray")!) {
+            scrollView.setContentOffset(CGPoint(x: settingsView.bounds.minX, y: 0), animated: true)
+        }
     }
-    @IBAction func analyticsSwipeGestureSwiped(_ sender: UISwipeGestureRecognizer) {
-        print("ANALYTICS")
+    @IBAction func analyticsButtonTapped(_ sender: Any) {
+        if (analyticsButton.currentImage == UIImage(named: "Graph - Gray")! && settingsButton.currentImage == UIImage(named: "Settings - White")!) {
+            scrollView.setContentOffset(CGPoint(x: scrollView.bounds.maxX*2, y: 0), animated: true)
+        }
+        else if (analyticsButton.currentImage == UIImage(named: "Graph - Gray")! && settingsButton.currentImage == UIImage(named: "Settings - Gray")!) {
+            scrollView.setContentOffset(CGPoint(x: scrollView.bounds.maxX, y: 0), animated: true)
+        }
     }
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    // MARK: FUNCTIONS
     
     @objc func addUpdatesButtonTapped(sender: UIButton) {
         performSegue(withIdentifier: "addUpdates", sender: self)
@@ -78,9 +86,30 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         }
     }
     
-    // MARK: VARIABLES
+    // Updates menu control UI
+    @objc func update() {
+        if (scrollView.currentPage == 1) {
+            settingsButton.setImage(UIImage(named: "Settings - White"), for: .normal)
+            analyticsButton.setImage(UIImage(named: "Graph - Gray"), for: .normal)
+        }
+        else if (scrollView.currentPage == 2) {
+            settingsButton.setImage(UIImage(named: "Settings - Gray"), for: .normal)
+            analyticsButton.setImage(UIImage(named: "Graph - Gray"), for: .normal)
+        }
+        else {
+            settingsButton.setImage(UIImage(named: "Settings - Gray"), for: .normal)
+            analyticsButton.setImage(UIImage(named: "Graph - White"), for: .normal)
+        }
+    }
     
-    //let scrollView = UIScrollView()
+    // Controls bottom bar of segmented control
+    func viewDidLoadDefaultButtonBar() {
+        UIView.animate(withDuration: 0.3) {
+            self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
+        }
+    }
+    
+    // MARK: VARIABLES
     
     var date = Date()
     var dateFormatter = DateFormatter()
@@ -139,73 +168,19 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     lazy var weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
     lazy var monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
     
-    private var isTracking: Bool = false
-
-    // MARK: FUNCTIONS
-    
-    // Controls bottom bar of segmented control
-    func viewDidLoadDefaultButtonBar() {
-        UIView.animate(withDuration: 0.3) {
-            self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
-        }
-    }
-    
-    @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
-    if sender.state == .ended {
-        switch sender.direction {
-        case .right:
-            view.backgroundColor = .red
-        case .left:
-            view.backgroundColor = .blue
-        case .up:
-            view.backgroundColor = .green
-        case .down:
-            view.backgroundColor = .yellow
-        default:
-            break
-        }
-    }
-    }
+    let analyticsView = UIView()
+    let settingsView = UIView()
     
     // MARK: DEFAULT UI
-    var count = 0
-    @objc func update() {
-        if (scrollView.currentPage == 1) {
-            settingsButton.setImage(UIImage(named: "Settings - White"), for: .normal)
-            analyticsButton.setImage(UIImage(named: "Graph - Gray"), for: .normal)
-        }
-        else if (scrollView.currentPage == 2) {
-            settingsButton.setImage(UIImage(named: "Settings - Gray"), for: .normal)
-            analyticsButton.setImage(UIImage(named: "Graph - Gray"), for: .normal)
-        }
-        else {
-            settingsButton.setImage(UIImage(named: "Settings - Gray"), for: .normal)
-            analyticsButton.setImage(UIImage(named: "Graph - White"), for: .normal)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+        
+        print(greetingLabel.frame.maxY)
+        print(dateLabel.frame.maxY)
+        
+        let timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(update), userInfo: nil, repeats: true)
  
-        /*
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-        // the default direction is right
-        
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-        leftSwipe.direction = .left
-        
-        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-        upSwipe.direction = .up
-        
-        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-        downSwipe.direction = .down
-        
-        view.addGestureRecognizer(rightSwipe)
-        view.addGestureRecognizer(leftSwipe)
-        view.addGestureRecognizer(upSwipe)
-        view.addGestureRecognizer(downSwipe)
-        */
         // Bar graph appearances
         weeklyBarChart.isHidden = false
         monthlyBarChart.isHidden = true
@@ -232,18 +207,19 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         }
         
         // Greeting animation
+        /*
         let animation = CASpringAnimation(keyPath: "position")
         animation.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
-        animation.toValue = CGPoint(x: (view.bounds.maxX/2), y: 45)
+        animation.toValue = CGPoint(x: (view.bounds.maxX/2), y: (35/650)*view.frame.maxY)
         animation.duration = 2
         animation.damping = 7
         let animation2 = CASpringAnimation(keyPath: "position")
         animation2.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
-        animation2.toValue = CGPoint(x: (view.bounds.maxX/2), y: 75)
+        animation2.toValue = CGPoint(x: (view.bounds.maxX/2), y: (60/650)*view.frame.maxY)
         animation2.duration = 2
         animation2.damping = 7
         greetingLabel.layer.add(animation, forKey: "basic animation")
-        dateLabel.layer.add(animation2, forKey: "basic animation")
+        dateLabel.layer.add(animation2, forKey: "basic animation")*/
 
         // Update daily water intake
         var components = calendar.dateComponents([.weekday], from: date)
@@ -335,7 +311,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         let viewHeight = scrollView.frame.size.height - 2 * padding
 
         // Settings view page
-        let settingsView: UIView = UIView(frame: CGRect(x: x - 200, y: padding + 40, width: viewWidth + 175, height: viewHeight - 120))
+        settingsView.frame = CGRect(x: x - 200, y: padding + 40, width: viewWidth + 175, height: viewHeight - 120)
         settingsView.backgroundColor = UIColor.white.withAlphaComponent(1)
         settingsView.layer.cornerRadius = 40
         scrollView.addSubview(settingsView)
@@ -444,10 +420,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletFluidView.startAnimation()
         let offsetConstant = (((256/375)*(view.frame.maxX))/2)
         maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2)
-        print("offsetConst", offsetConstant)
-        print("maxX", view.frame.maxX)
-        print("maxY", view.frame.maxY)
-        print("mlWidth", maskingLayer.frame.width)
         maskingLayer.contents = maskingImage?.cgImage
         dropletFluidView.layer.mask = maskingLayer
         homeView.addSubview(dropletFluidView)
@@ -473,7 +445,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         homeView.addSubview(waterIntakeLabel)
        
         // Analytics view page
-        let analyticsView: UIView = UIView(frame: CGRect(x: x + 20, y: padding + 10, width: viewWidth - 40, height: viewHeight))
+        analyticsView.frame = CGRect(x: x + 20, y: padding + 10, width: viewWidth - 40, height: viewHeight)
         analyticsView.backgroundColor = UIColor.white.withAlphaComponent(0)
         analyticsView.layer.cornerRadius = 40
         scrollView.addSubview(analyticsView)
@@ -631,23 +603,29 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dateLabel.isHidden = false
         
         // Greeting message metrics
-        greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: (30/375)*view.frame.maxX, width: self.greetingLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
-        dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: (60/375)*view.frame.maxX, width: self.dateLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
+        greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: (35/650)*view.frame.maxY, width: self.greetingLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
+        print("METRICS-GL", (35/650)*view.frame.maxY)
+        dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: (60/650)*view.frame.maxY, width: self.dateLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
+        print("METRICS-DL", (60/650)*view.frame.maxY)
         
         // Greeting animations
         let animation = CASpringAnimation(keyPath: "position")
         animation.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
-        animation.toValue = CGPoint(x: (view.bounds.maxX/2), y: 45)
+        animation.toValue = CGPoint(x: (view.bounds.maxX/2), y: (35/650)*view.frame.maxY+15)
+        print("DIDAPPEAR-ANIMATION-Y", (35/650)*view.frame.maxY+15)
         animation.duration = 2
         animation.damping = 7
         let animation2 = CASpringAnimation(keyPath: "position")
         animation2.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
-        animation2.toValue = CGPoint(x: (view.bounds.maxX/2), y: 75)
+        animation2.toValue = CGPoint(x: (view.bounds.maxX/2), y: (60/650)*view.frame.maxY+15)
+        print("DIDAPPEAR-ANIMATION2-Y", (60/650)*view.frame.maxY+15)
         animation2.duration = 2
         animation2.damping = 7
         greetingLabel.layer.add(animation, forKey: "basic animation")
         dateLabel.layer.add(animation2, forKey: "basic animation")
-        
+        print(greetingLabel.frame.maxY)
+        print(dateLabel.frame.maxY)
+
     }
     
     // MARK: BUBBLETRANSITION AND EMITTER ANIMATIONS

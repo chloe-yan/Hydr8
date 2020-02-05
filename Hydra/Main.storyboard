@@ -36,23 +36,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPw-30-mPO">
-                                <rect key="frame" x="25" y="103" width="38" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="UJz-lo-Kpq"/>
-                                    <constraint firstAttribute="width" constant="38" id="tU3-I8-Lq2"/>
-                                </constraints>
-                                <viewLayoutGuide key="safeArea" id="Vbr-lk-fir"/>
-                                <state key="normal" image="Settings - Gray"/>
-                                <connections>
-                                    <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iCK-Hq-Vxu"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMl-qp-h2Y">
-                                <rect key="frame" x="354" y="103" width="35" height="30"/>
+                                <rect key="frame" x="357" y="103" width="32" height="33"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="XJt-Hx-CYM"/>
-                                    <constraint firstAttribute="height" constant="30" id="hcI-cC-6mc"/>
+                                    <constraint firstAttribute="width" constant="32" id="Bej-9m-DR9"/>
+                                    <constraint firstAttribute="height" constant="33" id="OF4-ir-j6i"/>
                                 </constraints>
                                 <state key="normal" image="Graph - Gray"/>
                                 <state key="selected" image="Graph - Gray"/>
@@ -112,6 +100,18 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPw-30-mPO">
+                                <rect key="frame" x="20" y="103" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="UJz-lo-Kpq"/>
+                                    <constraint firstAttribute="width" constant="32" id="tU3-I8-Lq2"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="Vbr-lk-fir"/>
+                                <state key="normal" image="Settings - Gray"/>
+                                <connections>
+                                    <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iCK-Hq-Vxu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.27311476150000003" green="0.35076587339999998" blue="0.6879758883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -243,8 +243,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Graph - Gray" width="445" height="409"/>
-        <image name="Settings - Gray" width="209" height="202"/>
+        <image name="Graph - Gray" width="241" height="238"/>
+        <image name="Settings - Gray" width="617" height="617"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="enI-IK-Iuf"/>

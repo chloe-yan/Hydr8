@@ -54,6 +54,7 @@ class AddUpdatesViewController: UIViewController {
         cancelButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.setTitle("+", for: .normal)
         cancelButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 35)!
+        cancelButton.transform = self.cancelButton.transform.rotated(by: CGFloat(M_PI_4))
         cancelButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
         cancelButton.isEnabled = true
         view.addSubview(cancelButton)

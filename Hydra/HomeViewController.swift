@@ -49,6 +49,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             numericGoalLabel.text = "\(goal) oz"
             numericGoalTextField.text = ""
             percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
+            dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
+            print("SETGOALTAPPED-WATERLEVEL", NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
         }
         else if (numericGoalTextField.text != Optional("") && (numericGoalTextField.text as NSString?)!.integerValue <= 0) {
             let alert = UIAlertController(title: "Try setting a higher goal", message: "You got this! Tackle hydration.", preferredStyle: UIAlertController.Style.alert)
@@ -175,9 +177,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(greetingLabel.frame.maxY)
-        print(dateLabel.frame.maxY)
         
         let timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(update), userInfo: nil, repeats: true)
  
@@ -413,7 +412,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
 
         // Droplet FluidView
         // Threshold values: Min = 0.4, Max: 0.8
-         dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
+        dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
+        print("VIEWDIDLOAD-WATERLEVEL", NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
         dropletFluidView.strokeColor = UIColor.clear
         dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
         dropletFluidView.keepStationary()
@@ -424,7 +424,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletFluidView.layer.mask = maskingLayer
         homeView.addSubview(dropletFluidView)
         homeView.sendSubviewToBack(dropletFluidView)
-
+        
         // Droplet outline overlay
         dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2)
         dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
@@ -567,7 +567,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Update user data
         waterIntake = defaults.double(forKey: "waterIntake")
         waterIntakeLabel.text = "\(waterIntake) oz"
+        waterIntakeLabel.frame = CGRect(x: (view.frame.maxX/2)-(waterIntakeLabel.intrinsicContentSize.width/2), y: 290, width: waterIntakeLabel.intrinsicContentSize.width, height: waterIntakeLabel.intrinsicContentSize.height)
         dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
+        percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
+        percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: 256, width: percentageLabel.intrinsicContentSize.width+50, height: percentageLabel.intrinsicContentSize.height)
         
         // Reset daily user data
         dateFormatter.dateStyle = .full
@@ -604,27 +607,29 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         // Greeting message metrics
         greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: (35/650)*view.frame.maxY, width: self.greetingLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
-        print("METRICS-GL", (35/650)*view.frame.maxY)
         dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: (60/650)*view.frame.maxY, width: self.dateLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
-        print("METRICS-DL", (60/650)*view.frame.maxY)
         
         // Greeting animations
         let animation = CASpringAnimation(keyPath: "position")
         animation.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
         animation.toValue = CGPoint(x: (view.bounds.maxX/2), y: (35/650)*view.frame.maxY+15)
-        print("DIDAPPEAR-ANIMATION-Y", (35/650)*view.frame.maxY+15)
         animation.duration = 2
         animation.damping = 7
         let animation2 = CASpringAnimation(keyPath: "position")
         animation2.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
         animation2.toValue = CGPoint(x: (view.bounds.maxX/2), y: (60/650)*view.frame.maxY+15)
-        print("DIDAPPEAR-ANIMATION2-Y", (60/650)*view.frame.maxY+15)
         animation2.duration = 2
         animation2.damping = 7
         greetingLabel.layer.add(animation, forKey: "basic animation")
         dateLabel.layer.add(animation2, forKey: "basic animation")
         print(greetingLabel.frame.maxY)
         print(dateLabel.frame.maxY)
+        
+        // Update bar chart data
+        let monthlyDataEntries = generateMonthlyDataEntries()
+        let weeklyDataEntries = generateWeeklyDataEntries()
+        monthlyBarChart.updateDataEntries(dataEntries: monthlyDataEntries, animated: false)
+        weeklyBarChart.updateDataEntries(dataEntries: weeklyDataEntries, animated: false)
 
     }
     

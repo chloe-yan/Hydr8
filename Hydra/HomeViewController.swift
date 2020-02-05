@@ -49,8 +49,22 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             numericGoalLabel.text = "\(goal) oz"
             numericGoalTextField.text = ""
             percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
+            dropletOutlineLayer.removeFromSuperlayer()
+            dropletFluidView.removeFromSuperview()
             dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
-            print("SETGOALTAPPED-WATERLEVEL", NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
+            dropletFluidView.strokeColor = UIColor.clear
+            dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
+            let offsetConstant = (((256/375)*(view.frame.maxX))/2)
+            maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2)
+            maskingLayer.contents = maskingImage?.cgImage
+            dropletFluidView.layer.mask = maskingLayer
+            homeView.addSubview(dropletFluidView)
+            homeView.sendSubviewToBack(dropletFluidView)
+            
+            // Droplet outline overlay
+            dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2)
+            dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
+            dropletFluidView.layer.addSublayer(dropletOutlineLayer)
         }
         else if (numericGoalTextField.text != Optional("") && (numericGoalTextField.text as NSString?)!.integerValue <= 0) {
             let alert = UIAlertController(title: "Try setting a higher goal", message: "You got this! Tackle hydration.", preferredStyle: UIAlertController.Style.alert)
@@ -413,6 +427,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Droplet FluidView
         // Threshold values: Min = 0.4, Max: 0.8
         dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
+        print("VIEWDIDLOAD-waterintake", defaults.double(forKey: "waterIntake"))
+        print("VIEWDIDLOAD-dailygoal", defaults.double(forKey: "dailyGoal"))
         print("VIEWDIDLOAD-WATERLEVEL", NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
         dropletFluidView.strokeColor = UIColor.clear
         dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
@@ -622,8 +638,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         animation2.damping = 7
         greetingLabel.layer.add(animation, forKey: "basic animation")
         dateLabel.layer.add(animation2, forKey: "basic animation")
-        print(greetingLabel.frame.maxY)
-        print(dateLabel.frame.maxY)
         
         // Update bar chart data
         let monthlyDataEntries = generateMonthlyDataEntries()

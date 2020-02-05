@@ -623,7 +623,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         // Greeting message metrics
         greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: (35/650)*view.frame.maxY, width: self.greetingLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
-        dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: (60/650)*view.frame.maxY, width: self.dateLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
+        dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: (65/650)*view.frame.maxY, width: self.dateLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
         
         // Greeting animations
         let animation = CASpringAnimation(keyPath: "position")
@@ -633,7 +633,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         animation.damping = 7
         let animation2 = CASpringAnimation(keyPath: "position")
         animation2.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
-        animation2.toValue = CGPoint(x: (view.bounds.maxX/2), y: (60/650)*view.frame.maxY+15)
+        animation2.toValue = CGPoint(x: (view.bounds.maxX/2), y: (65/650)*view.frame.maxY+15)
         animation2.duration = 2
         animation2.damping = 7
         greetingLabel.layer.add(animation, forKey: "basic animation")

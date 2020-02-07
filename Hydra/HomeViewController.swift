@@ -120,9 +120,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     // Controls bottom bar of segmented control
     func viewDidLoadDefaultButtonBar() {
-        UIView.animate(withDuration: 0.3) {
-            self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
-        }
+        self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
+        //UIView.animate(withDuration: 0.3) {
+          //  self.buttonBar.frame.origin.x = //(self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
+      //  }
     }
     
     // MARK: VARIABLES
@@ -488,7 +489,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         segmentedControl.addTarget(responder, action: #selector(responder.segmentedControlValueChanged(_:)), for: UIControl.Event.valueChanged)
         segmentedControl.removeBorders()
         analyticsView.addSubview(segmentedControl)
-        
+
         // Segmented control constraints
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.topAnchor.constraint(lessThanOrEqualTo: analyticsView.topAnchor, constant: 10).isActive = true
@@ -504,9 +505,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Button bar constraints
         buttonBar.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor).isActive = true
         buttonBar.heightAnchor.constraint(equalToConstant: 3).isActive = true
-        buttonBar.leadingAnchor.constraint(equalTo: segmentedControl.leadingAnchor, constant: (segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments) / 4)).isActive = true
+      //  buttonBar.leadingAnchor.constraint(equalTo: segmentedControl.leadingAnchor, constant: (segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments) / 3                                                                                                                                                                                                                                                                    )).isActive = true
         buttonBar.widthAnchor.constraint(equalToConstant: 40).isActive = true
         buttonBar.layer.cornerRadius = 3
+        viewDidLoadDefaultButtonBar()
         
         // Weekly bar chart
         let dataEntries = generateWeeklyDataEntries()
@@ -515,13 +517,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         weeklyBarChart.backgroundColor = .clear
         analyticsView.addSubview(weeklyBarChart)
         
-        // Weekly bar constraints
-        /*
-        weeklyBarChart.topAnchor.constraint(equalTo: analyticsView.topAnchor, constant: 50).isActive = true
-        weeklyBarChart.heightAnchor.constraint(equalToConstant: 3).isActive = true
-                weeklyBarChart.widthAnchor.constraint(equalTo: analyticsView.widthAnchor, multiplier: 0.9).isActive = true
-        weeklyBarChart.leadingAnchor.constraint(equalTo: analyticsView.leadingAnchor, constant: (analyticsView.frame.width/2) - (weeklyBarChart.frame.width/2)).isActive = true*/
-        
         // Monthly bar chart
         let monthlyDataEntries = generateMonthlyDataEntries()
         monthlyBarChart.updateDataEntries(dataEntries: monthlyDataEntries, animated: false)
@@ -529,10 +524,9 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         monthlyBarChart.backgroundColor = .clear
         analyticsView.addSubview(monthlyBarChart)
         
-       // Scroll view metrics
-       scrollView.contentSize = CGSize(width:x+padding, height:scrollView.frame.size.height)
+        // Scroll view metrics
+        scrollView.contentSize = CGSize(width:x+padding, height:scrollView.frame.size.height)
         scrollView.setContentOffset(CGPoint(x: homeView.bounds.maxX, y: padding), animated: true)
-        
         
     }
     
@@ -644,7 +638,14 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         let weeklyDataEntries = generateWeeklyDataEntries()
         monthlyBarChart.updateDataEntries(dataEntries: monthlyDataEntries, animated: false)
         weeklyBarChart.updateDataEntries(dataEntries: weeklyDataEntries, animated: false)
-
+        analyticsView.addSubview(weeklyBarChart)
+        analyticsView.addSubview(monthlyBarChart)
+        
+        // Segmented Control
+        //segmentedControl.selectedSegmentIndex = 1
+        //UIView.animate(withDuration: 0.3) {
+        //    self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
+        //}
     }
     
     // MARK: BUBBLETRANSITION AND EMITTER ANIMATIONS

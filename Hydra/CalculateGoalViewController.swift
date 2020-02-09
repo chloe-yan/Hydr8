@@ -16,22 +16,29 @@ class CalculateGoalViewController: UIViewController {
     @IBAction func setGoalButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // Keyboard functionality
+    @objc func doneButtonAction() {
+        self.view.endEditing(true)
+    }
+    
+    func setupTextFields() {
+        let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: view.frame.size.width, height: 30)))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonAction))
+        toolbar.setItems([flexSpace, doneButton], animated: false)
+        toolbar.sizeToFit()
+        ageTextField.inputAccessoryView = toolbar
+        weightTextField.inputAccessoryView = toolbar
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setGoalButton.layer.cornerRadius = 16
-        // Do any additional setup after loading the view.
+        setupTextFields()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -89,7 +89,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         if (segmentedControl.selectedSegmentIndex == 0) {
             weeklyBarChart.isHidden = false
             monthlyBarChart.isHidden = true
-            print(self.buttonBar.frame.origin.x)
         }
         else if (segmentedControl.selectedSegmentIndex == 1) {
             weeklyBarChart.isHidden = true
@@ -114,21 +113,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         else {
             settingsButton.setImage(UIImage(named: "Settings - Gray"), for: .normal)
             analyticsButton.setImage(UIImage(named: "Graph - White"), for: .normal)
-        }
-    }
-    
-    // Controls bottom bar of segmented control
- /*   func viewDidLoadDefaultButtonBar() {
-        //self.buttonBar.frame.origin.x = 100//(self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
-        UIView.animate(withDuration: 0.3) {
-            self.segmentedControl.selectedSegmentIndex = 0
-            self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
-            print("buttonbar", self.buttonBar.frame.origin.x)
-        }
-    }*/
-    func viewDidLoadDefaultButtonBar() {
-        UIView.animate(withDuration: 0.3) {
-            self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
         }
     }
     
@@ -225,21 +209,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         if (defaults.double(forKey: "dailyGoal") == 0) {
             defaults.set(64, forKey: "dailyGoal")
         }
-        
-        // Greeting animation
-        /*
-        let animation = CASpringAnimation(keyPath: "position")
-        animation.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
-        animation.toValue = CGPoint(x: (view.bounds.maxX/2), y: (35/650)*view.frame.maxY)
-        animation.duration = 2
-        animation.damping = 7
-        let animation2 = CASpringAnimation(keyPath: "position")
-        animation2.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
-        animation2.toValue = CGPoint(x: (view.bounds.maxX/2), y: (60/650)*view.frame.maxY)
-        animation2.duration = 2
-        animation2.damping = 7
-        greetingLabel.layer.add(animation, forKey: "basic animation")
-        dateLabel.layer.add(animation2, forKey: "basic animation")*/
 
         // Update daily water intake
         var components = calendar.dateComponents([.weekday], from: date)
@@ -434,9 +403,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Droplet FluidView
         // Threshold values: Min = 0.4, Max: 0.8
         dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
-        print("VIEWDIDLOAD-waterintake", defaults.double(forKey: "waterIntake"))
-        print("VIEWDIDLOAD-dailygoal", defaults.double(forKey: "dailyGoal"))
-        print("VIEWDIDLOAD-WATERLEVEL", NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
         dropletFluidView.strokeColor = UIColor.clear
         dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
         dropletFluidView.keepStationary()
@@ -503,35 +469,13 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         segmentedControl.leadingAnchor.constraint(equalTo: analyticsView.leadingAnchor, constant: 20).isActive = true
         segmentedControl.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        /*// Button bar
-        buttonBar.translatesAutoresizingMaskIntoConstraints = false
-        buttonBar.backgroundColor = UIColor.white
-        viewDidLoadDefaultButtonBar()
-        //self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
-        analyticsView.addSubview(buttonBar)
-        //UIView.animate(withDuration: 0.3) {
-            //self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
-        //}
-       // print("buttonbar-", self.buttonBar.frame.origin.x)
-        // Button bar constraints
-        buttonBar.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor).isActive = true
-        buttonBar.heightAnchor.constraint(equalToConstant: 3).isActive = true
-        buttonBar.leadingAnchor.constraint(equalTo: segmentedControl.leadingAnchor, constant: (segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments) / 4                                                                                    )).isActive = true
-        buttonBar.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        buttonBar.layer.cornerRadius = 3
-        print("buttonbar--", self.buttonBar.frame.origin.x)
-        */
         // Button bar
         buttonBar.translatesAutoresizingMaskIntoConstraints = false
         buttonBar.backgroundColor = UIColor.white
-        analyticsView.addSubview(buttonBar)
-        
-        // Button bar constraints
-        buttonBar.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor).isActive = true
-        buttonBar.heightAnchor.constraint(equalToConstant: 3).isActive = true
-        buttonBar.leadingAnchor.constraint(equalTo: segmentedControl.leadingAnchor, constant: (segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments) / 4)).isActive = true
-        buttonBar.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        let buttonBarXPos = ((analyticsView.bounds.maxX-40 / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex)) + ((analyticsView.bounds.maxX-40)/CGFloat(self.segmentedControl.numberOfSegments))/2
+        buttonBar.frame = CGRect(x: buttonBarXPos, y: segmentedControl.bounds.maxY+50, width: 40, height: 3)
         buttonBar.layer.cornerRadius = 3
+        analyticsView.addSubview(buttonBar)
         
         // Weekly bar chart
         let dataEntries = generateWeeklyDataEntries()
@@ -595,13 +539,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     override func viewDidAppear(_ animated: Bool) {
         
         // Corrects location of button bar
-        viewDidLoadDefaultButtonBar()
+        //viewDidLoadDefaultButtonBar()
         
         // Update user data
         waterIntake = defaults.double(forKey: "waterIntake")
         waterIntakeLabel.text = "\(waterIntake) oz"
         waterIntakeLabel.frame = CGRect(x: (view.frame.maxX/2)-(waterIntakeLabel.intrinsicContentSize.width/2), y: 290, width: waterIntakeLabel.intrinsicContentSize.width, height: waterIntakeLabel.intrinsicContentSize.height)
-        //dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
         percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
         percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: 256, width: percentageLabel.intrinsicContentSize.width+50, height: percentageLabel.intrinsicContentSize.height)
         
@@ -664,12 +607,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         analyticsView.addSubview(weeklyBarChart)
         analyticsView.addSubview(monthlyBarChart)
         
-        // Segmented Control
-        segmentedControl.selectedSegmentIndex = 0
-        UIView.animate(withDuration: 0.3) {
-            self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
-        }
-        analyticsView.addSubview(buttonBar)
     }
     
     // MARK: BUBBLETRANSITION AND EMITTER ANIMATIONS

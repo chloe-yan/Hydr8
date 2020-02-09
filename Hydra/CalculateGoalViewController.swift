@@ -18,7 +18,7 @@ class CalculateGoalViewController: UIViewController {
     @IBAction func setGoalButtonTapped(_ sender: Any) {
         if (ageTextField.text != Optional("") && (ageTextField.text as NSString?)!.integerValue > 0 && weightTextField.text != Optional("") && (weightTextField.text as NSString?)!.integerValue > 0) {
             let age = Int(ageTextField.text!)
-            var weight = Int(weightTextField.text!)!
+            let weight = Int(weightTextField.text!)!
             var goal = Double(weight)/2.2
             if (age! < 30) {
                 goal *= 40
@@ -32,7 +32,7 @@ class CalculateGoalViewController: UIViewController {
             let finalGoal = Int(goal/28.3)
             let hvc = HomeViewController()
             hvc.defaults.set(finalGoal, forKey: "dailyGoal")
-            NotificationCenter.defaultCenter().postNotificationName("refresh", object: nil, userInfo: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refresh"), object: nil, userInfo: nil)
             dismiss(animated: true, completion: nil)
         }
     }

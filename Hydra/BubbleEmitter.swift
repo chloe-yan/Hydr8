@@ -35,7 +35,6 @@ class BubbleEmitter {
         cell.emissionRange = (45 * (.pi/180))
         cell.scale = 0.06
         cell.scaleRange = 0.1
-        let hvc = HomeViewController()
         
         cells.append(cell)
         return cells

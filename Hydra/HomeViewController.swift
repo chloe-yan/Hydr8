@@ -77,7 +77,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     }
     
     @objc func calculateGoalButtonTapped(_ sender: Any) {
-        let presented = CalculateGoalViewController()
         performSegue(withIdentifier: "calculateGoal", sender: self)
     }
     
@@ -386,8 +385,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         calculateGoalButton.addTarget(self, action: #selector(calculateGoalButtonTapped), for: .touchUpInside)
         calculateGoalButton.layer.cornerRadius = 3
         calculateGoalButton.frame = CGRect(x: 250, y: 450, width: calculateGoalButton.intrinsicContentSize.width, height:   calculateGoalButton.intrinsicContentSize.height)
-        calculateGoalButton.titleLabel?.numberOfLines = 0
-        //calculate
         settingsView.addSubview(calculateGoalButton)
        
         // Home view page

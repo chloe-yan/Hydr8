@@ -121,8 +121,22 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     }
     
     @objc func refreshCurrentGoalLabel(notification: NSNotification) {
-        print("notification received")
         numericGoalLabel.text = String(defaults.integer(forKey: "dailyGoal")) + " oz"
+        dropletOutlineLayer.removeFromSuperlayer()
+        dropletFluidView.removeFromSuperview()
+        dropletFluidView = BAFluidView(frame: view.frame, startElevation: NSNumber(value: ((0.37*defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal"))+0.4)))
+        dropletFluidView.strokeColor = UIColor.clear
+        dropletFluidView.fillColor = UIColor(red:0.64, green:0.71, blue:0.89, alpha:1.0)
+        let offsetConstant = (((256/375)*(view.frame.maxX))/2)
+        maskingLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2)
+        maskingLayer.contents = maskingImage?.cgImage
+        dropletFluidView.layer.mask = maskingLayer
+        homeView.addSubview(dropletFluidView)
+        homeView.sendSubviewToBack(dropletFluidView)
+        
+        dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2)
+        dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
+        dropletFluidView.layer.addSublayer(dropletOutlineLayer)
     }
     
     // MARK: VARIABLES

@@ -35,9 +35,25 @@ class CalculateGoalViewController: UIViewController {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refresh"), object: nil, userInfo: nil)
             dismiss(animated: true, completion: nil)
         }
+        else if (weightTextField.text != Optional("")) {
+            let alert = UIAlertController(title: "Error", message: "Please enter your age.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else if (ageTextField.text != Optional("")) {
+            let alert = UIAlertController(title: "Error", message: "Please enter your weight.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: "Error", message: "Please complete both fields.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refresh"), object: nil, userInfo: nil)
         dismiss(animated: true, completion: nil)
     }
     

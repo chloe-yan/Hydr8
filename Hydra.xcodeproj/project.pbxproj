@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D134F66123EFE8F60023D3E3 /* CalculateGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134F66023EFE8F60023D3E3 /* CalculateGoalViewController.swift */; };
 		D17519F323BADB8200E85762 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17519F223BADB8200E85762 /* AppDelegate.swift */; };
 		D17519F523BADB8200E85762 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17519F423BADB8200E85762 /* SceneDelegate.swift */; };
 		D17519FD23BADB8200E85762 /* Hydr8.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D17519FB23BADB8200E85762 /* Hydr8.xcdatamodeld */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		A449EDDACA356339DE641FCA /* Pods-Hydra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hydra.debug.xcconfig"; path = "Target Support Files/Pods-Hydra/Pods-Hydra.debug.xcconfig"; sourceTree = "<group>"; };
 		BE7020C0F359947630178A2A /* Pods-Hydra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hydra.release.xcconfig"; path = "Target Support Files/Pods-Hydra/Pods-Hydra.release.xcconfig"; sourceTree = "<group>"; };
+		D134F66023EFE8F60023D3E3 /* CalculateGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateGoalViewController.swift; sourceTree = "<group>"; };
 		D17519EF23BADB8200E85762 /* Hydra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17519F223BADB8200E85762 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17519F423BADB8200E85762 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				D17519F223BADB8200E85762 /* AppDelegate.swift */,
 				D17519F423BADB8200E85762 /* SceneDelegate.swift */,
 				D1751A0923BAEC7F00E85762 /* HomeViewController.swift */,
+				D134F66023EFE8F60023D3E3 /* CalculateGoalViewController.swift */,
 				D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */,
 				D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */,
 				D188B27223C2FDD200110889 /* BarChart */,
@@ -300,6 +303,7 @@
 				D1FBDDC423BD6C8C00003306 /* BubbleEmitter.swift in Sources */,
 				D17519F523BADB8200E85762 /* SceneDelegate.swift in Sources */,
 				D188B2A223C3099400110889 /* BasicBarChart.swift in Sources */,
+				D134F66123EFE8F60023D3E3 /* CalculateGoalViewController.swift in Sources */,
 				D1AFBE4723C5C1080051CF45 /* MonthlyBasicBarChart.swift in Sources */,
 				D188B2A123C3099400110889 /* BasicBarEntry.swift in Sources */,
 				D188B28A23C2FDD200110889 /* UIBezierPathExtension.swift in Sources */,

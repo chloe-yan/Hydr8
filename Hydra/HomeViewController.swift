@@ -76,6 +76,11 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         }
     }
     
+    @objc func calculateGoalButtonTapped(_ sender: Any) {
+        let presented = CalculateGoalViewController()
+        performSegue(withIdentifier: "calculateGoal", sender: self)
+    }
+    
     // Keyboard functionality
     @objc func doneButtonAction() {
         self.view.endEditing(true)
@@ -152,6 +157,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let numericGoalTextField = UITextField()
     let ounceLabel = UILabel()
     let setGoalButton = UIButton()
+    let calculateGoalButton = UIButton()
     
     let defaults = UserDefaults.standard
     lazy var goal = defaults.double(forKey: "dailyGoal")
@@ -371,6 +377,18 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         setGoalButton.layer.cornerRadius = 17
         setGoalButton.frame = CGRect(x: 250, y: 200, width: setGoalButton.intrinsicContentSize.width, height:   setGoalButton.intrinsicContentSize.height)
         settingsView.addSubview(setGoalButton)
+        
+        // Set goal button
+        calculateGoalButton.backgroundColor = UIColor.clear //UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
+        calculateGoalButton.setTitle("Calculate recommended goal", for: .normal)
+        calculateGoalButton.setTitleColor(UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.5), for: .normal)
+        calculateGoalButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 12)
+        calculateGoalButton.addTarget(self, action: #selector(calculateGoalButtonTapped), for: .touchUpInside)
+        calculateGoalButton.layer.cornerRadius = 3
+        calculateGoalButton.frame = CGRect(x: 250, y: 450, width: calculateGoalButton.intrinsicContentSize.width, height:   calculateGoalButton.intrinsicContentSize.height)
+        calculateGoalButton.titleLabel?.numberOfLines = 0
+        //calculate
+        settingsView.addSubview(calculateGoalButton)
        
         // Home view page
         homeView.frame = CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight)
@@ -696,9 +714,9 @@ extension UISegmentedControl {
     }
 }
     
-    // Gets current page of UIScrollView
-    extension UIScrollView {
-        var currentPage:Int{
-            return Int((self.contentOffset.x+(0.5*self.frame.size.width))/self.frame.width)+1
-        }
+// Gets current page of UIScrollView
+extension UIScrollView {
+    var currentPage:Int{
+        return Int((self.contentOffset.x+(0.5*self.frame.size.width))/self.frame.width)+1
     }
+}

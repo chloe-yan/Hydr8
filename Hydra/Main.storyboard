@@ -140,11 +140,100 @@
                         <outlet property="view" destination="8bC-Xf-vdC" id="ecI-AX-uIn"/>
                         <outlet property="weeklyBarChart" destination="HDa-J9-Z98" id="DqM-iq-4rm"/>
                         <segue destination="okr-CF-ucO" kind="presentation" identifier="addUpdates" id="enI-IK-Iuf"/>
+                        <segue destination="Zvu-gA-GvA" kind="presentation" identifier="calculateGoal" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="F5h-Nd-sJl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
+        </scene>
+        <!--Calculate Goal View Controller-->
+        <scene sceneID="Go1-Qc-Gbp">
+            <objects>
+                <viewController id="Zvu-gA-GvA" customClass="CalculateGoalViewController" customModule="Hydra" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s79-pl-h4D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculate Recommended Daily Goal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8Z-lq-5dG">
+                                <rect key="frame" x="50" y="94" width="314" height="71.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="26"/>
+                                <color key="textColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How old are you?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbL-Ea-d9e">
+                                <rect key="frame" x="50" y="195.5" width="128.5" height="22"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <color key="textColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="        " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cJh-os-7Hx">
+                                <rect key="frame" x="50" y="227.5" width="58.5" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How much do you weigh?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2S-LM-zCd">
+                                <rect key="frame" x="50" y="281.5" width="191" height="22"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <color key="textColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hOy-gh-crZ">
+                                <rect key="frame" x="50" y="313.5" width="101.5" height="34"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="           " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Sq-jw-gNy">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eR-5f-gO6">
+                                        <rect key="frame" x="80" y="0.0" width="21.5" height="34"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                        <color key="textColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSF-jy-kce">
+                                <rect key="frame" x="50" y="367.5" width="126" height="36"/>
+                                <color key="backgroundColor" red="0.28514454430000002" green="0.3723626552" blue="0.63957407990000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="       Set Goal       ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addUpdatesButtonTapped:" destination="okr-CF-ucO" eventType="touchUpInside" id="2oM-yZ-A7h"/>
+                                    <action selector="setGoalButtonTapped:" destination="Zvu-gA-GvA" eventType="touchUpInside" id="XOZ-ue-OgM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hOy-gh-crZ" firstAttribute="leading" secondItem="gbL-Ea-d9e" secondAttribute="leading" id="4RG-dm-iAS"/>
+                            <constraint firstItem="hOy-gh-crZ" firstAttribute="leading" secondItem="cJh-os-7Hx" secondAttribute="leading" id="8PL-74-pmf"/>
+                            <constraint firstItem="hOy-gh-crZ" firstAttribute="leading" secondItem="u2S-LM-zCd" secondAttribute="leading" id="Dpp-kq-ENR"/>
+                            <constraint firstItem="FSF-jy-kce" firstAttribute="top" secondItem="hOy-gh-crZ" secondAttribute="bottom" constant="20" id="HCF-5n-mtd"/>
+                            <constraint firstItem="W54-Iq-rAX" firstAttribute="trailing" secondItem="U8Z-lq-5dG" secondAttribute="trailing" constant="50" id="OYz-En-YWe"/>
+                            <constraint firstItem="hOy-gh-crZ" firstAttribute="leading" secondItem="FSF-jy-kce" secondAttribute="leading" id="RbX-Fq-cdh"/>
+                            <constraint firstItem="cJh-os-7Hx" firstAttribute="top" secondItem="gbL-Ea-d9e" secondAttribute="bottom" constant="10" id="aMY-Do-jAk"/>
+                            <constraint firstItem="gbL-Ea-d9e" firstAttribute="top" secondItem="U8Z-lq-5dG" secondAttribute="bottom" constant="30" id="aqy-1q-kRe"/>
+                            <constraint firstItem="U8Z-lq-5dG" firstAttribute="leading" secondItem="W54-Iq-rAX" secondAttribute="leading" constant="50" id="e28-2v-oPV"/>
+                            <constraint firstItem="u2S-LM-zCd" firstAttribute="top" secondItem="cJh-os-7Hx" secondAttribute="bottom" constant="20" id="qeU-HA-Jra"/>
+                            <constraint firstItem="hOy-gh-crZ" firstAttribute="top" secondItem="u2S-LM-zCd" secondAttribute="bottom" constant="10" id="sPU-Vt-eR4"/>
+                            <constraint firstItem="U8Z-lq-5dG" firstAttribute="top" secondItem="W54-Iq-rAX" secondAttribute="top" constant="50" id="wOl-Xl-obf"/>
+                            <constraint firstItem="hOy-gh-crZ" firstAttribute="leading" secondItem="U8Z-lq-5dG" secondAttribute="leading" id="wbK-3T-3h2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="W54-Iq-rAX"/>
+                    </view>
+                    <connections>
+                        <outlet property="ageTextField" destination="cJh-os-7Hx" id="6Xc-VQ-Dt9"/>
+                        <outlet property="setGoalButton" destination="FSF-jy-kce" id="vhD-oy-f6c"/>
+                        <outlet property="weightTextField" destination="4Sq-jw-gNy" id="eQF-Tz-vK2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xEe-1B-08W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-206" y="848"/>
         </scene>
         <!--Add Updates View Controller-->
         <scene sceneID="GjV-uV-8ts">
@@ -244,9 +333,9 @@
     </scenes>
     <resources>
         <image name="Graph - Gray" width="241" height="238"/>
-        <image name="Settings - Gray" width="617" height="617"/>
+        <image name="Settings - Gray" width="131" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="enI-IK-Iuf"/>
+        <segue reference="qlF-Bp-rWh"/>
     </inferredMetricsTieBreakers>
 </document>

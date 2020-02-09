@@ -120,6 +120,11 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         }
     }
     
+    func refreshCurrentGoalLabel(notification: NSNotification) {
+        print("notification received")
+        currentGoalLabel.text = String(defaults.integer(forKey: "dailyGoal")) + " oz"
+    }
+    
     // MARK: VARIABLES
     
     var date = Date()
@@ -510,6 +515,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         scrollView.contentSize = CGSize(width:x+padding, height:scrollView.frame.size.height)
         scrollView.setContentOffset(CGPoint(x: homeView.bounds.maxX, y: padding), animated: true)
         
+        NotificationCenter.defaultCenter().addObserver((self, selector: "refreshLbl:", name: "refresh", object: nil)
     }
     
     func generateWeeklyDataEntries() -> [DataEntry] {

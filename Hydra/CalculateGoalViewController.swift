@@ -32,8 +32,7 @@ class CalculateGoalViewController: UIViewController {
             let finalGoal = Int(goal/28.3)
             let hvc = HomeViewController()
             hvc.defaults.set(finalGoal, forKey: "dailyGoal")
-            hvc.currentGoalLabel.text = String(finalGoal) + " oz"
-            print(finalGoal)
+            NotificationCenter.defaultCenter().postNotificationName("refresh", object: nil, userInfo: nil)
             dismiss(animated: true, completion: nil)
         }
     }

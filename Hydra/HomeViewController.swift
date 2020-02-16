@@ -315,7 +315,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         bubbleEmitter()
 
         // Scroll view
-        scrollView.frame = CGRect(x: 0, y: 60, width: view.frame.maxX, height: view.frame.maxY-15)
+        print(view.frame.maxX)
+        scrollView.frame = CGRect(x: 0, y: 60, width: view.frame.maxX, height: view.frame.maxY-((15/375)*view.frame.maxY))
         scrollView.isPagingEnabled = true
         scrollView.backgroundColor = UIColor.clear
         view.addSubview(scrollView)
@@ -323,8 +324,13 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         let viewWidth = scrollView.frame.size.width - 2 * padding
         let viewHeight = scrollView.frame.size.height - 2 * padding
 
+        let constConverter = (view.frame.maxX+view.frame.maxY)/2
+        print("a", scrollView.frame.maxX)
+        print("b", scrollView.frame.maxY)
+        print("constConverter", constConverter)
         // Settings view page
-        settingsView.frame = CGRect(x: x - 200, y: padding + 40, width: viewWidth + 175, height: viewHeight - 120)
+        settingsView.frame = CGRect(x: -200, y: (15/521)*constConverter + (40/521)*constConverter, width: viewWidth + 175, height: viewHeight - ((120/521)*constConverter))
+        print(scrollView.frame.maxX)
         settingsView.backgroundColor = UIColor.white.withAlphaComponent(1)
         settingsView.layer.cornerRadius = 40
         scrollView.addSubview(settingsView)
@@ -403,6 +409,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         calculateGoalButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 12)
         calculateGoalButton.addTarget(self, action: #selector(calculateGoalButtonTapped), for: .touchUpInside)
         calculateGoalButton.layer.cornerRadius = 3
+        print(view.frame.maxY)
         calculateGoalButton.frame = CGRect(x: 250, y: 450, width: calculateGoalButton.intrinsicContentSize.width, height:   calculateGoalButton.intrinsicContentSize.height)
         settingsView.addSubview(calculateGoalButton)
        
@@ -457,14 +464,14 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
         percentageLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 23)
         percentageLabel.textColor = UIColor.white
-        percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: 256, width: percentageLabel.intrinsicContentSize.width+50, height: percentageLabel.intrinsicContentSize.height)
+        percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: dropletOutlineLayer.bounds.maxY, width: percentageLabel.intrinsicContentSize.width+50, height: percentageLabel.intrinsicContentSize.height)
         homeView.addSubview(percentageLabel)
        
         // Water intake label
         waterIntakeLabel.text = "\(waterIntake) oz"
         waterIntakeLabel.font = UIFont(name: "AvenirNext-Medium", size: 18)
         waterIntakeLabel.textColor = UIColor.white
-        waterIntakeLabel.frame = CGRect(x: (view.frame.maxX/2)-(waterIntakeLabel.intrinsicContentSize.width/2), y: 290, width: waterIntakeLabel.intrinsicContentSize.width, height: waterIntakeLabel.intrinsicContentSize.height)
+        waterIntakeLabel.frame = CGRect(x: (view.frame.maxX/2)-(waterIntakeLabel.intrinsicContentSize.width/2), y: dropletOutlineLayer.bounds.maxY+34, width: waterIntakeLabel.intrinsicContentSize.width, height: waterIntakeLabel.intrinsicContentSize.height)
         homeView.addSubview(waterIntakeLabel)
        
         // Analytics view page
@@ -579,9 +586,9 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Update user data
         waterIntake = defaults.double(forKey: "waterIntake")
         waterIntakeLabel.text = "\(waterIntake) oz"
-        waterIntakeLabel.frame = CGRect(x: (view.frame.maxX/2)-(waterIntakeLabel.intrinsicContentSize.width/2), y: 290, width: waterIntakeLabel.intrinsicContentSize.width, height: waterIntakeLabel.intrinsicContentSize.height)
+        waterIntakeLabel.frame = CGRect(x: (view.frame.maxX/2)-(waterIntakeLabel.intrinsicContentSize.width/2), y: dropletOutlineLayer.bounds.maxY+34+((dropletOutlineImage?.size.height)!/4), width: waterIntakeLabel.intrinsicContentSize.width, height: waterIntakeLabel.intrinsicContentSize.height)
         percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
-        percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: 256, width: percentageLabel.intrinsicContentSize.width+50, height: percentageLabel.intrinsicContentSize.height)
+        percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: dropletOutlineLayer.bounds.maxY+((dropletOutlineImage?.size.height)!/4), width: percentageLabel.intrinsicContentSize.width+50, height: percentageLabel.intrinsicContentSize.height)
         
         // Reset daily user data
         dateFormatter.dateStyle = .full
@@ -617,18 +624,18 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dateLabel.isHidden = false
         
         // Greeting message metrics
-        greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: (35/650)*view.frame.maxY, width: self.greetingLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
-        dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: (65/650)*view.frame.maxY, width: self.dateLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
+        greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: (35/650)*view.frame.maxY+(15/650)*homeView.frame.maxY, width: self.greetingLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
+        dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: (65/650)*view.frame.maxY+(15/650)*homeView.frame.maxY, width: self.dateLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
         
         // Greeting animations
         let animation = CASpringAnimation(keyPath: "position")
-        animation.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
-        animation.toValue = CGPoint(x: (view.bounds.maxX/2), y: (35/650)*view.frame.maxY+15)
+        animation.fromValue = CGPoint(x: (homeView.bounds.maxX/2), y: 0)
+        animation.toValue = CGPoint(x: (homeView.bounds.maxX/2), y: (35/650)*homeView.frame.maxY+15+(15/650)*homeView.frame.maxY)
         animation.duration = 2
         animation.damping = 7
         let animation2 = CASpringAnimation(keyPath: "position")
-        animation2.fromValue = CGPoint(x: (view.bounds.maxX/2), y: 0)
-        animation2.toValue = CGPoint(x: (view.bounds.maxX/2), y: (65/650)*view.frame.maxY+15)
+        animation2.fromValue = CGPoint(x: (homeView.bounds.maxX/2), y: 0)
+        animation2.toValue = CGPoint(x: (homeView.bounds.maxX/2), y: (65/650)*homeView.frame.maxY+15+(15/650)*homeView.frame.maxY)
         animation2.duration = 2
         animation2.damping = 7
         greetingLabel.layer.add(animation, forKey: "basic animation")

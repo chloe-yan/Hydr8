@@ -586,9 +586,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Update user data
         waterIntake = defaults.double(forKey: "waterIntake")
         waterIntakeLabel.text = "\(waterIntake) oz"
-        waterIntakeLabel.frame = CGRect(x: (view.frame.maxX/2)-(waterIntakeLabel.intrinsicContentSize.width/2), y: dropletOutlineLayer.bounds.maxY+34+((dropletOutlineImage?.size.height)!/4), width: waterIntakeLabel.intrinsicContentSize.width, height: waterIntakeLabel.intrinsicContentSize.height)
+        waterIntakeLabel.frame = CGRect(x: (view.frame.maxX/2)-(waterIntakeLabel.intrinsicContentSize.width/2), y: dropletOutlineLayer.bounds.maxY+34+((70/780)*homeView.bounds.maxY), width: waterIntakeLabel.intrinsicContentSize.width, height: waterIntakeLabel.intrinsicContentSize.height)
+        print("DOL", dropletOutlineLayer.bounds.maxY)
         percentageLabel.text = "\(Int(defaults.double(forKey: "waterIntake")/defaults.double(forKey: "dailyGoal")*100))%"
-        percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: dropletOutlineLayer.bounds.maxY+((dropletOutlineImage?.size.height)!/4), width: percentageLabel.intrinsicContentSize.width+50, height: percentageLabel.intrinsicContentSize.height)
+        percentageLabel.frame = CGRect(x: (view.frame.maxX/2)-(percentageLabel.intrinsicContentSize.width/2), y: dropletOutlineLayer.bounds.maxY+((70/780)*homeView.bounds.maxY), width: percentageLabel.intrinsicContentSize.width+50, height: percentageLabel.intrinsicContentSize.height)
         
         // Reset daily user data
         dateFormatter.dateStyle = .full
@@ -624,18 +625,19 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dateLabel.isHidden = false
         
         // Greeting message metrics
-        greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: (35/650)*view.frame.maxY+(15/650)*homeView.frame.maxY, width: self.greetingLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
+        greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: (35/650)*view.frame.maxY+((15/650)*homeView.frame.maxY), width: self.greetingLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
+        print("HV", homeView.frame.maxY)
         dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: (65/650)*view.frame.maxY+(15/650)*homeView.frame.maxY, width: self.dateLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
         
         // Greeting animations
         let animation = CASpringAnimation(keyPath: "position")
         animation.fromValue = CGPoint(x: (homeView.bounds.maxX/2), y: 0)
-        animation.toValue = CGPoint(x: (homeView.bounds.maxX/2), y: (35/650)*homeView.frame.maxY+15+(15/650)*homeView.frame.maxY)
+        animation.toValue = CGPoint(x: (homeView.bounds.maxX/2), y: (35/650)*homeView.frame.maxY+15+(15/780)*homeView.frame.maxY)
         animation.duration = 2
         animation.damping = 7
         let animation2 = CASpringAnimation(keyPath: "position")
         animation2.fromValue = CGPoint(x: (homeView.bounds.maxX/2), y: 0)
-        animation2.toValue = CGPoint(x: (homeView.bounds.maxX/2), y: (65/650)*homeView.frame.maxY+15+(15/650)*homeView.frame.maxY)
+        animation2.toValue = CGPoint(x: (homeView.bounds.maxX/2), y: (65/650)*homeView.frame.maxY+15+(15/780)*homeView.frame.maxY)
         animation2.duration = 2
         animation2.damping = 7
         greetingLabel.layer.add(animation, forKey: "basic animation")

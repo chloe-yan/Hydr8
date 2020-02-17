@@ -24,7 +24,7 @@
 		D1AA768C23F66317003E0017 /* BasicBarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AA768B23F66317003E0017 /* BasicBarEntry.swift */; };
 		D1AA768E23F6637A003E0017 /* MonthlyBasicBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AA768D23F6637A003E0017 /* MonthlyBasicBarChart.swift */; };
 		D1AA769023F66394003E0017 /* MonthlyBasicBarChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AA768F23F66394003E0017 /* MonthlyBasicBarChartPresenter.swift */; };
-		D1AA769423F663E2003E0017 /* MonthlyDataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AA769323F663E2003E0017 /* MonthlyDataEntry.swift */; };
+		D1AA769423F663E2003E0017 /* MonthlyBarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AA769323F663E2003E0017 /* MonthlyBarEntry.swift */; };
 		D1DE3F3623BBFA6E005341C2 /* AddUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */; };
 		D1FBDDC423BD6C8C00003306 /* BubbleEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */; };
 		D1FBDDD223BEA39100003306 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FBDDD123BEA39100003306 /* Assets.xcassets */; };
@@ -66,7 +66,7 @@
 		D1AA768B23F66317003E0017 /* BasicBarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BasicBarEntry.swift; path = ../../BasicBarEntry.swift; sourceTree = "<group>"; };
 		D1AA768D23F6637A003E0017 /* MonthlyBasicBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MonthlyBasicBarChart.swift; path = ../../MonthlyBasicBarChart.swift; sourceTree = "<group>"; };
 		D1AA768F23F66394003E0017 /* MonthlyBasicBarChartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MonthlyBasicBarChartPresenter.swift; path = ../../MonthlyBasicBarChartPresenter.swift; sourceTree = "<group>"; };
-		D1AA769323F663E2003E0017 /* MonthlyDataEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MonthlyDataEntry.swift; path = ../../MonthlyDataEntry.swift; sourceTree = "<group>"; };
+		D1AA769323F663E2003E0017 /* MonthlyBarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MonthlyBarEntry.swift; path = ../../MonthlyBarEntry.swift; sourceTree = "<group>"; };
 		D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdatesViewController.swift; sourceTree = "<group>"; };
 		D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleEmitter.swift; sourceTree = "<group>"; };
 		D1FBDDD123BEA39100003306 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -152,7 +152,7 @@
 				D1AA768B23F66317003E0017 /* BasicBarEntry.swift */,
 				D1AA768D23F6637A003E0017 /* MonthlyBasicBarChart.swift */,
 				D1AA768F23F66394003E0017 /* MonthlyBasicBarChartPresenter.swift */,
-				D1AA769323F663E2003E0017 /* MonthlyDataEntry.swift */,
+				D1AA769323F663E2003E0017 /* MonthlyBarEntry.swift */,
 			);
 			name = BarChart;
 			path = ../../../BarChart/BarChart;
@@ -305,7 +305,7 @@
 				D1AA768C23F66317003E0017 /* BasicBarEntry.swift in Sources */,
 				D1AA768E23F6637A003E0017 /* MonthlyBasicBarChart.swift in Sources */,
 				D1AA768023F6626B003E0017 /* CALayerExtension.swift in Sources */,
-				D1AA769423F663E2003E0017 /* MonthlyDataEntry.swift in Sources */,
+				D1AA769423F663E2003E0017 /* MonthlyBarEntry.swift in Sources */,
 				D1AA767E23F66251003E0017 /* CustomSegments.swift in Sources */,
 				D1DE3F3623BBFA6E005341C2 /* AddUpdatesViewController.swift in Sources */,
 				D1AA768423F662B7003E0017 /* ArrayExtension.swift in Sources */,

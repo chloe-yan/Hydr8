@@ -404,7 +404,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         calculateGoalButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 12)
         calculateGoalButton.addTarget(self, action: #selector(calculateGoalButtonTapped), for: .touchUpInside)
         calculateGoalButton.layer.cornerRadius = 3
-        calculateGoalButton.frame = CGRect(x: 250, y: 450, width: calculateGoalButton.intrinsicContentSize.width, height:   calculateGoalButton.intrinsicContentSize.height)
+        calculateGoalButton.frame = CGRect(x: 250, y: settingsView.bounds.maxY-70, width: calculateGoalButton.intrinsicContentSize.width, height:   calculateGoalButton.intrinsicContentSize.height)
         settingsView.addSubview(calculateGoalButton)
        
         // Home view page
@@ -469,13 +469,17 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         homeView.addSubview(waterIntakeLabel)
        
         // Analytics view page
-        analyticsView.frame = CGRect(x: x + 20, y: padding + 10, width: viewWidth - 40, height: viewHeight)
+        print(analyticsButton.frame.maxY)
+        analyticsView.frame = CGRect(x: x + 20, y: viewHeight-((592/640)*viewHeight)-20, width: viewWidth - 40, height: viewHeight)
+        print(viewHeight)
+        print("asdf", analyticsButton.bounds.maxY)
         analyticsView.backgroundColor = UIColor.white.withAlphaComponent(0)
         analyticsView.layer.cornerRadius = 40
         scrollView.addSubview(analyticsView)
         
         // Analytics background
-        let analyticsBackgroundView: UIView = UIView(frame: CGRect(x: x + 20, y: padding + 90, width: viewWidth - 40, height: viewHeight))
+        let analyticsBackgroundView: UIView = UIView(frame: CGRect(x: x + 20, y: analyticsButton.bounds.maxY + (100/913)*analyticsView.frame.maxY, width: viewWidth - 40, height: viewHeight))
+        print(analyticsView.frame.maxY)
         analyticsBackgroundView.backgroundColor = UIColor.white.withAlphaComponent(1)
         analyticsBackgroundView.layer.cornerRadius = 40
         scrollView.addSubview(analyticsBackgroundView)
@@ -499,7 +503,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
 
         // Segmented control constraints
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.topAnchor.constraint(lessThanOrEqualTo: analyticsView.topAnchor, constant: 10).isActive = true
+        segmentedControl.topAnchor.constraint(lessThanOrEqualTo: analyticsView.topAnchor, constant: 0).isActive = true
         segmentedControl.widthAnchor.constraint(equalToConstant: analyticsView.bounds.maxX-40).isActive = true
         segmentedControl.leadingAnchor.constraint(equalTo: analyticsView.leadingAnchor, constant: 20).isActive = true
         segmentedControl.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -508,7 +512,9 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         buttonBar.translatesAutoresizingMaskIntoConstraints = false
         buttonBar.backgroundColor = UIColor.white
         let buttonBarXPos = ((analyticsView.bounds.maxX-40 / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex)) + ((analyticsView.bounds.maxX-40)/CGFloat(self.segmentedControl.numberOfSegments))/2
-        buttonBar.frame = CGRect(x: buttonBarXPos, y: segmentedControl.bounds.maxY+50, width: 40, height: 3)
+        buttonBar.frame = CGRect(x: buttonBarXPos, y: segmentedControl.bounds.maxY+40, width: 40, height: 3)
+        
+        //segmentedControl.bounds.maxY+50,
         buttonBar.layer.cornerRadius = 3
         analyticsView.addSubview(buttonBar)
         

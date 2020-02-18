@@ -142,8 +142,8 @@
 		D188B27223C2FDD200110889 /* BarChart */ = {
 			isa = PBXGroup;
 			children = (
-				D1AA767D23F66251003E0017 /* CustomSegments.swift */,
 				D1AA767F23F6626B003E0017 /* CALayerExtension.swift */,
+				D1AA767D23F66251003E0017 /* CustomSegments.swift */,
 				D1AA768123F6628E003E0017 /* UIBezierPathExtension.swift */,
 				D1AA768323F662B7003E0017 /* ArrayExtension.swift */,
 				D1AA768523F662D4003E0017 /* DataEntry.swift */,

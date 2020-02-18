@@ -165,7 +165,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     var x : CGFloat = 0
     
-    var currentDay = Date()
+  //  var currentDay = Date()
     
     let settingsLabel = UILabel()
     let currentGoalLabel = UILabel()
@@ -183,7 +183,9 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     lazy var monthlyWaterIntake = defaults.double(forKey: "monthlyWaterIntake")
     
     lazy var currentDate = defaults.string(forKey: "currentDate")
+    lazy var currentDay = defaults.integer(forKey: "currentDay")
     lazy var currentMonth = defaults.integer(forKey: "currentMonth")
+    lazy var currentYear = defaults.integer(forKey: "currentYear")
     
     let homeView = UIView()
     var maskingImage = UIImage(named: "Droplet")
@@ -241,6 +243,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         if (day == 0) {
             weeklyWaterIntakeData![6] = Int(defaults.double(forKey: "waterIntake"))
         }
+        else if (day == 1) {
+            let initArray = [Int(defaults.double(forKey: "waterIntake")), 0, 0, 0, 0, 0, 0]
+            defaults.set(initArray, forKey: "weeklyWaterIntakeData")
+        }
         else {
             weeklyWaterIntakeData![day-1] = Int(defaults.double(forKey: "waterIntake"))
         }
@@ -253,6 +259,22 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         monthlyWaterIntakeData![month-1] = Int(defaults.double(forKey: "monthlyWaterIntake"))
         defaults.set(monthlyWaterIntakeData, forKey: "monthlyWaterIntakeData")
         
+        // Determine if weekly reset needed
+        if (month == defaults.integer(forKey: "currentMonth") && (day - defaults.integer(forKey: "currentDay")) >= 7) {
+            let initArray: Array! = [0, 0, 0, 0, 0, 0, 0]
+            defaults.set(initArray, forKey: "weeklyWaterIntakeData")
+        }
+        defaults.set(day, forKey: "currentDay")
+        
+        // Determine if yearly reset needed
+        components = calendar.dateComponents([.year], from: date)
+        let year = components.year!
+        if (year != defaults.integer(forKey: "currentYear")) {
+            let monthlyInitArray: Array! = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            defaults.set(monthlyInitArray, forKey: "monthlyWaterIntakeData")
+        }
+        defaults.set(year, forKey: "currentYear")
+        
         // Reset daily user data
         dateFormatter.dateStyle = .full
         dateString = dateFormatter.string(from: date)
@@ -263,6 +285,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         defaults.set(currentDateString, forKey: "currentDate")
         
         // Reset monthly user data
+        components = calendar.dateComponents([.month], from: date)
         currentMonth = components.month!
         if (currentMonth != defaults.integer(forKey: "currentMonth")) {
             defaults.set(0, forKey: "monthlyWaterIntake")
@@ -469,17 +492,13 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         homeView.addSubview(waterIntakeLabel)
        
         // Analytics view page
-        print(analyticsButton.frame.maxY)
         analyticsView.frame = CGRect(x: x + 20, y: viewHeight-((592/640)*viewHeight)-20, width: viewWidth - 40, height: viewHeight)
-        print(viewHeight)
-        print("asdf", analyticsButton.bounds.maxY)
         analyticsView.backgroundColor = UIColor.white.withAlphaComponent(0)
         analyticsView.layer.cornerRadius = 40
         scrollView.addSubview(analyticsView)
         
         // Analytics background
         let analyticsBackgroundView: UIView = UIView(frame: CGRect(x: x + 20, y: analyticsButton.bounds.maxY + (100/913)*analyticsView.frame.maxY, width: viewWidth - 40, height: viewHeight))
-        print(analyticsView.frame.maxY)
         analyticsBackgroundView.backgroundColor = UIColor.white.withAlphaComponent(1)
         analyticsBackgroundView.layer.cornerRadius = 40
         scrollView.addSubview(analyticsBackgroundView)
@@ -555,7 +574,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     func generateMonthlyDataEntries() -> [DataEntry] {
         var result: [DataEntry] = []
-        print("HI")
         monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[0] as! Int)/100, textValue: monthlyWaterIntakeData![0] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![0])", title: "J"))
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[1] as! Int)/100, textValue: monthlyWaterIntakeData![1] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![1])", title: "F"))
@@ -569,7 +587,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[9] as! Int)/100, textValue: monthlyWaterIntakeData![9] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![9])", title: "O"))
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[10] as! Int)/100, textValue: monthlyWaterIntakeData![10] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![10])", title: "N"))
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[11] as! Int)/100, textValue: monthlyWaterIntakeData![11] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![11])", title: "D"))
-        print(result)
+        
         // Add keyboard functionality
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)

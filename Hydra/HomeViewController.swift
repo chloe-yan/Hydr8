@@ -555,6 +555,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     func generateMonthlyDataEntries() -> [DataEntry] {
         var result: [DataEntry] = []
+        print("HI")
         monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[0] as! Int)/100, textValue: monthlyWaterIntakeData![0] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![0])", title: "J"))
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[1] as! Int)/100, textValue: monthlyWaterIntakeData![1] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![1])", title: "F"))
@@ -568,7 +569,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[9] as! Int)/100, textValue: monthlyWaterIntakeData![9] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![9])", title: "O"))
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[10] as! Int)/100, textValue: monthlyWaterIntakeData![10] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![10])", title: "N"))
         result.append(DataEntry(color: UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0), height: 0.01 + Double(monthlyWaterIntakeData?[11] as! Int)/100, textValue: monthlyWaterIntakeData![11] as! Int == 0 ? "" : "\(monthlyWaterIntakeData![11])", title: "D"))
-        
+        print(result)
         // Add keyboard functionality
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
@@ -600,7 +601,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         defaults.set(currentDateString, forKey: "currentDate")
         
         // Reset monthly user data
-        let components = calendar.dateComponents([.month], from: date)
+        var components = calendar.dateComponents([.month], from: date)
         currentMonth = components.month!
         if (currentMonth != defaults.integer(forKey: "currentMonth")) {
             defaults.set(0, forKey: "monthlyWaterIntake")
@@ -641,13 +642,31 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         greetingLabel.layer.add(animation, forKey: "basic animation")
         dateLabel.layer.add(animation2, forKey: "basic animation")
         
+        // Update monthly water intake
+        components = calendar.dateComponents([.month], from: date)
+        let month = components.month!
+        monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
+        monthlyWaterIntakeData![month-1] = Int(defaults.double(forKey: "monthlyWaterIntake"))
+        defaults.set(monthlyWaterIntakeData, forKey: "monthlyWaterIntakeData")
+        
+        // Update daily water intake
+        components = calendar.dateComponents([.weekday], from: date)
+        let day = components.weekday! - 1
+        weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
+        if (day == 0) {
+            weeklyWaterIntakeData![6] = Int(defaults.double(forKey: "waterIntake"))
+        }
+        else {
+            weeklyWaterIntakeData![day-1] = Int(defaults.double(forKey: "waterIntake"))
+        }
+        defaults.set(weeklyWaterIntakeData, forKey: "weeklyWaterIntakeData")
+        
         // Update bar chart data
         let monthlyDataEntries = generateMonthlyDataEntries()
         let weeklyDataEntries = generateWeeklyDataEntries()
+        
         monthlyBarChart.updateDataEntries(dataEntries: monthlyDataEntries, animated: false)
         weeklyBarChart.updateDataEntries(dataEntries: weeklyDataEntries, animated: false)
-        analyticsView.addSubview(weeklyBarChart)
-        analyticsView.addSubview(monthlyBarChart)
         
     }
     

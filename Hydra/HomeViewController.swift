@@ -624,8 +624,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dateLabel.isHidden = false
         
         // Greeting message metrics
-        greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: (35/650)*view.frame.maxY+((15/650)*homeView.frame.maxY), width: self.greetingLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
-        dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: (65/650)*view.frame.maxY+(15/650)*homeView.frame.maxY, width: self.dateLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
+        greetingLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.greetingLabel.intrinsicContentSize.width/2), y: (35/650)*homeView.frame.maxY+15+(15/780)*homeView.frame.maxY-15, width: self.greetingLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
+        dateLabel.frame = CGRect(x: (view.bounds.maxX/2)-(self.dateLabel.intrinsicContentSize.width/2), y: (65/650)*homeView.frame.maxY+15+(15/780)*homeView.frame.maxY-15, width: self.dateLabel.intrinsicContentSize.width, height: (30/375)*view.frame.maxX)
         
         // Greeting animations
         let animation = CASpringAnimation(keyPath: "position")

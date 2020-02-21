@@ -95,6 +95,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         if (segmentedControl.selectedSegmentIndex == 0) {
             weeklyBarChart.isHidden = false
             monthlyBarChart.isHidden = true
+            averageWaterIntakeView.isHidden = false
+            totalWaterIntakeView.isHidden = false
+            averageWaterIntakeLabel.isHidden = false
+            totalWaterIntakeLabel.isHidden = false
             let weeklyDataArray = defaults.array(forKey: "weeklyWaterIntakeData")!
             for i in weeklyDataArray {
                 if ((i as! Int) != 0 && i != nil) {
@@ -110,6 +114,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         else if (segmentedControl.selectedSegmentIndex == 1) {
             weeklyBarChart.isHidden = true
             monthlyBarChart.isHidden = false
+            averageWaterIntakeView.isHidden = false
+            totalWaterIntakeView.isHidden = false
+            averageWaterIntakeLabel.isHidden = false
+            totalWaterIntakeLabel.isHidden = false
             let monthlyDataArray = defaults.array(forKey: "monthlyWaterIntakeData")!
             for i in monthlyDataArray {
                 if ((i as! Int) != 0 && i != nil) {
@@ -125,6 +133,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         else {
             weeklyBarChart.isHidden = true
             monthlyBarChart.isHidden = true
+            averageWaterIntakeView.isHidden = true
+            totalWaterIntakeView.isHidden = true
+            averageWaterIntakeLabel.isHidden = true
+            totalWaterIntakeLabel.isHidden = true
         }
         
     }
@@ -221,6 +233,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let waterIntakeLabel = UILabel()
     
     let analyticsLabel = UILabel()
+    let averageWaterIntakeView = UIView()
+    let totalWaterIntakeView = UIView()
     let averageWaterIntakeLabel = UILabel()
     let totalWaterIntakeLabel = UILabel()
     let segmentedControl = UISegmentedControl()
@@ -533,13 +547,15 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         scrollView.sendSubviewToBack(analyticsBackgroundView)
         
         // Average water intake view
-        let averageWaterIntakeView: UIView = UIView(frame: CGRect(x: 35, y: 390, width: analyticsBackgroundView.frame.width-70, height: 60))
+        averageWaterIntakeView.isHidden = false
+        averageWaterIntakeView.frame = CGRect(x: 35, y: 390, width: analyticsBackgroundView.frame.width-70, height: 60)
         averageWaterIntakeView.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.12)
         averageWaterIntakeView.layer.cornerRadius = 16
         analyticsView.addSubview(averageWaterIntakeView)
         
         // Total water intake view
-        let totalWaterIntakeView: UIView = UIView(frame: CGRect(x: 35, y: 475, width: analyticsBackgroundView.frame.width-70, height: 60))
+        totalWaterIntakeView.isHidden = false
+        totalWaterIntakeView.frame = CGRect(x: 35, y: 475, width: analyticsBackgroundView.frame.width-70, height: 60)
         totalWaterIntakeView.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.12)
         totalWaterIntakeView.layer.cornerRadius = 16
         analyticsView.addSubview(totalWaterIntakeView)
@@ -554,6 +570,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
                 count += 1
             }
         }
+        averageWaterIntakeLabel.isHidden = false
         averageWaterIntakeLabel.numberOfLines = 0
         let averageValue = Double(sum)/Double(count)
         let roundedAverage = String(format: "%.2f", averageValue)
@@ -564,6 +581,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         analyticsView.addSubview(averageWaterIntakeLabel)
         
         // Total water intake label
+        totalWaterIntakeLabel.isHidden = false
         totalWaterIntakeLabel.numberOfLines = 0
         totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
         totalWaterIntakeLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)

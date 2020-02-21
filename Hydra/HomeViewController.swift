@@ -91,6 +91,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
         }
         var sum = 0
+        var count = 0
         if (segmentedControl.selectedSegmentIndex == 0) {
             weeklyBarChart.isHidden = false
             monthlyBarChart.isHidden = true
@@ -98,9 +99,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             for i in weeklyDataArray {
                 if ((i as! Int) != 0 && i != nil) {
                     sum += (i as! Int)
+                    count += 1
                 }
             }
-            let averageValue = Double(sum)/Double(weeklyDataArray.count)
+            let averageValue = Double(sum)/Double(count)
             let roundedAverage = String(format: "%.2f", averageValue)
             averageWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
             totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
@@ -112,9 +114,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             for i in monthlyDataArray {
                 if ((i as! Int) != 0 && i != nil) {
                     sum += (i as! Int)
+                    count += 1
                 }
             }
-            let averageValue = Double(sum)/Double(monthlyDataArray.count)
+            let averageValue = Double(sum)/Double(count)
             let roundedAverage = String(format: "%.2f", averageValue)
             averageWaterIntakeLabel.text = "Monthly average:   " + roundedAverage + " oz"
             totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
@@ -543,15 +546,16 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         // Average water intake label
         var sum = 0
+        var count = 0
         let weeklyDataArray = defaults.array(forKey: "weeklyWaterIntakeData")!
-        print(weeklyDataArray)
         for i in weeklyDataArray {
             if ((i as! Int) != 0 && i != nil) {
                 sum += (i as! Int)
+                count += 1
             }
         }
         averageWaterIntakeLabel.numberOfLines = 0
-        let averageValue = Double(sum)/Double(weeklyDataArray.count)
+        let averageValue = Double(sum)/Double(count)
         let roundedAverage = String(format: "%.2f", averageValue)
         averageWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
         averageWaterIntakeLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
@@ -747,6 +751,37 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         monthlyBarChart.updateDataEntries(dataEntries: monthlyDataEntries, animated: false)
         weeklyBarChart.updateDataEntries(dataEntries: weeklyDataEntries, animated: false)
+        
+        // Update average/total intake analytics
+        var sum = 0
+        var count = 0
+        print(segmentedControl.selectedSegmentIndex)
+        if (segmentedControl.selectedSegmentIndex == 0) {
+            let weeklyDataArray = defaults.array(forKey: "weeklyWaterIntakeData")!
+            for i in weeklyDataArray {
+                if ((i as! Int) != 0 && i != nil) {
+                    sum += (i as! Int)
+                    count += 1
+                }
+            }
+            let averageValue = Double(sum)/Double(count)
+            let roundedAverage = String(format: "%.2f", averageValue)
+            averageWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
+            totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
+        }
+        else if (segmentedControl.selectedSegmentIndex == 1) {
+            let monthlyDataArray = defaults.array(forKey: "monthlyWaterIntakeData")!
+            for i in monthlyDataArray {
+                if ((i as! Int) != 0 && i != nil) {
+                    sum += (i as! Int)
+                    count += 1
+                }
+            }
+            let averageValue = Double(sum)/Double(count)
+            let roundedAverage = String(format: "%.2f", averageValue)
+            averageWaterIntakeLabel.text = "Monthly average:   " + roundedAverage + " oz"
+            totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
+        }
         
     }
     

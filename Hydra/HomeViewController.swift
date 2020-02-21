@@ -90,18 +90,40 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         UIView.animate(withDuration: 0.3) {
             self.buttonBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex) + ((self.segmentedControl.frame.width/CGFloat(self.segmentedControl.numberOfSegments))/2)
         }
+        var sum = 0
         if (segmentedControl.selectedSegmentIndex == 0) {
             weeklyBarChart.isHidden = false
             monthlyBarChart.isHidden = true
+            let weeklyDataArray = defaults.array(forKey: "weeklyWaterIntakeData")!
+            for i in weeklyDataArray {
+                if ((i as! Int) != 0 && i != nil) {
+                    sum += (i as! Int)
+                }
+            }
+            let averageValue = Double(sum)/Double(weeklyDataArray.count)
+            let roundedAverage = String(format: "%.2f", averageValue)
+            averageWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
+            totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
         }
         else if (segmentedControl.selectedSegmentIndex == 1) {
             weeklyBarChart.isHidden = true
             monthlyBarChart.isHidden = false
+            let monthlyDataArray = defaults.array(forKey: "monthlyWaterIntakeData")!
+            for i in monthlyDataArray {
+                if ((i as! Int) != 0 && i != nil) {
+                    sum += (i as! Int)
+                }
+            }
+            let averageValue = Double(sum)/Double(monthlyDataArray.count)
+            let roundedAverage = String(format: "%.2f", averageValue)
+            averageWaterIntakeLabel.text = "Monthly average:   " + roundedAverage + " oz"
+            totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
         }
         else {
             weeklyBarChart.isHidden = true
             monthlyBarChart.isHidden = true
         }
+        
     }
     
     // Updates menu control UI
@@ -196,6 +218,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let waterIntakeLabel = UILabel()
     
     let analyticsLabel = UILabel()
+    let averageWaterIntakeLabel = UILabel()
+    let totalWaterIntakeLabel = UILabel()
     let segmentedControl = UISegmentedControl()
     let buttonBar = UIView()
     lazy var weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
@@ -504,6 +528,44 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         scrollView.addSubview(analyticsBackgroundView)
         x = analyticsView.frame.origin.x + viewWidth
         scrollView.sendSubviewToBack(analyticsBackgroundView)
+        
+        // Average water intake view
+        let averageWaterIntakeView: UIView = UIView(frame: CGRect(x: 35, y: 390, width: analyticsBackgroundView.frame.width-70, height: 60))
+        averageWaterIntakeView.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.12)
+        averageWaterIntakeView.layer.cornerRadius = 16
+        analyticsView.addSubview(averageWaterIntakeView)
+        
+        // Total water intake view
+        let totalWaterIntakeView: UIView = UIView(frame: CGRect(x: 35, y: 475, width: analyticsBackgroundView.frame.width-70, height: 60))
+        totalWaterIntakeView.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.12)
+        totalWaterIntakeView.layer.cornerRadius = 16
+        analyticsView.addSubview(totalWaterIntakeView)
+        
+        // Average water intake label
+        var sum = 0
+        let weeklyDataArray = defaults.array(forKey: "weeklyWaterIntakeData")!
+        print(weeklyDataArray)
+        for i in weeklyDataArray {
+            if ((i as! Int) != 0 && i != nil) {
+                sum += (i as! Int)
+            }
+        }
+        averageWaterIntakeLabel.numberOfLines = 0
+        let averageValue = Double(sum)/Double(weeklyDataArray.count)
+        let roundedAverage = String(format: "%.2f", averageValue)
+        averageWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
+        averageWaterIntakeLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
+        averageWaterIntakeLabel.frame = CGRect(x: 50, y: 390+(averageWaterIntakeView.frame.height/3), width: 280, height: averageWaterIntakeLabel.intrinsicContentSize.height)
+        averageWaterIntakeLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
+        analyticsView.addSubview(averageWaterIntakeLabel)
+        
+        // Total water intake label
+        totalWaterIntakeLabel.numberOfLines = 0
+        totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
+        totalWaterIntakeLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
+        totalWaterIntakeLabel.frame = CGRect(x: 50, y: 475+(totalWaterIntakeView.frame.height/3), width: 280, height: totalWaterIntakeLabel.intrinsicContentSize.height)
+        totalWaterIntakeLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
+        analyticsView.addSubview(totalWaterIntakeLabel)
         
         // Segmented control
         segmentedControl.insertSegment(withTitle: "Week", at: 0, animated: true)

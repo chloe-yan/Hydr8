@@ -74,6 +74,17 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
                     numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " days"
                 }
             }
+            if (defaults.double(forKey: "waterIntake") < defaults.double(forKey: "dailyGoal") && defaults.bool(forKey: "alreadyUpdatedGoalsReached") == true) {
+                defaults.set(goalsReached-1, forKey: "goalsReached")
+                defaults.set(false, forKey: "alreadyUpdatedGoalsReached")
+                if (defaults.integer(forKey: "goalsReached") == 1) {
+                    numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " day"
+                }
+                else {
+                    numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " days"
+                }
+            }
+            percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + String(Double(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
         }
         else if (numericGoalTextField.text != Optional("") && (numericGoalTextField.text as NSString?)!.integerValue <= 0) {
             let alert = UIAlertController(title: "Try setting a higher goal", message: "You got this! Tackle hydration.", preferredStyle: UIAlertController.Style.alert)
@@ -191,14 +202,15 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             print("UPDATED INSTALL DATE: ", updatedInstallDate!)
             let currentDate = Date()
             print("CURRENT DATE: ", currentDate)
-            count = Calendar.current.dateComponents([.day], from: calendar.startOfDay(for: updatedInstallDate!), to: calendar.startOfDay(for: currentDate)).day ?? 5
-            print(count)
+            defaults.set((Calendar.current.dateComponents([.day], from: calendar.startOfDay(for: updatedInstallDate!), to: calendar.startOfDay(for: currentDate)).day ?? 5)+1, forKey: "daysSinceInstalled")
+            daysSinceInstalled = (Calendar.current.dateComponents([.day], from: calendar.startOfDay(for: updatedInstallDate!), to: calendar.startOfDay(for: currentDate)).day ?? 5)+1
+            print(daysSinceInstalled)
             var averageValue = 0.0
-            if (count == 0) {
+            if (daysSinceInstalled == 0) {
                 averageValue = Double(sum)
             }
             else {
-                averageValue = Double(sum)/Double(count)
+                averageValue = Double(sum)/Double(daysSinceInstalled)
                 print("SUM: ", sum)
                 print("AVERAGE VALUE: ", averageValue)
             }
@@ -206,6 +218,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             let roundedAverage = String(format: "%.2f", averageValue)
             averageYearlyWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
             print("ROUNDED AVERAGE: ", roundedAverage)
+            
+            percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + String(Double(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
         }
         
     }
@@ -289,6 +303,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     lazy var monthlyWaterIntake = defaults.double(forKey: "monthlyWaterIntake")
     lazy var goalsReached = defaults.integer(forKey: "goalsReached")
     lazy var alreadyUpdatedGoalsReached = defaults.bool(forKey: "alreadyUpdatedGoalsReached")
+    lazy var percentageDailyGoalsReached = defaults.double(forKey: "percentageDailyGoalsReached")
+    lazy var daysSinceInstalled = defaults.integer(forKey: "daysSinceInstalled")
     
     lazy var currentDate = defaults.string(forKey: "currentDate")
     lazy var currentDay = defaults.integer(forKey: "currentDay")
@@ -319,9 +335,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     lazy var weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
     lazy var monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
     lazy var yearlyWaterIntakeData = defaults.array(forKey: "yearlyWaterIntakeData")
-    lazy var installDateDay = defaults.integer(forKey: "installDateDay")
-    lazy var installDateMonth = defaults.integer(forKey: "installDateMonth")
-    lazy var installDateYear = defaults.integer(forKey: "installDateYear")
     lazy var installDate = defaults.string(forKey: "installDate")
     
     let analyticsView = UIView()
@@ -332,6 +345,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(installDate)
         // Get install date
         if (defaults.string(forKey: "installDate") == nil) {
             let date = Date()
@@ -341,6 +355,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             defaults.set(string, forKey: "installDate")
             print("HI", defaults.string(forKey: "installDate"))
         }
+        
+        print(installDate)
+        // Get days since installed
+        let updatedInstallDate = installDate!.date(format:"yyyy-MM-dd HH:mm:ss")
+        let currentDate = Date()
+        defaults.set((Calendar.current.dateComponents([.day], from: calendar.startOfDay(for: updatedInstallDate!), to: calendar.startOfDay(for: currentDate)).day ?? 5)+1, forKey: "daysSinceInstalled")
         
         // Update control menu
         let timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(update), userInfo: nil, repeats: true)
@@ -732,10 +752,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         numDailyGoalsReachedLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
         analyticsView.addSubview(numDailyGoalsReachedLabel)
         
+        print(currentDate)
+        
         // Percentage of daily goals reached label
         percentageDailyGoalReachedLabel.isHidden = true
-        percentageDailyGoalReachedLabel.numberOfLines = 0
-        percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + String(0) + " oz"
+        percentageDailyGoalReachedLabel.numberOfLines = 2
+        percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + String(Double(defaults.integer(forKey: "goalsReached")/defaults.integer(forKey: "daysSinceInstalled"))*100) + "%"
         percentageDailyGoalReachedLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         percentageDailyGoalReachedLabel.frame = CGRect(x: 50, y: 300+(percentageDailyGoalReachedView.frame.height/3), width: 280, height: percentageDailyGoalReachedLabel.intrinsicContentSize.height)
         percentageDailyGoalReachedLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
@@ -1021,7 +1043,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
                 numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " days"
             }
         }
-
+        percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + String(Double(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
         
         return transition
     }

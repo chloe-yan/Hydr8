@@ -63,6 +63,17 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             dropletOutlineLayer.frame = CGRect(x: (view.frame.maxX/2)-offsetConstant, y: (view.frame.maxY/2)-offsetConstant*(1+(1/2.5)), width: offsetConstant*2, height: offsetConstant*2)
             dropletOutlineLayer.contents = dropletOutlineImage?.cgImage
             dropletFluidView.layer.addSublayer(dropletOutlineLayer)
+            
+            if (defaults.double(forKey: "waterIntake") >= defaults.double(forKey: "dailyGoal") && defaults.bool(forKey: "alreadyUpdatedGoalsReached") == false) {
+                defaults.set(true, forKey: "alreadyUpdatedGoalsReached")
+                defaults.set(goalsReached+1, forKey: "goalsReached")
+                if (defaults.integer(forKey: "goalsReached") == 1) {
+                    numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " day"
+                }
+                else {
+                    numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " days"
+                }
+            }
         }
         else if (numericGoalTextField.text != Optional("") && (numericGoalTextField.text as NSString?)!.integerValue <= 0) {
             let alert = UIAlertController(title: "Try setting a higher goal", message: "You got this! Tackle hydration.", preferredStyle: UIAlertController.Style.alert)
@@ -276,6 +287,8 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     lazy var goal = defaults.double(forKey: "dailyGoal")
     lazy var waterIntake = defaults.double(forKey: "waterIntake")
     lazy var monthlyWaterIntake = defaults.double(forKey: "monthlyWaterIntake")
+    lazy var goalsReached = defaults.integer(forKey: "goalsReached")
+    lazy var alreadyUpdatedGoalsReached = defaults.bool(forKey: "alreadyUpdatedGoalsReached")
     
     lazy var currentDate = defaults.string(forKey: "currentDate")
     lazy var currentDay = defaults.integer(forKey: "currentDay")
@@ -402,6 +415,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         currentDateString = String(dateString.prefix(dateString.count - 6))
         if (currentDateString != defaults.string(forKey: "currentDate")) {
             defaults.set(0, forKey: "waterIntake")
+            defaults.set(false, forKey: "alreadyUpdatedGoalsReached")
         }
         defaults.set(currentDateString, forKey: "currentDate")
         
@@ -705,14 +719,27 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         analyticsView.addSubview(averageYearlyWaterIntakeLabel)
         
         // Number of daily goals reached label
-        let numDailyGoalsReachedLabel = UILabel()
         numDailyGoalsReachedLabel.isHidden = true
         numDailyGoalsReachedLabel.numberOfLines = 0
-        numDailyGoalsReachedLabel.text = "Goals reached:   " + String(0) + " oz"
+        if (defaults.integer(forKey: "goalsReached") == 1) {
+            numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " day"
+        }
+        else {
+            numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " days"
+        }
         numDailyGoalsReachedLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         numDailyGoalsReachedLabel.frame = CGRect(x: 50, y: 215+(numDailyGoalsReachedView.frame.height/3), width: 280, height: numDailyGoalsReachedLabel.intrinsicContentSize.height)
         numDailyGoalsReachedLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
         analyticsView.addSubview(numDailyGoalsReachedLabel)
+        
+        // Percentage of daily goals reached label
+        percentageDailyGoalReachedLabel.isHidden = true
+        percentageDailyGoalReachedLabel.numberOfLines = 0
+        percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + String(0) + " oz"
+        percentageDailyGoalReachedLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
+        percentageDailyGoalReachedLabel.frame = CGRect(x: 50, y: 300+(percentageDailyGoalReachedView.frame.height/3), width: 280, height: percentageDailyGoalReachedLabel.intrinsicContentSize.height)
+        percentageDailyGoalReachedLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
+        analyticsView.addSubview(percentageDailyGoalReachedLabel)
         
         // Segmented control
         segmentedControl.insertSegment(withTitle: "Week", at: 0, animated: true)
@@ -983,6 +1010,18 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         transition.transitionMode = .dismiss
         transition.startingPoint = CGPoint(x: trackIntakeButton.center.x, y: (trackIntakeButton.center.y)+((60/375)*homeView.bounds.maxX))  //trackIntakeButton.center
         transition.bubbleColor = trackIntakeButton.backgroundColor!
+        
+        if (defaults.double(forKey: "waterIntake") >= defaults.double(forKey: "dailyGoal") && defaults.bool(forKey: "alreadyUpdatedGoalsReached") == false) {
+            defaults.set(true, forKey: "alreadyUpdatedGoalsReached")
+            defaults.set(goalsReached+1, forKey: "goalsReached")
+            if (defaults.integer(forKey: "goalsReached") == 1) {
+                numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " day"
+            }
+            else {
+                numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " days"
+            }
+        }
+
         
         return transition
     }

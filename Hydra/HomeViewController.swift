@@ -357,6 +357,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         }
         
         print(installDate)
+        installDate = defaults.string(forKey: "installDate")
         // Get days since installed
         let updatedInstallDate = installDate!.date(format:"yyyy-MM-dd HH:mm:ss")
         let currentDate = Date()
@@ -426,6 +427,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         if (year != defaults.integer(forKey: "currentYear")) {
             let monthlyInitArray: Array! = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             defaults.set(monthlyInitArray, forKey: "monthlyWaterIntakeData")
+            defaults.set(0, forKey: "goalsReached")
         }
         defaults.set(year, forKey: "currentYear")
         
@@ -680,6 +682,9 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         averageYearlyWaterIntakeView.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.12)
         averageYearlyWaterIntakeView.layer.cornerRadius = 16
         analyticsView.addSubview(averageYearlyWaterIntakeView)
+        
+        print("ANALYTICS VIEW MAXY", analyticsView.frame.maxY)
+        print("ANALYTICS VIEW MAXX", analyticsView.frame.maxX)
         
         // Number of daily goals reached view
         numDailyGoalsReachedView.isHidden = true

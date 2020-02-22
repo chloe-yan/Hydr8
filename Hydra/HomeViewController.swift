@@ -84,7 +84,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
                     numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " days"
                 }
             }
-            percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + String(Double(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
+            percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(Int(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
         }
         else if (numericGoalTextField.text != Optional("") && (numericGoalTextField.text as NSString?)!.integerValue <= 0) {
             let alert = UIAlertController(title: "Try setting a higher goal", message: "You got this! Tackle hydration.", preferredStyle: UIAlertController.Style.alert)
@@ -219,7 +219,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             averageYearlyWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
             print("ROUNDED AVERAGE: ", roundedAverage)
             
-            percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + String(Double(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
+            percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(Int(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
         }
         
     }
@@ -690,7 +690,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         // Percentage of daily goals reached view
         percentageDailyGoalReachedView.isHidden = true
-        percentageDailyGoalReachedView.frame = CGRect(x: 35, y: 300, width: analyticsBackgroundView.frame.width-70, height: 60)
+        percentageDailyGoalReachedView.frame = CGRect(x: 35, y: 300, width: analyticsBackgroundView.frame.width-70, height: 80)
         percentageDailyGoalReachedView.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.12)
         percentageDailyGoalReachedView.layer.cornerRadius = 16
         analyticsView.addSubview(percentageDailyGoalReachedView)
@@ -757,9 +757,11 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Percentage of daily goals reached label
         percentageDailyGoalReachedLabel.isHidden = true
         percentageDailyGoalReachedLabel.numberOfLines = 2
-        percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + String(Double(defaults.integer(forKey: "goalsReached")/defaults.integer(forKey: "daysSinceInstalled"))*100) + "%"
+        percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(Int(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
         percentageDailyGoalReachedLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
-        percentageDailyGoalReachedLabel.frame = CGRect(x: 50, y: 300+(percentageDailyGoalReachedView.frame.height/3), width: 280, height: percentageDailyGoalReachedLabel.intrinsicContentSize.height)
+        percentageDailyGoalReachedLabel.setLineSpacing(lineSpacing: 5.0)
+        percentageDailyGoalReachedLabel.frame = CGRect(x: 50, y: 300+(percentageDailyGoalReachedLabel.intrinsicContentSize.height/2-10), width: 280, height: percentageDailyGoalReachedLabel.intrinsicContentSize.height)
+        print(percentageDailyGoalReachedLabel.intrinsicContentSize.height)
         percentageDailyGoalReachedLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
         analyticsView.addSubview(percentageDailyGoalReachedLabel)
         
@@ -1043,7 +1045,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
                 numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " days"
             }
         }
-        percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + String(Double(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
+        percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(Int(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
         
         return transition
     }
@@ -1099,5 +1101,23 @@ func date(format: String) -> Date? {
         dateFormatter.timeZone = TimeZone.current
         let date = dateFormatter.date(from: self)
         return date
+    }
+}
+
+// Sets line spacing for UILabels
+extension UILabel {
+    func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) {
+        guard let labelText = self.text else { return }
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineSpacing
+        paragraphStyle.lineHeightMultiple = lineHeightMultiple
+        let attributedString:NSMutableAttributedString
+        if let labelattributedText = self.attributedText {
+            attributedString = NSMutableAttributedString(attributedString: labelattributedText)
+        } else {
+            attributedString = NSMutableAttributedString(string: labelText)
+        }
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        self.attributedText = attributedString
     }
 }

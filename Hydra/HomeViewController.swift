@@ -99,6 +99,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             totalWaterIntakeView.isHidden = false
             averageWaterIntakeLabel.isHidden = false
             totalWaterIntakeLabel.isHidden = false
+            averageYearlyWaterIntakeView.isHidden = true
+            numDailyGoalsReachedView.isHidden = true
+            percentageDailyGoalReachedView.isHidden = true
+            averageYearlyWaterIntakeLabel.isHidden = true
+            numDailyGoalsReachedLabel.isHidden = true
+            percentageDailyGoalReachedLabel.isHidden = true
             let weeklyDataArray = defaults.array(forKey: "weeklyWaterIntakeData")!
             for i in weeklyDataArray {
                 if ((i as! Int) != 0 && i != nil) {
@@ -108,7 +114,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             }
             let averageValue = Double(sum)/Double(count)
             let roundedAverage = String(format: "%.2f", averageValue)
-            averageWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
+            if (roundedAverage == "nan") {
+                averageWaterIntakeLabel.text = "Daily average:   0 oz"
+            }
+            else {
+                averageWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
+            }
             totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
         }
         else if (segmentedControl.selectedSegmentIndex == 1) {
@@ -118,6 +129,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             totalWaterIntakeView.isHidden = false
             averageWaterIntakeLabel.isHidden = false
             totalWaterIntakeLabel.isHidden = false
+            averageYearlyWaterIntakeView.isHidden = true
+            numDailyGoalsReachedView.isHidden = true
+            percentageDailyGoalReachedView.isHidden = true
+            averageYearlyWaterIntakeLabel.isHidden = true
+            numDailyGoalsReachedLabel.isHidden = true
+            percentageDailyGoalReachedLabel.isHidden = true
             let monthlyDataArray = defaults.array(forKey: "monthlyWaterIntakeData")!
             for i in monthlyDataArray {
                 if ((i as! Int) != 0 && i != nil) {
@@ -127,7 +144,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             }
             let averageValue = Double(sum)/Double(count)
             let roundedAverage = String(format: "%.2f", averageValue)
-            averageWaterIntakeLabel.text = "Monthly average:   " + roundedAverage + " oz"
+            if (roundedAverage == "nan") {
+                averageWaterIntakeLabel.text = "Monthly average:   0 oz"
+            }
+            else {
+                averageWaterIntakeLabel.text = "Monthly average:   " + roundedAverage + " oz"
+            }
             totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
         }
         else {
@@ -137,6 +159,42 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             totalWaterIntakeView.isHidden = true
             averageWaterIntakeLabel.isHidden = true
             totalWaterIntakeLabel.isHidden = true
+            averageYearlyWaterIntakeView.isHidden = false
+            numDailyGoalsReachedView.isHidden = false
+            percentageDailyGoalReachedView.isHidden = false
+            averageYearlyWaterIntakeLabel.isHidden = false
+            numDailyGoalsReachedLabel.isHidden = false
+            percentageDailyGoalReachedLabel.isHidden = false
+            let monthlyDataArray = defaults.array(forKey: "monthlyWaterIntakeData")!
+            for i in monthlyDataArray {
+                if ((i as! Int) != 0) {
+                    sum += (i as! Int)
+                    print("HI")
+                    print("SUM: ", sum)
+                    count += 1
+                }
+            }
+            let installDate = defaults.string(forKey: "installDate")
+            print("INSTALL DATE: ", installDate!)
+            let updatedInstallDate = installDate!.date(format:"yyyy-MM-dd HH:mm:ss")
+            print("UPDATED INSTALL DATE: ", updatedInstallDate!)
+            let currentDate = Date()
+            print("CURRENT DATE: ", currentDate)
+            count = Calendar.current.dateComponents([.day], from: calendar.startOfDay(for: updatedInstallDate!), to: calendar.startOfDay(for: currentDate)).day ?? 5
+            print(count)
+            var averageValue = 0.0
+            if (count == 0) {
+                averageValue = Double(sum)
+            }
+            else {
+                averageValue = Double(sum)/Double(count)
+                print("SUM: ", sum)
+                print("AVERAGE VALUE: ", averageValue)
+            }
+            print("AV VALUE: ", averageValue)
+            let roundedAverage = String(format: "%.2f", averageValue)
+            averageYearlyWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
+            print("ROUNDED AVERAGE: ", roundedAverage)
         }
         
     }
@@ -235,12 +293,23 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let analyticsLabel = UILabel()
     let averageWaterIntakeView = UIView()
     let totalWaterIntakeView = UIView()
+    let averageYearlyWaterIntakeView = UIView()
+    let numDailyGoalsReachedView = UIView()
+    let percentageDailyGoalReachedView = UIView()
     let averageWaterIntakeLabel = UILabel()
     let totalWaterIntakeLabel = UILabel()
+    let averageYearlyWaterIntakeLabel = UILabel()
+    let numDailyGoalsReachedLabel = UILabel()
+    let percentageDailyGoalReachedLabel = UILabel()
     let segmentedControl = UISegmentedControl()
     let buttonBar = UIView()
     lazy var weeklyWaterIntakeData = defaults.array(forKey: "weeklyWaterIntakeData")
     lazy var monthlyWaterIntakeData = defaults.array(forKey: "monthlyWaterIntakeData")
+    lazy var yearlyWaterIntakeData = defaults.array(forKey: "yearlyWaterIntakeData")
+    lazy var installDateDay = defaults.integer(forKey: "installDateDay")
+    lazy var installDateMonth = defaults.integer(forKey: "installDateMonth")
+    lazy var installDateYear = defaults.integer(forKey: "installDateYear")
+    lazy var installDate = defaults.string(forKey: "installDate")
     
     let analyticsView = UIView()
     let settingsView = UIView()
@@ -250,6 +319,17 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Get install date
+        if (defaults.string(forKey: "installDate") == nil) {
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let string = formatter.string(from: date)
+            defaults.set(string, forKey: "installDate")
+            print("HI", defaults.string(forKey: "installDate"))
+        }
+        
+        // Update control menu
         let timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(update), userInfo: nil, repeats: true)
  
         // Bar graph appearances
@@ -560,6 +640,27 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         totalWaterIntakeView.layer.cornerRadius = 16
         analyticsView.addSubview(totalWaterIntakeView)
         
+        // Average yearly water intake view
+        averageYearlyWaterIntakeView.isHidden = true
+        averageYearlyWaterIntakeView.frame = CGRect(x: 35, y: 130, width: analyticsBackgroundView.frame.width-70, height: 60)
+        averageYearlyWaterIntakeView.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.12)
+        averageYearlyWaterIntakeView.layer.cornerRadius = 16
+        analyticsView.addSubview(averageYearlyWaterIntakeView)
+        
+        // Number of daily goals reached view
+        numDailyGoalsReachedView.isHidden = true
+        numDailyGoalsReachedView.frame = CGRect(x: 35, y: 215, width: analyticsBackgroundView.frame.width-70, height: 60)
+        numDailyGoalsReachedView.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.12)
+        numDailyGoalsReachedView.layer.cornerRadius = 16
+        analyticsView.addSubview(numDailyGoalsReachedView)
+        
+        // Percentage of daily goals reached view
+        percentageDailyGoalReachedView.isHidden = true
+        percentageDailyGoalReachedView.frame = CGRect(x: 35, y: 300, width: analyticsBackgroundView.frame.width-70, height: 60)
+        percentageDailyGoalReachedView.backgroundColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.12)
+        percentageDailyGoalReachedView.layer.cornerRadius = 16
+        analyticsView.addSubview(percentageDailyGoalReachedView)
+        
         // Average water intake label
         var sum = 0
         var count = 0
@@ -574,7 +675,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         averageWaterIntakeLabel.numberOfLines = 0
         let averageValue = Double(sum)/Double(count)
         let roundedAverage = String(format: "%.2f", averageValue)
-        averageWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
+        if (roundedAverage == "nan") {
+            averageWaterIntakeLabel.text = "Daily average:   0 oz"
+        }
+        else {
+            averageWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
+        }
         averageWaterIntakeLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         averageWaterIntakeLabel.frame = CGRect(x: 50, y: 390+(averageWaterIntakeView.frame.height/3), width: 280, height: averageWaterIntakeLabel.intrinsicContentSize.height)
         averageWaterIntakeLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
@@ -588,6 +694,25 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         totalWaterIntakeLabel.frame = CGRect(x: 50, y: 475+(totalWaterIntakeView.frame.height/3), width: 280, height: totalWaterIntakeLabel.intrinsicContentSize.height)
         totalWaterIntakeLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
         analyticsView.addSubview(totalWaterIntakeLabel)
+        
+        // Average yearly water intake label
+        averageYearlyWaterIntakeLabel.isHidden = true
+        averageYearlyWaterIntakeLabel.numberOfLines = 0
+        averageYearlyWaterIntakeLabel.text = "Daily average:   " + String(0) + " oz"
+        averageYearlyWaterIntakeLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
+        averageYearlyWaterIntakeLabel.frame = CGRect(x: 50, y: 130+(averageYearlyWaterIntakeView.frame.height/3), width: 280, height: averageYearlyWaterIntakeLabel.intrinsicContentSize.height)
+        averageYearlyWaterIntakeLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
+        analyticsView.addSubview(averageYearlyWaterIntakeLabel)
+        
+        // Number of daily goals reached label
+        let numDailyGoalsReachedLabel = UILabel()
+        numDailyGoalsReachedLabel.isHidden = true
+        numDailyGoalsReachedLabel.numberOfLines = 0
+        numDailyGoalsReachedLabel.text = "Goals reached:   " + String(0) + " oz"
+        numDailyGoalsReachedLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
+        numDailyGoalsReachedLabel.frame = CGRect(x: 50, y: 215+(numDailyGoalsReachedView.frame.height/3), width: 280, height: numDailyGoalsReachedLabel.intrinsicContentSize.height)
+        numDailyGoalsReachedLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
+        analyticsView.addSubview(numDailyGoalsReachedLabel)
         
         // Segmented control
         segmentedControl.insertSegment(withTitle: "Week", at: 0, animated: true)
@@ -616,8 +741,6 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         buttonBar.backgroundColor = UIColor.white
         let buttonBarXPos = ((analyticsView.bounds.maxX-40 / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex)) + ((analyticsView.bounds.maxX-40)/CGFloat(self.segmentedControl.numberOfSegments))/2
         buttonBar.frame = CGRect(x: buttonBarXPos, y: segmentedControl.bounds.maxY+40, width: 40, height: 3)
-        
-        //segmentedControl.bounds.maxY+50,
         buttonBar.layer.cornerRadius = 3
         analyticsView.addSubview(buttonBar)
         
@@ -784,7 +907,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             }
             let averageValue = Double(sum)/Double(count)
             let roundedAverage = String(format: "%.2f", averageValue)
-            averageWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
+            if (roundedAverage == "nan") {
+                averageWaterIntakeLabel.text = "Daily average:   0 oz"
+            }
+            else {
+                averageWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
+            }
             totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
         }
         else if (segmentedControl.selectedSegmentIndex == 1) {
@@ -797,7 +925,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             }
             let averageValue = Double(sum)/Double(count)
             let roundedAverage = String(format: "%.2f", averageValue)
-            averageWaterIntakeLabel.text = "Monthly average:   " + roundedAverage + " oz"
+            if (roundedAverage == "nan") {
+                averageWaterIntakeLabel.text = "Monthly average:   0 oz"
+            }
+            else {
+                averageWaterIntakeLabel.text = "Monthly average:   " + roundedAverage + " oz"
+            }
             totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
         }
         
@@ -894,5 +1027,16 @@ extension UISegmentedControl {
 extension UIScrollView {
     var currentPage:Int{
         return Int((self.contentOffset.x+(0.5*self.frame.size.width))/self.frame.width)+1
+    }
+}
+
+// String to date conversion
+extension String {
+func date(format: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.timeZone = TimeZone.current
+        let date = dateFormatter.date(from: self)
+        return date
     }
 }

@@ -638,7 +638,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         else {
             allowNotificationsLabel.textColor = UIColor.lightGray
         }
-        allowNotificationsLabel.frame = CGRect(x: 303, y: settingsView.bounds.maxY-98, width: allowNotificationsLabel.intrinsicContentSize.width, height: allowNotificationsLabel.intrinsicContentSize.height)
+        allowNotificationsLabel.frame = CGRect(x: 300, y: settingsView.bounds.maxY-97.5, width: allowNotificationsLabel.intrinsicContentSize.width, height: allowNotificationsLabel.intrinsicContentSize.height)
         settingsView.addSubview(allowNotificationsLabel)
 
         // Calculate goal button

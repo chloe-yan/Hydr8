@@ -11,6 +11,7 @@ import UIKit
 import BubbleTransition
 import BAFluidView
 import CoreMotion
+import UserNotifications
 
 class HomeViewController: UIViewController, UIViewControllerTransitioningDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
@@ -87,12 +88,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(Int(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
         }
         else if (numericGoalTextField.text != Optional("") && (numericGoalTextField.text as NSString?)!.integerValue <= 0) {
-            let alert = UIAlertController(title: "Try setting a higher goal", message: "You got this! Tackle hydration.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Error", message: "Try setting a higher goal.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         else {
-            let alert = UIAlertController(title: "Please enter a goal", message: "Sorry! We couldn't understand your input.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Error", message: "Please enter a goal.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -259,6 +260,45 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         dropletFluidView.layer.addSublayer(dropletOutlineLayer)
     }
     
+    // Manages state of notifications switch
+    @objc func switchStateDidChange(_ sender:UISwitch){
+        if (sender.isOn == true){
+            UIApplication.shared.registerForRemoteNotifications()
+            defaults.set(sender.isOn, forKey: "switchState")
+            
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound])
+                { (granted, error) in
+            }
+            
+            let content = UNMutableNotificationContent()
+            content.title = "Rise and shine! ☀️"
+            content.body = "Wake up with a refreshing glass of water."
+            var dateInfo = DateComponents()
+            dateInfo.hour = 8
+            dateInfo.minute = 0
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
+            let uuidString = UUID().uuidString
+            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+            center.add(request)
+            
+            let content2 = UNMutableNotificationContent()
+            content2.title = "Hey there! 😊"
+            content2.body = "It's time to drink some more water."
+            var dateInfo2 = DateComponents()
+            dateInfo2.hour = 15
+            dateInfo2.minute = 0
+            let trigger2 = UNCalendarNotificationTrigger(dateMatching: dateInfo2, repeats: true)
+            let request2 = UNNotificationRequest(identifier: "secondNotification", content: content2, trigger: trigger2)
+            center.add(request2)
+            
+        }
+        else{
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            defaults.set(false, forKey: "switchState")
+        }
+    }
+    
     // MARK: VARIABLES
     
     var date = Date()
@@ -290,6 +330,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let settingsLabel = UILabel()
     let currentGoalLabel = UILabel()
     let numericGoalLabel = UILabel()
+    let allowNotificationsSwitch = UISwitch()
     
     let dailyGoalLabel = UILabel()
     let numericGoalTextField = UITextField()
@@ -577,15 +618,32 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         setGoalButton.frame = CGRect(x: 250, y: 200, width: setGoalButton.intrinsicContentSize.width, height:   setGoalButton.intrinsicContentSize.height)
         settingsView.addSubview(setGoalButton)
         
-        // Set goal button
+        // Allow notifications switch
+        allowNotificationsSwitch.frame = CGRect(x: 245, y: settingsView.bounds.maxY-104, width: 0, height: 0)
+        allowNotificationsSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        allowNotificationsSwitch.onTintColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
+        allowNotificationsSwitch.addTarget(self, action: #selector(switchStateDidChange(_:)), for: .valueChanged)
+        allowNotificationsSwitch.setOn(true, animated: false)
+        settingsView.addSubview(allowNotificationsSwitch)
+        
+        // Allow notifications label
+        let allowNotificationsLabel = UILabel()
+        allowNotificationsLabel.text = "Allow notifications"
+        allowNotificationsLabel.font = UIFont(name: "AvenirNext-Medium", size: 14)
+        allowNotificationsLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
+        allowNotificationsLabel.frame = CGRect(x: 305, y: settingsView.bounds.maxY-98, width: allowNotificationsLabel.intrinsicContentSize.width, height: allowNotificationsLabel.intrinsicContentSize.height)
+        settingsView.addSubview(allowNotificationsLabel)
+
+        // Calculate goal button
         calculateGoalButton.backgroundColor = UIColor.clear //UIColor(red:0.28, green:0.37, blue:0.64, alpha:1.0)
         calculateGoalButton.setTitle("Calculate recommended goal", for: .normal)
         calculateGoalButton.setTitleColor(UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.5), for: .normal)
-        calculateGoalButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 12)
+        calculateGoalButton.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 14)
         calculateGoalButton.addTarget(self, action: #selector(calculateGoalButtonTapped), for: .touchUpInside)
         calculateGoalButton.layer.cornerRadius = 3
         calculateGoalButton.frame = CGRect(x: 250, y: settingsView.bounds.maxY-70, width: calculateGoalButton.intrinsicContentSize.width, height:   calculateGoalButton.intrinsicContentSize.height)
         settingsView.addSubview(calculateGoalButton)
+        
        
         // Home view page
         homeView.frame = CGRect(x: x + padding, y: padding, width: viewWidth, height: viewHeight)
@@ -989,6 +1047,9 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             }
             totalWaterIntakeLabel.text = "Total intake:   " + String(sum) + " oz"
         }
+        
+        // Updates notifications switch state
+        allowNotificationsSwitch.isOn = defaults.bool(forKey: "switchState")
         
     }
     

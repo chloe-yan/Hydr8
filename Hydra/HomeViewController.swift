@@ -263,6 +263,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     // Manages state of notifications switch
     @objc func switchStateDidChange(_ sender:UISwitch){
         if (sender.isOn == true){
+            allowNotificationsLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
             UIApplication.shared.registerForRemoteNotifications()
             defaults.set(sender.isOn, forKey: "switchState")
             
@@ -294,6 +295,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             
         }
         else{
+            allowNotificationsLabel.textColor = UIColor.lightGray
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             defaults.set(false, forKey: "switchState")
         }
@@ -331,6 +333,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     let currentGoalLabel = UILabel()
     let numericGoalLabel = UILabel()
     let allowNotificationsSwitch = UISwitch()
+    let allowNotificationsLabel = UILabel()
     
     let dailyGoalLabel = UILabel()
     let numericGoalTextField = UITextField()
@@ -627,11 +630,15 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         settingsView.addSubview(allowNotificationsSwitch)
         
         // Allow notifications label
-        let allowNotificationsLabel = UILabel()
         allowNotificationsLabel.text = "Allow notifications"
         allowNotificationsLabel.font = UIFont(name: "AvenirNext-Medium", size: 14)
-        allowNotificationsLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
-        allowNotificationsLabel.frame = CGRect(x: 305, y: settingsView.bounds.maxY-98, width: allowNotificationsLabel.intrinsicContentSize.width, height: allowNotificationsLabel.intrinsicContentSize.height)
+        if (defaults.bool(forKey: "switchState") == true) {
+            allowNotificationsLabel.textColor = UIColor(red:0.28, green:0.37, blue:0.64, alpha:0.8)
+        }
+        else {
+            allowNotificationsLabel.textColor = UIColor.lightGray
+        }
+        allowNotificationsLabel.frame = CGRect(x: 303, y: settingsView.bounds.maxY-98, width: allowNotificationsLabel.intrinsicContentSize.width, height: allowNotificationsLabel.intrinsicContentSize.height)
         settingsView.addSubview(allowNotificationsLabel)
 
         // Calculate goal button

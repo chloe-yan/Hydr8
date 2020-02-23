@@ -88,12 +88,12 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(Int(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
         }
         else if (numericGoalTextField.text != Optional("") && (numericGoalTextField.text as NSString?)!.integerValue <= 0) {
-            let alert = UIAlertController(title: "Error", message: "Try setting a higher goal.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Oops!", message: "Try setting a higher goal.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         else {
-            let alert = UIAlertController(title: "Error", message: "Please enter a goal.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Oops!", message: "Please enter a goal.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

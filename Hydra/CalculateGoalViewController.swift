@@ -36,17 +36,17 @@ class CalculateGoalViewController: UIViewController {
             dismiss(animated: true, completion: nil)
         }
         else if (weightTextField.text != Optional("")) {
-            let alert = UIAlertController(title: "Error", message: "Please enter your age.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Oops!", message: "Please enter your age.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         else if (ageTextField.text != Optional("")) {
-            let alert = UIAlertController(title: "Error", message: "Please enter your weight.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Oops!", message: "Please enter your weight.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         else {
-            let alert = UIAlertController(title: "Error", message: "Please complete both fields.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Oops!", message: "Please complete both fields.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

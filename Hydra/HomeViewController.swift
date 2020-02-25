@@ -67,25 +67,25 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             
             if (defaults.double(forKey: "waterIntake") >= defaults.double(forKey: "dailyGoal") && defaults.bool(forKey: "alreadyUpdatedGoalsReached") == false) {
                 defaults.set(true, forKey: "alreadyUpdatedGoalsReached")
-                defaults.set(goalsReached+1, forKey: "goalsReached")
-                if (defaults.integer(forKey: "goalsReached") == 1) {
-                    numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " day"
+                defaults.set(Double(goalsReached+1), forKey: "goalsReached")
+                if (defaults.double(forKey: "goalsReached") == 1) {
+                    numDailyGoalsReachedLabel.text = "Goals reached:   " + String(Int(defaults.double(forKey: "goalsReached"))) + " day"
                 }
                 else {
-                    numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " days"
+                    numDailyGoalsReachedLabel.text = "Goals reached:   " + String(Int(defaults.double(forKey: "goalsReached"))) + " days"
                 }
             }
             if (defaults.double(forKey: "waterIntake") < defaults.double(forKey: "dailyGoal") && defaults.bool(forKey: "alreadyUpdatedGoalsReached") == true) {
-                defaults.set(goalsReached-1, forKey: "goalsReached")
+                defaults.set(Double(goalsReached-1), forKey: "goalsReached")
                 defaults.set(false, forKey: "alreadyUpdatedGoalsReached")
-                if (defaults.integer(forKey: "goalsReached") == 1) {
-                    numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " day"
+                if (Int(defaults.double(forKey: "goalsReached")) == 1) {
+                    numDailyGoalsReachedLabel.text = "Goals reached:   " + String(Int(defaults.double(forKey: "goalsReached"))) + " day"
                 }
                 else {
-                    numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " days"
+                    numDailyGoalsReachedLabel.text = "Goals reached:   " + String(Int(defaults.double(forKey: "goalsReached"))) + " days"
                 }
             }
-            percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(Int(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
+            percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(defaults.double(forKey: "goalsReached")/Double(daysSinceInstalled)*100) + "%"
         }
         else if (numericGoalTextField.text != Optional("") && (numericGoalTextField.text as NSString?)!.integerValue <= 0) {
             let alert = UIAlertController(title: "Oops!", message: "Try setting a higher goal.", preferredStyle: UIAlertController.Style.alert)
@@ -220,7 +220,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             averageYearlyWaterIntakeLabel.text = "Daily average:   " + roundedAverage + " oz"
             print("ROUNDED AVERAGE: ", roundedAverage)
             
-            percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(Int(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
+            percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(defaults.double(forKey: "goalsReached")/Double(daysSinceInstalled)*100) + "%"
         }
         
     }
@@ -345,7 +345,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     lazy var goal = defaults.double(forKey: "dailyGoal")
     lazy var waterIntake = defaults.double(forKey: "waterIntake")
     lazy var monthlyWaterIntake = defaults.double(forKey: "monthlyWaterIntake")
-    lazy var goalsReached = defaults.integer(forKey: "goalsReached")
+    lazy var goalsReached = defaults.double(forKey: "goalsReached")
     lazy var alreadyUpdatedGoalsReached = defaults.bool(forKey: "alreadyUpdatedGoalsReached")
     lazy var percentageDailyGoalsReached = defaults.double(forKey: "percentageDailyGoalsReached")
     lazy var daysSinceInstalled = defaults.integer(forKey: "daysSinceInstalled")
@@ -459,7 +459,9 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         defaults.set(monthlyWaterIntakeData, forKey: "monthlyWaterIntakeData")
         
         // Determine if weekly reset needed
-        if (month == defaults.integer(forKey: "currentMonth") && (day - defaults.integer(forKey: "currentDay")) >= 7) {
+        print("DAY", day)
+        print(defaults.integer(forKey: "currentDay"))
+        if (day < defaults.integer(forKey: "currentDay")) {
             let initArray: Array! = [0, 0, 0, 0, 0, 0, 0]
             defaults.set(initArray, forKey: "weeklyWaterIntakeData")
         }
@@ -811,11 +813,11 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Number of daily goals reached label
         numDailyGoalsReachedLabel.isHidden = true
         numDailyGoalsReachedLabel.numberOfLines = 0
-        if (defaults.integer(forKey: "goalsReached") == 1) {
-            numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " day"
+        if (defaults.double(forKey: "goalsReached") == 1) {
+            numDailyGoalsReachedLabel.text = "Goals reached:   " + String(Int(defaults.double(forKey: "goalsReached"))) + " day"
         }
         else {
-            numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " days"
+            numDailyGoalsReachedLabel.text = "Goals reached:   " + String(Int(defaults.double(forKey: "goalsReached"))) + " days"
         }
         numDailyGoalsReachedLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         numDailyGoalsReachedLabel.frame = CGRect(x: 50, y: 215+(numDailyGoalsReachedView.frame.height/3), width: 280, height: numDailyGoalsReachedLabel.intrinsicContentSize.height)
@@ -827,7 +829,9 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         // Percentage of daily goals reached label
         percentageDailyGoalReachedLabel.isHidden = true
         percentageDailyGoalReachedLabel.numberOfLines = 2
-        percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(Int(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
+        percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(defaults.double(forKey: "goalsReached")/Double(daysSinceInstalled)*100) + "%"
+        print("GOALS", defaults.double(forKey: "goalsReached"))
+        print("INSTALLBOI", daysSinceInstalled)
         percentageDailyGoalReachedLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         percentageDailyGoalReachedLabel.setLineSpacing(lineSpacing: 5.0)
         percentageDailyGoalReachedLabel.frame = CGRect(x: 50, y: 300+(percentageDailyGoalReachedLabel.intrinsicContentSize.height/2-10), width: 280, height: percentageDailyGoalReachedLabel.intrinsicContentSize.height)
@@ -1111,14 +1115,14 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         if (defaults.double(forKey: "waterIntake") >= defaults.double(forKey: "dailyGoal") && defaults.bool(forKey: "alreadyUpdatedGoalsReached") == false) {
             defaults.set(true, forKey: "alreadyUpdatedGoalsReached")
             defaults.set(goalsReached+1, forKey: "goalsReached")
-            if (defaults.integer(forKey: "goalsReached") == 1) {
-                numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " day"
+            if (defaults.double(forKey: "goalsReached") == 1) {
+                numDailyGoalsReachedLabel.text = "Goals reached:   " + String(Int(defaults.double(forKey: "goalsReached"))) + " day"
             }
             else {
-                numDailyGoalsReachedLabel.text = "Goals reached:   " + String(defaults.integer(forKey: "goalsReached")) + " days"
+                numDailyGoalsReachedLabel.text = "Goals reached:   " + String(Int(defaults.double(forKey: "goalsReached"))) + " days"
             }
         }
-        percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(Int(defaults.integer(forKey: "goalsReached")/daysSinceInstalled)*100) + "%"
+        percentageDailyGoalReachedLabel.text = "Percentage of goals reached   " + "\n" + String(defaults.double(forKey: "goalsReached")/Double(daysSinceInstalled)*100) + "%"
         
         return transition
     }

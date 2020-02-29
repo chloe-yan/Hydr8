@@ -21,13 +21,13 @@
 		D15E618E240A3DBE00AAF175 /* MonthlyBasicBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E618B240A3DBD00AAF175 /* MonthlyBasicBarChart.swift */; };
 		D15E618F240A3DBE00AAF175 /* MonthlyBasicBarChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E618C240A3DBD00AAF175 /* MonthlyBasicBarChartPresenter.swift */; };
 		D15E6190240A3DBE00AAF175 /* MonthlyBarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E618D240A3DBD00AAF175 /* MonthlyBarEntry.swift */; };
+		D15E6192240A3E9E00AAF175 /* UIBezierPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E6191240A3E9D00AAF175 /* UIBezierPathExtension.swift */; };
 		D17519F323BADB8200E85762 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17519F223BADB8200E85762 /* AppDelegate.swift */; };
 		D17519F523BADB8200E85762 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17519F423BADB8200E85762 /* SceneDelegate.swift */; };
 		D17519FD23BADB8200E85762 /* Hydr8.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D17519FB23BADB8200E85762 /* Hydr8.xcdatamodeld */; };
 		D1751A0223BADB8600E85762 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1751A0023BADB8600E85762 /* LaunchScreen.storyboard */; };
 		D1751A0A23BAEC7F00E85762 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1751A0923BAEC7F00E85762 /* HomeViewController.swift */; };
 		D188B23B23C26FFD00110889 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D188B23A23C26FFD00110889 /* Main.storyboard */; };
-		D1AA768223F6628E003E0017 /* UIBezierPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AA768123F6628E003E0017 /* UIBezierPathExtension.swift */; };
 		D1DE3F3623BBFA6E005341C2 /* AddUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */; };
 		D1FBDDC423BD6C8C00003306 /* BubbleEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */; };
 		D1FBDDD223BEA39100003306 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FBDDD123BEA39100003306 /* Assets.xcassets */; };
@@ -85,6 +85,7 @@
 		D15E618B240A3DBD00AAF175 /* MonthlyBasicBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthlyBasicBarChart.swift; path = Hydra/MonthlyBasicBarChart.swift; sourceTree = SOURCE_ROOT; };
 		D15E618C240A3DBD00AAF175 /* MonthlyBasicBarChartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthlyBasicBarChartPresenter.swift; path = Hydra/MonthlyBasicBarChartPresenter.swift; sourceTree = SOURCE_ROOT; };
 		D15E618D240A3DBD00AAF175 /* MonthlyBarEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthlyBarEntry.swift; path = Hydra/MonthlyBarEntry.swift; sourceTree = SOURCE_ROOT; };
+		D15E6191240A3E9D00AAF175 /* UIBezierPathExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBezierPathExtension.swift; path = Hydra/UIBezierPathExtension.swift; sourceTree = SOURCE_ROOT; };
 		D17519EF23BADB8200E85762 /* Hydra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17519F223BADB8200E85762 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17519F423BADB8200E85762 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		D1751A0323BADB8600E85762 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1751A0923BAEC7F00E85762 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D188B23A23C26FFD00110889 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		D1AA768123F6628E003E0017 /* UIBezierPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIBezierPathExtension.swift; path = ../../UIBezierPathExtension.swift; sourceTree = "<group>"; };
 		D1DE3F3523BBFA6E005341C2 /* AddUpdatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdatesViewController.swift; sourceTree = "<group>"; };
 		D1FBDDC323BD6C8C00003306 /* BubbleEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleEmitter.swift; sourceTree = "<group>"; };
 		D1FBDDD123BEA39100003306 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -188,7 +188,7 @@
 				D15E617D240A372600AAF175 /* CustomSegments.swift */,
 				D15E6180240A372600AAF175 /* DataEntry.swift */,
 				D15E617F240A372600AAF175 /* DataGenerator.swift */,
-				D1AA768123F6628E003E0017 /* UIBezierPathExtension.swift */,
+				D15E6191240A3E9D00AAF175 /* UIBezierPathExtension.swift */,
 				D15E618D240A3DBD00AAF175 /* MonthlyBarEntry.swift */,
 				D15E618B240A3DBD00AAF175 /* MonthlyBasicBarChart.swift */,
 				D15E618C240A3DBD00AAF175 /* MonthlyBasicBarChartPresenter.swift */,
@@ -377,9 +377,9 @@
 				D1FBDDC423BD6C8C00003306 /* BubbleEmitter.swift in Sources */,
 				D15E6184240A372700AAF175 /* BasicBarEntry.swift in Sources */,
 				D17519F523BADB8200E85762 /* SceneDelegate.swift in Sources */,
+				D15E6192240A3E9E00AAF175 /* UIBezierPathExtension.swift in Sources */,
 				D15E6190240A3DBE00AAF175 /* MonthlyBarEntry.swift in Sources */,
 				D15E6185240A372700AAF175 /* BasicBarChartPresenter.swift in Sources */,
-				D1AA768223F6628E003E0017 /* UIBezierPathExtension.swift in Sources */,
 				D15E618E240A3DBE00AAF175 /* MonthlyBasicBarChart.swift in Sources */,
 				D134F66123EFE8F60023D3E3 /* CalculateGoalViewController.swift in Sources */,
 				D15E6186240A372700AAF175 /* CustomSegments.swift in Sources */,
